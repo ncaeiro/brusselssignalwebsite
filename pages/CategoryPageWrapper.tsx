@@ -24,6 +24,19 @@ const CategoryPageWrapper: React.FC = () => {
     else if (normalized === 'commentary') articles = COMMENTARY;
     else if (normalized === 'photo-stories') articles = PHOTO_STORIES;
     else if (normalized === 'videos') articles = WATCH_VIDEOS;
+    else if (normalized === 'world') articles = POLITICS.filter(article =>
+      article.tags?.some(tag => ['international', 'world', 'global', 'us', 'china', 'war'].includes(tag.toLowerCase()))
+    );
+    else if (normalized === 'news') {
+      // Mix articles from different categories for broad news coverage
+      const politicsArticles = POLITICS.slice(0, 5);
+      const economyArticles = ECONOMY.slice(0, 5);
+      const societyArticles = SOCIETY.slice(0, 5);
+      const worldArticles = POLITICS.filter(article =>
+        article.tags?.some(tag => ['international', 'world', 'global', 'us', 'china', 'war'].includes(tag.toLowerCase()))
+      ).slice(0, 5);
+      articles = [...politicsArticles, ...economyArticles, ...societyArticles, ...worldArticles];
+    }
 
     // Limit to 20 articles per page
     return articles.slice(0, 20);
@@ -32,6 +45,7 @@ const CategoryPageWrapper: React.FC = () => {
   const getCategoryName = (cat: string): string => {
     const normalized = cat.toLowerCase();
     if (normalized === 'photo-stories') return 'Photo Stories';
+    if (normalized === 'commentary') return 'Opinion';
     return cat.charAt(0).toUpperCase() + cat.slice(1);
   };
 

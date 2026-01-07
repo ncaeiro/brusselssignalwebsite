@@ -11,10 +11,12 @@ interface HeaderProps {
   onPodcastClick?: (article: NewsItem) => void;
   onNewslettersClick?: () => void;
   onAuthorsClick?: () => void;
+  onEventsClick?: () => void;
 }
 
-const Header: React.FC<HeaderProps> = ({ onLogoClick, onSignInClick, onBecomeMemberClick, onCategoryClick, onPodcastClick, onNewslettersClick, onAuthorsClick }) => {
+const Header: React.FC<HeaderProps> = ({ onLogoClick, onSignInClick, onBecomeMemberClick, onCategoryClick, onPodcastClick, onNewslettersClick, onAuthorsClick, onEventsClick }) => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [newsDropdownOpen, setNewsDropdownOpen] = useState(false);
 
   const handleCategoryClick = (cat: string) => {
     onCategoryClick?.(cat);
@@ -59,7 +61,6 @@ const Header: React.FC<HeaderProps> = ({ onLogoClick, onSignInClick, onBecomeMem
 
         <div className="flex items-center gap-4">
             <button onClick={onSignInClick} className="hover:text-red-400">SIGN IN</button>
-            <button onClick={onNewslettersClick} className="border border-white px-4 py-2 hover:bg-white hover:text-[#1a2a44] transition">NEWSLETTERS</button>
             <button onClick={onBecomeMemberClick} className="bg-[#EE6260] px-4 py-2 hover:bg-red-700 transition">BECOME A MEMBER</button>
         </div>
       </div>
@@ -93,17 +94,53 @@ const Header: React.FC<HeaderProps> = ({ onLogoClick, onSignInClick, onBecomeMem
                 <img src={import.meta.env.BASE_URL + 'images/icons/icon-white-instagram.png'} alt="Instagram" className="w-5 h-5" />
               </a>
             </div>
-            <div className="hidden lg:flex gap-6 text-[10px] font-bold uppercase tracking-widest text-gray-400">
-                <span className="text-white">HOT TOPICS</span>
-                <button onClick={() => handleCategoryClick('Society')} className="hover:text-white uppercase">Mass Migration</button>
-                <button onClick={() => handleCategoryClick('Society')} className="hover:text-white uppercase">Free Speech</button>
-                <button onClick={() => handleCategoryClick('Politics')} className="hover:text-white uppercase">Ukraine</button>
-                <button onClick={() => handleCategoryClick('Politics')} className="hover:text-white uppercase">DSA Pact</button>
-                <button onClick={() => handleCategoryClick('Economy')} className="hover:text-white uppercase">Tariffs</button>
-                <button onClick={() => handleCategoryClick('Politics')} className="hover:text-white uppercase">News</button>
-                <button onClick={() => handleCategoryClick('Commentary')} className="hover:text-white uppercase">Comments</button>
-                <button onClick={() => handleCategoryClick('Politics')} className="hover:text-white uppercase">Events</button>
+            <div className="hidden lg:flex gap-8 text-[12px] font-bold uppercase tracking-widest text-gray-400 items-center">
+                {/* Hot Topics with dropdown */}
+                <div className="relative">
+                  <button
+                    onClick={() => setNewsDropdownOpen(!newsDropdownOpen)}
+                    onMouseEnter={() => setNewsDropdownOpen(true)}
+                    className="hover:text-white uppercase flex items-center gap-1"
+                  >
+                    Hot Topics
+                    <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
+                    </svg>
+                  </button>
+
+                  {/* Hot Topics Dropdown */}
+                  {newsDropdownOpen && (
+                    <div
+                      className="absolute top-full left-0 mt-2 bg-[#1a2a44] shadow-2xl rounded-md py-4 px-6 min-w-[200px] z-50"
+                      onMouseLeave={() => setNewsDropdownOpen(false)}
+                    >
+                      <div className="space-y-2">
+                        <button onClick={() => { handleCategoryClick('Society'); setNewsDropdownOpen(false); }} className="block hover:text-white text-gray-300 text-left w-full text-[12px] font-normal">Mass Migration</button>
+                        <button onClick={() => { handleCategoryClick('Society'); setNewsDropdownOpen(false); }} className="block hover:text-white text-gray-300 text-left w-full text-[12px] font-normal">Free Speech</button>
+                        <button onClick={() => { handleCategoryClick('Politics'); setNewsDropdownOpen(false); }} className="block hover:text-white text-gray-300 text-left w-full text-[12px] font-normal">Ukraine</button>
+                        <button onClick={() => { handleCategoryClick('Politics'); setNewsDropdownOpen(false); }} className="block hover:text-white text-gray-300 text-left w-full text-[12px] font-normal">DSA Pact</button>
+                        <button onClick={() => { handleCategoryClick('Economy'); setNewsDropdownOpen(false); }} className="block hover:text-white text-gray-300 text-left w-full text-[12px] font-normal">Tariffs</button>
+                      </div>
+                    </div>
+                  )}
+                </div>
+
+                <button onClick={() => handleCategoryClick('News')} className="hover:text-white uppercase">News</button>
+                <button onClick={() => handleCategoryClick('Politics')} className="hover:text-white uppercase">Politics</button>
+                <button onClick={() => handleCategoryClick('Economy')} className="hover:text-white uppercase">Economy</button>
+                <button onClick={() => handleCategoryClick('Society')} className="hover:text-white uppercase">Society</button>
+                <button onClick={() => handleCategoryClick('World')} className="hover:text-white uppercase">World</button>
+                <button onClick={() => handleCategoryClick('Commentary')} className="hover:text-white uppercase">Opinion</button>
                 <button onClick={() => handleCategoryClick('Videos')} className="hover:text-white uppercase">Videos</button>
+                <button onClick={onEventsClick} className="hover:text-white uppercase">Events</button>
+
+                {/* Newsletters Link - stands out with red color */}
+                <button
+                  onClick={onNewslettersClick}
+                  className="text-[#EE6260] hover:text-white uppercase transition font-black"
+                >
+                  Newsletters
+                </button>
             </div>
         </div>
       </div>

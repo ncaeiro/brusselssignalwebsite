@@ -12,6 +12,7 @@ import NewslettersGridPage from '../components/NewslettersGridPage.tsx';
 import NewslettersPromoPage from '../pages/NewslettersPromoPage.tsx';
 import SubscriptionPlans from '../components/SubscriptionPlans.tsx';
 import AuthorsPage from '../pages/AuthorsPage.tsx';
+import EventsPage from '../pages/EventsPage.tsx';
 import LoginModal from '../components/LoginModal.tsx';
 import SignUpModal from '../components/SignUpModal.tsx';
 
@@ -53,6 +54,11 @@ const AppContent: React.FC = () => {
     window.scrollTo(0, 0);
   };
 
+  const navigateToEvents = () => {
+    navigate('/events');
+    window.scrollTo(0, 0);
+  };
+
   return (
     <div className="min-h-screen flex flex-col relative">
       <Header
@@ -63,6 +69,7 @@ const AppContent: React.FC = () => {
         onPodcastClick={() => {}}
         onNewslettersClick={navigateToNewsletters}
         onAuthorsClick={navigateToAuthors}
+        onEventsClick={navigateToEvents}
       />
       <Ticker />
 
@@ -79,6 +86,7 @@ const AppContent: React.FC = () => {
         <Route path="/newsletters-promo" element={<NewslettersPromoPage />} />
         <Route path="/subscriptions" element={<SubscriptionPlans onPlanSelect={openSignUp} />} />
         <Route path="/authors" element={<AuthorsPage />} />
+        <Route path="/events" element={<EventsPage />} />
       </Routes>
 
       <Footer

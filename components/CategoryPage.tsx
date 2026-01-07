@@ -71,7 +71,15 @@ const CategoryPage: React.FC<CategoryPageProps> = ({ categoryName, articles, onA
                             
                             <div className="flex-grow">
                                 <p className="text-[10px] text-gray-500 uppercase font-black tracking-widest mb-3 flex items-center gap-2">
-                                    <span className="text-red-600">{categoryName.toUpperCase()}</span>
+                                    {categoryName.toLowerCase() === 'news' && article.category ? (
+                                        <>
+                                            <span className="text-red-600">NEWS</span>
+                                            <span className="w-1 h-1 bg-gray-300 rounded-full"></span>
+                                            <span className="text-gray-400">{article.category.toUpperCase()}</span>
+                                        </>
+                                    ) : (
+                                        <span className="text-red-600">{categoryName.toUpperCase()}</span>
+                                    )}
                                     <span className="w-1 h-1 bg-gray-300 rounded-full"></span>
                                     {article.date}
                                 </p>

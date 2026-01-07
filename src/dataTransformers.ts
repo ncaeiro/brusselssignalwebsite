@@ -150,7 +150,7 @@ export function categorizeNewsArticles(articles: NewsItem[]): {
 
     // Check for photo stories
     if (titleLower.includes('photo') || titleLower.includes('pictures') || titleLower.includes('images')) {
-      photoStories.push(article);
+      photoStories.push({ ...article, category: 'Photo Stories' });
     }
     // Check for politics keywords
     else if (
@@ -159,7 +159,7 @@ export function categorizeNewsArticles(articles: NewsItem[]): {
       titleLower.includes('minister') || titleLower.includes('president') ||
       tagsLower.includes('politic')
     ) {
-      politics.push(article);
+      politics.push({ ...article, category: 'Politics' });
     }
     // Check for economy keywords
     else if (
@@ -169,7 +169,7 @@ export function categorizeNewsArticles(articles: NewsItem[]): {
       titleLower.includes('€') || titleLower.includes('billion') ||
       tagsLower.includes('econom')
     ) {
-      economy.push(article);
+      economy.push({ ...article, category: 'Economy' });
     }
     // Check for society keywords
     else if (
@@ -178,11 +178,11 @@ export function categorizeNewsArticles(articles: NewsItem[]): {
       titleLower.includes('health') || titleLower.includes('migration') ||
       titleLower.includes('protest') || tagsLower.includes('society')
     ) {
-      society.push(article);
+      society.push({ ...article, category: 'Society' });
     }
     // Default to general
     else {
-      general.push(article);
+      general.push({ ...article, category: 'News' });
     }
   });
 

@@ -3,7 +3,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { NewsItem } from '../src/types.ts';
 import { createSlug, createAuthorSlug, getAuthorPhoto } from '../src/utils.ts';
-import { WATCH_VIDEOS, INTERFERENCE_PODCASTS, HORIZON_PODCASTS, ALL_ARTICLES } from '../src/data.ts';
+import { WATCH_VIDEOS, INTERFERENCE_PODCASTS, HORIZON_PODCASTS, ALL_ARTICLES, POLITICS, ECONOMY, SOCIETY } from '../src/data.ts';
 
 interface MegaMenuProps {
   onClose: () => void;
@@ -19,8 +19,12 @@ const MegaMenu: React.FC<MegaMenuProps> = ({ onClose, onCategoryClick, onPodcast
   // Get the MegaMenu videos (vm1-vm6) from WATCH_VIDEOS
   const menuVideos = WATCH_VIDEOS.filter(v => v.id.startsWith('vm'));
 
-  // Get podcasts from data - combine and take first 6
-  const menuPodcasts = [...INTERFERENCE_PODCASTS, ...HORIZON_PODCASTS].slice(0, 6);
+  // Get latest news articles - mix from different categories
+  const latestNews = [
+    ...POLITICS.slice(0, 2),
+    ...ECONOMY.slice(0, 2),
+    ...SOCIETY.slice(0, 2)
+  ].slice(0, 6);
 
   const handleNewsletterNav = () => {
     onNewslettersClick?.();
@@ -45,7 +49,6 @@ const MegaMenu: React.FC<MegaMenuProps> = ({ onClose, onCategoryClick, onPodcast
             <div>
               <button onClick={() => onCategoryClick?.('Politics')} className="text-red-500 font-black text-sm mb-6 tracking-wider uppercase hover:underline">POLITICS</button>
               <ul className="text-[13px] space-y-3 font-normal text-gray-200">
-                <li><button onClick={() => onCategoryClick?.('Politics')} className="hover:text-[#FFEAD5] transition-colors text-left">EU bubble (lobbying, institutions, industry)</button></li>
                 <li><button onClick={() => onCategoryClick?.('Politics')} className="hover:text-[#FFEAD5] transition-colors text-left">From the capitals</button></li>
                 <li><button onClick={() => onCategoryClick?.('Politics')} className="hover:text-[#FFEAD5] transition-colors text-left">Elections</button></li>
                 <li><button onClick={() => onCategoryClick?.('Politics')} className="hover:text-[#FFEAD5] transition-colors text-left">Corruption</button></li>
@@ -94,7 +97,6 @@ const MegaMenu: React.FC<MegaMenuProps> = ({ onClose, onCategoryClick, onPodcast
             <div>
               <button onClick={() => onCategoryClick?.('Commentary')} className="text-red-500 font-black text-sm mb-6 tracking-wider uppercase hover:underline">OPINION</button>
               <ul className="text-[13px] space-y-3 font-normal text-gray-200">
-                <li><button onClick={() => onCategoryClick?.('Commentary')} className="hover:text-[#FFEAD5] transition-colors text-left">Brussels Calling</button></li>
                 <li><button onClick={() => onCategoryClick?.('Commentary')} className="hover:text-[#FFEAD5] transition-colors text-left">Columns</button></li>
                 <li><button onClick={() => onCategoryClick?.('Commentary')} className="hover:text-[#FFEAD5] transition-colors text-left">Guest Analysis</button></li>
                 <li><button onClick={() => onCategoryClick?.('Commentary')} className="hover:text-[#FFEAD5] transition-colors text-left">MEPs views</button></li>
@@ -212,31 +214,25 @@ const MegaMenu: React.FC<MegaMenuProps> = ({ onClose, onCategoryClick, onPodcast
             </div>
           </div>
 
-          {/* Right: Podcasts */}
+          {/* Right: Latest News */}
           <div>
             <div className="flex justify-between items-center border-b border-white/10 pb-4 mb-8">
-                <h2 className="text-xl font-black tracking-widest uppercase">LATEST PODCASTS</h2>
-                <button onClick={() => onCategoryClick?.('Podcasts')} className="text-[10px] font-black hover:text-red-500">VIEW ALL</button>
+                <h2 className="text-xl font-black tracking-widest uppercase">LATEST NEWS</h2>
+                <button onClick={() => onCategoryClick?.('News')} className="text-[10px] font-black hover:text-red-500">VIEW ALL</button>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-              {menuPodcasts.map((pod) => (
-                <div key={pod.id} className="group cursor-pointer" onClick={() => {
-                  const slug = createSlug(pod.title);
-                  navigate(`/podcast/${slug}`);
+              {latestNews.map((article) => (
+                <div key={article.id} className="group cursor-pointer" onClick={() => {
+                  const slug = createSlug(article.title);
+                  navigate(`/article/${slug}`);
                   window.scrollTo(0, 0);
                   onClose();
                 }}>
                   <div className="aspect-video relative overflow-hidden rounded mb-3 shadow-lg">
-                    <img src={pod.imageUrl} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt={pod.title} />
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="bg-white/90 rounded-full p-2 transform transition-transform group-hover:scale-110">
-                        <svg className="w-5 h-5 text-red-600 block" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                      </div>
-                    </div>
-                    <div className="absolute bottom-2 left-2 bg-red-600 text-[8px] font-black text-white px-1 py-0.5 rounded">PODCAST</div>
+                    <img src={article.imageUrl} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt={article.title} />
                   </div>
-                  <p className="text-[9px] font-bold mb-1 uppercase"><span className="text-red-500">{pod.podcastSeries}</span> <span className="text-gray-400">{pod.date}</span></p>
-                  <h4 className="text-[11px] font-bold leading-tight group-hover:text-[#FFEAD5] transition-colors">{pod.title}</h4>
+                  <p className="text-[9px] font-bold mb-1 uppercase"><span className="text-red-500">{article.category}</span> <span className="text-gray-400">{article.date}</span></p>
+                  <h4 className="text-[11px] font-bold leading-tight group-hover:text-[#FFEAD5] transition-colors">{article.title}</h4>
                 </div>
               ))}
             </div>
