@@ -1,0 +1,28 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(test:*)",
+      "Bash(ls:*)",
+      "Bash(mkdir:*)",
+      "Bash(tree:*)",
+      "Bash(npm run build:*)",
+      "Bash(node scraper.js:*)",
+      "Bash(node:*)",
+      "Bash(npm install:*)",
+      "Bash(git -C /Applications/MAMP/htdocs/brusselssignal/gemini log --all --full-history --oneline -- index.html)",
+      "Bash(grep:*)",
+      "Bash(xargs ls:*)",
+      "Bash(npm --prefix /Applications/MAMP/htdocs/brusselssignal/gemini run build:*)",
+      "Bash(unzip:*)",
+      "Bash(curl:*)",
+      "Bash(find:*)",
+      "Bash(xargs:*)",
+      "Bash(cp:*)",
+      "Bash(lsof:*)",
+      "Bash(cat:*)",
+      "Bash(rm:*)",
+      "Bash(mv:*)",
+      "Bash(wc:*)"
+    ]
+  }
+}

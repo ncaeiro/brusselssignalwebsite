@@ -1,0 +1,1522 @@
+import { NewsItem, VideoItem } from './types.ts';
+
+// Scraped from Brussels Signal on 2025-12-27T20:15:43.429Z
+
+export const FEATURED_ARTICLE: NewsItem = {
+  id: 'featured-1',
+  title: "Analysis: Italy targets radical Left and Hamas-linked groups",
+  date: "23 Dec 2025",
+  author: "Luca Steinmann",
+  imageUrl: "https://brusselssignal.eu/content/uploads/2025/12/GettyImages-2252607961.jpg?fit=crop&crop=faces&q=75&auto=compress,format&w=630&h=420",
+  summary: "Read the full article for more details.",
+  url: "https://brusselssignal.eu/2025/12/analysis-italy-targets-radical-left-and-hamas-linked-groups/"
+};
+
+export const MOST_READ: NewsItem[] = [
+  {
+    id: 'm1',
+    title: "Germany deports criminals to Syria for first time in over ten years",
+    date: "23 Dec 2025",
+    imageUrl: "https://brusselssignal.eu/content/uploads/2025/12/GettyImages-2252361178.jpg?fit=crop&crop=faces&q=75&auto=compress,format&w=630&h=420",
+    url: "https://brusselssignal.eu/2025/12/germany-deports-criminals-to-syria-for-first-time-in-over-ten-years/"
+  },
+  {
+    id: 'm2',
+    title: "Greta Thunberg arrested in London during pro-Palestinian protest",
+    date: "23 Dec 2025",
+    imageUrl: "https://brusselssignal.eu/content/uploads/2025/12/GettyImages-2252636233.jpg?fit=crop&crop=faces&q=75&auto=compress,format&w=630&h=420",
+    url: "https://brusselssignal.eu/2025/12/greta-thunberg-arrested-in-london-during-pro-palestinian-protest/"
+  },
+  {
+    id: 'm3',
+    title: "Fierce anti-government protests in Albania after corruption charges",
+    date: "23 Dec 2025",
+    imageUrl: "https://brusselssignal.eu/content/uploads/2025/12/13601018.jpg?fit=crop&crop=faces&q=75&auto=compress,format&w=630&h=420",
+    url: "https://brusselssignal.eu/2025/12/fierce-anti-government-protests-in-albania-after-corruption-charges/"
+  },
+  {
+    id: 'm4',
+    title: "Wave of cyberattacks expose French failure to protect public digital systems",
+    date: "23 Dec 2025",
+    imageUrl: "https://brusselssignal.eu/content/uploads/2025/12/GettyImages-520867052-2-1.jpg?fit=crop&crop=faces&q=75&auto=compress,format&w=630&h=420",
+    url: "https://brusselssignal.eu/2025/12/wave-of-cyberattacks-expose-french-failure-to-protect-public-digital-systems/"
+  }
+];
+
+export const COMMENTARY: NewsItem[] = [
+  {
+    id: 'c1',
+    title: "Bulgaria joins the Euro next week amid domestic scepticism",
+    author: "Claire Lemaire",
+    date: "23 Dec 2025",
+    premium: true,
+    imageUrl: "https://brusselssignal.eu/content/uploads/2025/12/13340965.jpg?fit=crop&crop=faces&q=75&auto=compress,format&w=630&h=420",
+    url: "https://brusselssignal.eu/2025/12/bulgaria-joins-the-euro-next-week-amid-domestic-scepticism/"
+  },
+  {
+    id: 'c2',
+    title: "Transparency International 'pressured party to remove MEP demanding transparency on EC contracts'",
+    author: "Carl Deconinck",
+    date: "23 Dec 2025",
+    premium: true,
+    imageUrl: "https://brusselssignal.eu/content/uploads/2025/12/12230357.jpg?fit=crop&crop=faces&q=75&auto=compress,format&w=630&h=420",
+    url: "https://brusselssignal.eu/2025/12/transparency-international-pressured-party-to-remove-mep-demanding-transparency-on-ec-contracts/"
+  },
+  {
+    id: 'c3',
+    title: "Russia refusing to hand over Gdansk consulate building closed by Poland",
+    author: "Krzysztof Mularczyk",
+    date: "23 Dec 2025",
+    premium: true,
+    imageUrl: "https://brusselssignal.eu/content/uploads/2025/12/13588501.jpg?fit=crop&crop=faces&q=75&auto=compress,format&w=630&h=420",
+    url: "https://brusselssignal.eu/2025/12/russia-refusing-to-hand-over-gdansk-consulate-building-closed-by-poland/"
+  }
+];
+
+export const POLITICS: NewsItem[] = [
+  {
+    id: 'p1',
+    title: "Spotify says piracy activists hacked its music catalogue",
+    date: "23 Dec 2025",
+    imageUrl: "https://brusselssignal.eu/content/uploads/2025/12/GettyImages-2246139384.jpg?fit=crop&crop=faces&q=75&auto=compress,format&w=630&h=420",
+    url: "https://brusselssignal.eu/2025/12/spotify-says-piracy-activists-hacked-its-music-catalogue/"
+  },
+  {
+    id: 'p2',
+    title: "'Massive' Russian strikes hit Ukraine energy sites in pre-Christmas attack",
+    date: "23 Dec 2025",
+    imageUrl: "https://brusselssignal.eu/content/uploads/2025/12/13600772.jpg?fit=crop&crop=faces&q=75&auto=compress,format&w=630&h=420",
+    url: "https://brusselssignal.eu/2025/12/massive-russian-strikes-hit-ukraine-energy-sites-in-pre-christmas-attack/"
+  },
+  {
+    id: 'p3',
+    title: "Analysis: Europeans start to rebel against the prospect of conscription",
+    date: "23 Dec 2025",
+    imageUrl: "https://brusselssignal.eu/content/uploads/2025/12/GettyImages-2250139448.jpg?fit=crop&crop=faces&q=75&auto=compress,format&w=630&h=420",
+    url: "https://brusselssignal.eu/2025/12/analysis-europeans-start-to-rebel-against-the-prospect-of-conscription/"
+  }
+];
+
+export const ALL_ARTICLES: NewsItem[] = [
+  {
+    id: 'article-1',
+    title: "Analysis: Italy targets radical Left and Hamas-linked groups",
+    date: "23 Dec 2025",
+    author: "Luca Steinmann",
+    imageUrl: "https://brusselssignal.eu/content/uploads/2025/12/GettyImages-2252607961.jpg?fit=crop&crop=faces&q=75&auto=compress,format&w=630&h=420",
+    summary: "Read the full article for more details.",
+    category: "News",
+    url: "https://brusselssignal.eu/2025/12/analysis-italy-targets-radical-left-and-hamas-linked-groups/"
+  },
+  {
+    id: 'article-2',
+    title: "Germany deports criminals to Syria for first time in over ten years",
+    date: "23 Dec 2025",
+    author: "Carl Deconinck",
+    imageUrl: "https://brusselssignal.eu/content/uploads/2025/12/GettyImages-2252361178.jpg?fit=crop&crop=faces&q=75&auto=compress,format&w=630&h=420",
+    summary: "Read the full article for more details.",
+    category: "News",
+    url: "https://brusselssignal.eu/2025/12/germany-deports-criminals-to-syria-for-first-time-in-over-ten-years/"
+  },
+  {
+    id: 'article-3',
+    title: "Greta Thunberg arrested in London during pro-Palestinian protest",
+    date: "23 Dec 2025",
+    author: "Carl Deconinck",
+    imageUrl: "https://brusselssignal.eu/content/uploads/2025/12/GettyImages-2252636233.jpg?fit=crop&crop=faces&q=75&auto=compress,format&w=630&h=420",
+    summary: "Read the full article for more details.",
+    category: "News",
+    url: "https://brusselssignal.eu/2025/12/greta-thunberg-arrested-in-london-during-pro-palestinian-protest/"
+  },
+  {
+    id: 'article-4',
+    title: "Fierce anti-government protests in Albania after corruption charges",
+    date: "23 Dec 2025",
+    author: "Carl Deconinck",
+    imageUrl: "https://brusselssignal.eu/content/uploads/2025/12/13601018.jpg?fit=crop&crop=faces&q=75&auto=compress,format&w=630&h=420",
+    summary: "Read the full article for more details.",
+    category: "News",
+    url: "https://brusselssignal.eu/2025/12/fierce-anti-government-protests-in-albania-after-corruption-charges/"
+  },
+  {
+    id: 'article-5',
+    title: "Wave of cyberattacks expose French failure to protect public digital systems",
+    date: "23 Dec 2025",
+    author: "Anne-Laure Dufeal",
+    imageUrl: "https://brusselssignal.eu/content/uploads/2025/12/GettyImages-520867052-2-1.jpg?fit=crop&crop=faces&q=75&auto=compress,format&w=630&h=420",
+    summary: "Read the full article for more details.",
+    category: "News",
+    url: "https://brusselssignal.eu/2025/12/wave-of-cyberattacks-expose-french-failure-to-protect-public-digital-systems/"
+  },
+  {
+    id: 'article-6',
+    title: "Bulgaria joins the Euro next week amid domestic scepticism",
+    date: "23 Dec 2025",
+    author: "Claire Lemaire",
+    imageUrl: "https://brusselssignal.eu/content/uploads/2025/12/13340965.jpg?fit=crop&crop=faces&q=75&auto=compress,format&w=630&h=420",
+    summary: "Read the full article for more details.",
+    category: "News",
+    url: "https://brusselssignal.eu/2025/12/bulgaria-joins-the-euro-next-week-amid-domestic-scepticism/"
+  },
+  {
+    id: 'article-7',
+    title: "Transparency International 'pressured party to remove MEP demanding transparency on EC contracts'",
+    date: "23 Dec 2025",
+    author: "Carl Deconinck",
+    imageUrl: "https://brusselssignal.eu/content/uploads/2025/12/12230357.jpg?fit=crop&crop=faces&q=75&auto=compress,format&w=630&h=420",
+    summary: "Read the full article for more details.",
+    category: "News",
+    url: "https://brusselssignal.eu/2025/12/transparency-international-pressured-party-to-remove-mep-demanding-transparency-on-ec-contracts/"
+  },
+  {
+    id: 'article-8',
+    title: "Russia refusing to hand over Gdansk consulate building closed by Poland",
+    date: "23 Dec 2025",
+    author: "Krzysztof Mularczyk",
+    imageUrl: "https://brusselssignal.eu/content/uploads/2025/12/13588501.jpg?fit=crop&crop=faces&q=75&auto=compress,format&w=630&h=420",
+    summary: "Read the full article for more details.",
+    category: "News",
+    url: "https://brusselssignal.eu/2025/12/russia-refusing-to-hand-over-gdansk-consulate-building-closed-by-poland/"
+  },
+  {
+    id: 'article-9',
+    title: "Spotify says piracy activists hacked its music catalogue",
+    date: "23 Dec 2025",
+    author: "AFP",
+    imageUrl: "https://brusselssignal.eu/content/uploads/2025/12/GettyImages-2246139384.jpg?fit=crop&crop=faces&q=75&auto=compress,format&w=630&h=420",
+    summary: "Read the full article for more details.",
+    category: "News",
+    url: "https://brusselssignal.eu/2025/12/spotify-says-piracy-activists-hacked-its-music-catalogue/"
+  },
+  {
+    id: 'article-10',
+    title: "'Massive' Russian strikes hit Ukraine energy sites in pre-Christmas attack",
+    date: "23 Dec 2025",
+    author: "AFP",
+    imageUrl: "https://brusselssignal.eu/content/uploads/2025/12/13600772.jpg?fit=crop&crop=faces&q=75&auto=compress,format&w=630&h=420",
+    summary: "Read the full article for more details.",
+    category: "News",
+    url: "https://brusselssignal.eu/2025/12/massive-russian-strikes-hit-ukraine-energy-sites-in-pre-christmas-attack/"
+  },
+  {
+    id: 'article-11',
+    title: "Analysis: Europeans start to rebel against the prospect of conscription",
+    date: "23 Dec 2025",
+    author: "Ingrid De Groot",
+    imageUrl: "https://brusselssignal.eu/content/uploads/2025/12/GettyImages-2250139448.jpg?fit=crop&crop=faces&q=75&auto=compress,format&w=630&h=420",
+    summary: "Read the full article for more details.",
+    category: "News",
+    url: "https://brusselssignal.eu/2025/12/analysis-europeans-start-to-rebel-against-the-prospect-of-conscription/"
+  },
+  {
+    id: 'article-12',
+    title: "French Securitas training module asked security agents to respect Sharia Law when administering first aid",
+    date: "23 Dec 2025",
+    author: "Carl Deconinck",
+    imageUrl: "https://brusselssignal.eu/content/uploads/2025/12/GettyImages-1403831389.jpg?fit=crop&crop=faces&q=75&auto=compress,format&w=630&h=420",
+    summary: "Read the full article for more details.",
+    category: "News",
+    url: "https://brusselssignal.eu/2025/12/french-securitas-training-module-asked-security-agents-to-respect-sharia-law-when-administering-first-aid/"
+  },
+  {
+    id: 'article-13',
+    title: "US new special envoy to Greenland 'totally unacceptable', Denmark says",
+    date: "22 Dec 2025",
+    author: "Claire Lemaire",
+    imageUrl: "https://brusselssignal.eu/content/uploads/2025/12/GettyImages-2207352820-2.jpg?fit=crop&crop=faces&q=75&auto=compress,format&w=630&h=420",
+    summary: "Read the full article for more details.",
+    category: "News",
+    url: "https://brusselssignal.eu/2025/12/us-new-special-envoy-to-greenland-totally-unacceptable-denmark-says/"
+  },
+  {
+    id: 'article-14',
+    title: "Polish judge rescinds Tusk government's European arrest warrant for opposition politician",
+    date: "22 Dec 2025",
+    author: "Krzysztof Mularczyk",
+    imageUrl: "https://brusselssignal.eu/content/uploads/2025/04/12374890-1.jpg?fit=crop&crop=faces&q=75&auto=compress,format&w=630&h=420",
+    summary: "Read the full article for more details.",
+    category: "News",
+    url: "https://brusselssignal.eu/2025/12/polish-judge-rescinds-tusk-governments-european-arrest-warrant-for-opposition-politician/"
+  },
+  {
+    id: 'article-15',
+    title: "Germany's next generation will be poorer without large-scale reforms, says economics minister",
+    date: "22 Dec 2025",
+    author: "Carl Deconinck",
+    imageUrl: "https://brusselssignal.eu/content/uploads/2025/12/13590814.jpg?fit=crop&crop=faces&q=75&auto=compress,format&w=630&h=420",
+    summary: "Read the full article for more details.",
+    category: "News",
+    url: "https://brusselssignal.eu/2025/12/germanys-next-generation-will-be-poorer-if-the-country-does-not-adopt-large-scale-reforms-says-economics-minister/"
+  },
+  {
+    id: 'article-16',
+    title: "EU prosecutors open probe into an EU-funded firm accused of supplying tech to Russia's military industry",
+    date: "22 Dec 2025",
+    author: "Anne-Laure Dufeal",
+    imageUrl: "https://brusselssignal.eu/content/uploads/2025/12/GettyImages-583639484.jpg?fit=crop&crop=faces&q=75&auto=compress,format&w=630&h=420",
+    summary: "Read the full article for more details.",
+    category: "News",
+    url: "https://brusselssignal.eu/2025/12/eu-prosecutors-open-probe-into-an-eu-funded-firm-accused-of-supplying-tech-to-russias-military-industry/"
+  },
+  {
+    id: 'article-17',
+    title: "US LNG exports to Europe surge, raising risk of new dependency",
+    date: "22 Dec 2025",
+    author: "Claire Lemaire",
+    imageUrl: "https://brusselssignal.eu/content/uploads/2025/12/12983355-1.jpg?fit=crop&crop=faces&q=75&auto=compress,format&w=630&h=420",
+    summary: "Read the full article for more details.",
+    category: "News",
+    url: "https://brusselssignal.eu/2025/12/us-lng-exports-to-europe-surge-raising-risk-of-new-dependency/"
+  },
+  {
+    id: 'article-18',
+    title: "Moscow car blast kills Russian general",
+    date: "22 Dec 2025",
+    author: "AFP",
+    imageUrl: "https://brusselssignal.eu/content/uploads/2025/12/13599954.jpg?fit=crop&crop=faces&q=75&auto=compress,format&w=630&h=420",
+    summary: "Read the full article for more details.",
+    category: "News",
+    url: "https://brusselssignal.eu/2025/12/moscow-car-blast-kills-russian-general/"
+  },
+  {
+    id: 'article-19',
+    title: "Global nuclear arms control under pressure in 2026",
+    date: "22 Dec 2025",
+    author: "AFP",
+    imageUrl: "https://brusselssignal.eu/content/uploads/2025/12/GettyImages-568878389.jpg?fit=crop&crop=faces&q=75&auto=compress,format&w=630&h=420",
+    summary: "Read the full article for more details.",
+    category: "News",
+    url: "https://brusselssignal.eu/2025/12/global-nuclear-arms-control-under-pressure-in-2026/"
+  },
+  {
+    id: 'article-20',
+    title: "Police search home of French culture minister, suspected of secretly taking &euro;300k as MEP",
+    date: "19 Dec 2025",
+    author: "Carl Deconinck",
+    imageUrl: "https://brusselssignal.eu/content/uploads/2025/12/13588231.jpg?fit=crop&crop=faces&q=75&auto=compress,format&w=630&h=420",
+    summary: "Read the full article for more details.",
+    category: "News",
+    url: "https://brusselssignal.eu/2025/12/police-search-home-of-french-culture-minister-suspected-of-secretly-taking-e300k-as-mep/"
+  },
+  {
+    id: 'article-21',
+    title: "German court overturns ban on neo-Nazi Hammerskins group",
+    date: "19 Dec 2025",
+    author: "AFP",
+    imageUrl: "https://brusselssignal.eu/content/uploads/2025/12/7453814.jpg?fit=crop&crop=faces&q=75&auto=compress,format&w=630&h=420",
+    summary: "Read the full article for more details.",
+    category: "News",
+    url: "https://brusselssignal.eu/2025/12/german-court-overturns-ban-on-neo-nazi-hammerskins-group/"
+  },
+  {
+    id: 'article-22',
+    title: "*updated* Growing wolf-attacks stoke fear of first death in the Netherlands",
+    date: "19 Dec 2025",
+    author: "Ingrid De Groot",
+    imageUrl: "https://brusselssignal.eu/content/uploads/2025/12/GettyImages-129892486.jpg?fit=crop&crop=faces&q=75&auto=compress,format&w=630&h=420",
+    summary: "Read the full article for more details.",
+    category: "News",
+    url: "https://brusselssignal.eu/2025/12/growing-wolf-attacks-stoke-fear-of-first-death-in-the-netherlands/"
+  },
+  {
+    id: 'article-23',
+    title: "Belgium wins battle over Russian assets, EU to lend Ukraine &euro;90bn instead",
+    date: "19 Dec 2025",
+    author: "Carl Deconinck",
+    imageUrl: "https://brusselssignal.eu/content/uploads/2025/12/13592252.jpg?fit=crop&crop=faces&q=75&auto=compress,format&w=630&h=420",
+    summary: "Read the full article for more details.",
+    category: "News",
+    url: "https://brusselssignal.eu/2025/12/belgium-wins-battle-over-russian-assets-eu-to-lend-ukraine-e90bn-instead/"
+  },
+  {
+    id: 'article-24',
+    title: "*updated* Italian court blocks imam's expulsion, deepening PM's clash with the judiciary",
+    date: "19 Dec 2025",
+    author: "Luca Steinmann",
+    imageUrl: "https://brusselssignal.eu/content/uploads/2025/12/GettyImages-2251252582.jpg?fit=crop&crop=faces&q=75&auto=compress,format&w=630&h=420",
+    summary: "Read the full article for more details.",
+    category: "News",
+    url: "https://brusselssignal.eu/2025/12/italian-court-blocks-imams-expulsion-deepening-pms-clash-with-the-judiciary/"
+  },
+  {
+    id: 'article-25',
+    title: "Poland's President Nawrocki removes key symbol — the Round Table — of Communist past",
+    date: "19 Dec 2025",
+    author: "Krzysztof Mularczyk",
+    imageUrl: "https://brusselssignal.eu/content/uploads/2025/12/577950.jpg?fit=crop&crop=faces&q=75&auto=compress,format&w=630&h=420",
+    summary: "Read the full article for more details.",
+    category: "News",
+    url: "https://brusselssignal.eu/2025/12/polands-president-nawrocki-removes-key-symbol-of-communist-past/"
+  },
+  {
+    id: 'article-26',
+    title: "EU-Mercosur deal postponement gets mixed reaction after farmers' protests",
+    date: "19 Dec 2025",
+    author: "Chris Nelson",
+    imageUrl: "https://brusselssignal.eu/content/uploads/2025/12/GettyImages-2252589361.jpg?fit=crop&crop=faces&q=75&auto=compress,format&w=630&h=420",
+    summary: "Read the full article for more details.",
+    category: "News",
+    url: "https://brusselssignal.eu/2025/12/eu-mercosur-deal-postponement-gets-mixed-reaction-after-farmers-protests/"
+  },
+  {
+    id: 'article-27',
+    title: "Italian Deputy PM acquitted by Supreme Court of kidnapping charges",
+    date: "18 Dec 2025",
+    author: "Carl Deconinck",
+    imageUrl: "https://brusselssignal.eu/content/uploads/2025/12/13560149.jpg?fit=crop&crop=faces&q=75&auto=compress,format&w=630&h=420",
+    summary: "Read the full article for more details.",
+    category: "News",
+    url: "https://brusselssignal.eu/2025/12/italian-deputy-pm-acquitted-by-supreme-court-of-kidnapping-charges/"
+  },
+  {
+    id: 'article-28',
+    title: "'Bullsh*t': German State proclaims Covid-19 emergency to get billions in federal funding",
+    date: "18 Dec 2025",
+    author: "Chris Gattringer",
+    imageUrl: "https://brusselssignal.eu/content/uploads/2025/12/GettyImages-1233315714.jpg?fit=crop&crop=faces&q=75&auto=compress,format&w=630&h=420",
+    summary: "Read the full article for more details.",
+    category: "News",
+    url: "https://brusselssignal.eu/2025/12/bullsht-german-state-proclaims-covid-19-emergency-to-get-billions-in-federal-funding/"
+  },
+  {
+    id: 'article-29',
+    title: "Epstein saga pulls in Spanish actress Obreg&oacute;n",
+    date: "18 Dec 2025",
+    author: "Bridget Ryder",
+    imageUrl: "https://brusselssignal.eu/content/uploads/2025/12/GettyImages-143304474.jpg?fit=crop&crop=faces&q=75&auto=compress,format&w=630&h=420",
+    summary: "Read the full article for more details.",
+    category: "News",
+    url: "https://brusselssignal.eu/2025/12/epstein-saga-pulls-in-spanish-actress-obregon/"
+  },
+  {
+    id: 'article-30',
+    title: "150 African refugees fly into Germany from Kenya after pro-asylum NGO wins case",
+    date: "18 Dec 2025",
+    author: "Chris Gattringer",
+    imageUrl: "https://brusselssignal.eu/content/uploads/2025/12/GettyImages-809004406.jpg?fit=crop&crop=faces&q=75&auto=compress,format&w=630&h=420",
+    summary: "Read the full article for more details.",
+    category: "News",
+    url: "https://brusselssignal.eu/2025/12/150-african-refugees-fly-into-germany-from-kenya-after-pro-asylum-ngo-wins-case/"
+  },
+  {
+    id: 'article-31',
+    title: "EU's top court rules that Polish Constitutional Court is illegitimate",
+    date: "18 Dec 2025",
+    author: "Krzysztof Mularczyk",
+    imageUrl: "https://brusselssignal.eu/content/uploads/2025/12/10451077.jpg?fit=crop&crop=faces&q=75&auto=compress,format&w=630&h=420",
+    summary: "Read the full article for more details.",
+    category: "News",
+    url: "https://brusselssignal.eu/2025/12/eus-top-court-rules-that-polish-constitutional-court-is-illegitimate/"
+  },
+  {
+    id: 'article-32',
+    title: "Farmers cause chaos in Brussels again",
+    date: "18 Dec 2025",
+    author: "Claire Lemaire",
+    imageUrl: "https://brusselssignal.eu/content/uploads/2025/12/lede.jpg?fit=crop&crop=faces&q=75&auto=compress,format&w=630&h=420",
+    summary: "Read the full article for more details.",
+    category: "News",
+    url: "https://brusselssignal.eu/2025/12/farmers-cause-chaos-in-brussels-again/"
+  },
+  {
+    id: 'article-33',
+    title: "Irish President greets Kneecap and hosts Thunberg amid pro-Palestine events",
+    date: "18 Dec 2025",
+    author: "Carl Deconinck",
+    imageUrl: "https://brusselssignal.eu/content/uploads/2025/12/GettyImages-2251763246.jpg?fit=crop&crop=faces&q=75&auto=compress,format&w=630&h=420",
+    summary: "Read the full article for more details.",
+    category: "News",
+    url: "https://brusselssignal.eu/2025/12/irish-president-greets-kneecap-and-hosts-thunberg-amid-pro-palestine-events/"
+  },
+  {
+    id: 'article-34',
+    title: "Estonia starts building up to 600 bunkers along border with Russia",
+    date: "18 Dec 2025",
+    author: "Chris Gattringer",
+    imageUrl: "https://brusselssignal.eu/content/uploads/2025/12/GettyImages-2238321738.jpg?fit=crop&crop=faces&q=75&auto=compress,format&w=630&h=420",
+    summary: "Read the full article for more details.",
+    category: "News",
+    url: "https://brusselssignal.eu/2025/12/estonia-starts-building-up-to-600-bunkers-along-border-with-russia/"
+  },
+  {
+    id: 'article-35',
+    title: "De Wever digs heels in on EU's Russian assets plan: 'They will have to carry me out of there'",
+    date: "18 Dec 2025",
+    author: "Carl Deconinck",
+    imageUrl: "https://brusselssignal.eu/content/uploads/2025/12/13590406.jpg?fit=crop&crop=faces&q=75&auto=compress,format&w=630&h=420",
+    summary: "Read the full article for more details.",
+    category: "News",
+    url: "https://brusselssignal.eu/2025/12/de-wever-digs-heels-in-on-eus-russian-assets-plan-they-will-have-to-carry-me-out-of-there/"
+  },
+  {
+    id: 'article-36',
+    title: "German court says Amazon may not force Prime customers to accept ads in videos",
+    date: "18 Dec 2025",
+    author: "Chris Gattringer",
+    imageUrl: "https://brusselssignal.eu/content/uploads/2025/12/GettyImages-1452542440.jpg?fit=crop&crop=faces&q=75&auto=compress,format&w=630&h=420",
+    summary: "Read the full article for more details.",
+    category: "News",
+    url: "https://brusselssignal.eu/2025/12/german-court-says-amazon-may-not-force-prime-customers-to-accept-ads-in-videos/"
+  },
+  {
+    id: 'article-37',
+    title: "Cost of European goods for US consumers up 30% in a year",
+    date: "18 Dec 2025",
+    author: "Claire Lemaire",
+    imageUrl: "https://brusselssignal.eu/content/uploads/2025/12/13248303.jpg?fit=crop&crop=faces&q=75&auto=compress,format&w=630&h=420",
+    summary: "Read the full article for more details.",
+    category: "News",
+    url: "https://brusselssignal.eu/2025/12/cost-of-european-goods-for-us-consumers-up-30-in-a-year/"
+  },
+  {
+    id: 'article-38',
+    title: "From our correspondent in Tehran: Iran sees Europe as marginal, only US counts",
+    date: "18 Dec 2025",
+    author: "Luca Steinmann",
+    imageUrl: "https://brusselssignal.eu/content/uploads/2025/12/6644610.jpg?fit=crop&crop=faces&q=75&auto=compress,format&w=630&h=420",
+    summary: "Read the full article for more details.",
+    category: "News",
+    url: "https://brusselssignal.eu/2025/12/from-our-correspondent-in-tehran-iran-sees-europe-as-marginal-only-us-counts/"
+  },
+  {
+    id: 'article-39',
+    title: "Farmers set to descend on Brussels in Mercosur protest",
+    date: "18 Dec 2025",
+    author: "AFP",
+    imageUrl: "https://brusselssignal.eu/content/uploads/2025/12/GettyImages-2156064669.jpg?fit=crop&crop=faces&q=75&auto=compress,format&w=630&h=420",
+    summary: "Read the full article for more details.",
+    category: "News",
+    url: "https://brusselssignal.eu/2025/12/farmers-set-to-descend-on-brussels-in-mercosur-protest/"
+  },
+  {
+    id: 'article-40',
+    title: "'Phase out of Russian gas is too little, too late,' campaigners say",
+    date: "17 Dec 2025",
+    author: "Carl Deconinck",
+    imageUrl: "https://brusselssignal.eu/content/uploads/2025/12/13465530.jpg?fit=crop&crop=faces&q=75&auto=compress,format&w=630&h=420",
+    summary: "Read the full article for more details.",
+    category: "News",
+    url: "https://brusselssignal.eu/2025/12/phase-out-of-russian-gas-is-too-little-too-late-campaigners-say/"
+  },
+  {
+    id: 'article-41',
+    title: "Former head of ESM foresees drastic loss of prosperity for Germans",
+    date: "17 Dec 2025",
+    author: "Chris Gattringer",
+    imageUrl: "https://brusselssignal.eu/content/uploads/2025/12/GettyImages-1319230637.jpg?fit=crop&crop=faces&q=75&auto=compress,format&w=630&h=420",
+    summary: "Read the full article for more details.",
+    category: "News",
+    url: "https://brusselssignal.eu/2025/12/former-head-of-esm-foresees-drastic-loss-of-prosperity-for-germans/"
+  },
+  {
+    id: 'article-42',
+    title: "Lithuania arrests 21 over alleged cigarette smuggling by balloon",
+    date: "17 Dec 2025",
+    author: "Carl Deconinck",
+    imageUrl: "https://brusselssignal.eu/content/uploads/2025/12/GettyImages-1531605124.jpg?fit=crop&crop=faces&q=75&auto=compress,format&w=630&h=420",
+    summary: "Read the full article for more details.",
+    category: "News",
+    url: "https://brusselssignal.eu/2025/12/lithuania-arrests-21-over-alleged-cigarette-smuggling-by-balloon/"
+  },
+  {
+    id: 'article-43',
+    title: "German 'car capital' in dire straits as automotive sector crisis intensifies",
+    date: "17 Dec 2025",
+    author: "Chris Gattringer",
+    imageUrl: "https://brusselssignal.eu/content/uploads/2025/12/GettyImages-2238047999.jpg?fit=crop&crop=faces&q=75&auto=compress,format&w=630&h=420",
+    summary: "Read the full article for more details.",
+    category: "News",
+    url: "https://brusselssignal.eu/2025/12/german-car-capital-in-dire-straits-as-automotive-sector-crisis-intensifies/"
+  },
+  {
+    id: 'article-44',
+    title: "Young Pole held for allegedly planning terror attack on Christmas market",
+    date: "17 Dec 2025",
+    author: "Krzysztof Mularczyk",
+    imageUrl: "https://brusselssignal.eu/content/uploads/2025/12/13542534.jpg?fit=crop&crop=faces&q=75&auto=compress,format&w=630&h=420",
+    summary: "Read the full article for more details.",
+    category: "News",
+    url: "https://brusselssignal.eu/2025/12/young-pole-held-for-allegedly-planning-terror-attack-on-christmas-market/"
+  },
+  {
+    id: 'article-45',
+    title: "Poland's opposition PiS in conflict over 'disloyalty' of their own ex-PM Morawiecki",
+    date: "17 Dec 2025",
+    author: "Krzysztof Mularczyk",
+    imageUrl: "https://brusselssignal.eu/content/uploads/2025/12/9551959.jpg?fit=crop&crop=faces&q=75&auto=compress,format&w=630&h=420",
+    summary: "Read the full article for more details.",
+    category: "News",
+    url: "https://brusselssignal.eu/2025/12/polands-opposition-pis-in-conflict-over-disloyalty-of-their-own-ex-pm-morawiecki/"
+  },
+  {
+    id: 'article-46',
+    title: "EU vows to stand firm on US tech regulations despite Trump's 'alcoholic's personality'",
+    date: "17 Dec 2025",
+    author: "Chris Nelson",
+    imageUrl: "https://brusselssignal.eu/content/uploads/2025/12/GettyImages-2241028753.jpg?fit=crop&crop=faces&q=75&auto=compress,format&w=630&h=420",
+    summary: "Read the full article for more details.",
+    category: "News",
+    url: "https://brusselssignal.eu/2025/12/eu-vows-to-stand-firm-on-us-tech-regulations-despite-trumps-alcoholics-personality/"
+  },
+  {
+    id: 'article-47',
+    title: "Macron says fine on drug use to rise to &euro;500",
+    date: "17 Dec 2025",
+    author: "Carl Deconinck",
+    imageUrl: "https://brusselssignal.eu/content/uploads/2025/12/13586093.jpg?fit=crop&crop=faces&q=75&auto=compress,format&w=630&h=420",
+    summary: "Read the full article for more details.",
+    category: "News",
+    url: "https://brusselssignal.eu/2025/12/macron-says-fine-on-drug-use-to-rise-to-e500/"
+  },
+  {
+    id: 'article-48',
+    title: "Constitutional watchdog warns of 'hard-right codes' on German licence plates",
+    date: "16 Dec 2025",
+    author: "Chris Gattringer",
+    imageUrl: "https://brusselssignal.eu/content/uploads/2025/12/GettyImages-175312489.jpg?fit=crop&crop=faces&q=75&auto=compress,format&w=630&h=420",
+    summary: "Read the full article for more details.",
+    category: "News",
+    url: "https://brusselssignal.eu/2025/12/constitutional-watchdog-warns-of-hard-right-codes-on-german-licence-plates/"
+  },
+  {
+    id: 'article-49',
+    title: "Spain facing new chapter in centuries-long battle over women's face coverings",
+    date: "16 Dec 2025",
+    author: "Bridget Ryder",
+    imageUrl: "https://brusselssignal.eu/content/uploads/2025/12/Capture-decran-2025-12-16-152133-1.jpg?fit=crop&crop=faces&q=75&auto=compress,format&w=630&h=420",
+    summary: "Read the full article for more details.",
+    category: "News",
+    url: "https://brusselssignal.eu/2025/12/spain-facing-new-chapter-in-centuries-long-battle-over-womens-face-coverings/"
+  },
+  {
+    id: 'article-50',
+    title: "Italian court to dismiss its final part of Qatargate investigation",
+    date: "16 Dec 2025",
+    author: "Carl Deconinck",
+    imageUrl: "https://brusselssignal.eu/content/uploads/2025/12/9855513.jpg?fit=crop&crop=faces&q=75&auto=compress,format&w=630&h=420",
+    summary: "Read the full article for more details.",
+    category: "News",
+    url: "https://brusselssignal.eu/2025/12/italian-court-to-dismiss-its-final-part-of-qatargate-investigation/"
+  },
+  {
+    id: 'article-51',
+    title: "Ford drops electrical vehicle strategy on lack of demand, writes off &euro;16.6 billion",
+    date: "16 Dec 2025",
+    author: "Chris Gattringer",
+    imageUrl: "https://brusselssignal.eu/content/uploads/2025/12/GettyImages-2252102757.jpg?fit=crop&crop=faces&q=75&auto=compress,format&w=630&h=420",
+    summary: "Read the full article for more details.",
+    category: "News",
+    url: "https://brusselssignal.eu/2025/12/ford-drops-electrical-vehicle-strategy-on-lack-of-demand-writes-off-e16-6-billion/"
+  },
+  {
+    id: 'article-52',
+    title: "European geopolitical analysts sanctioned for claiming Ukraine and NATO triggered Russian reaction",
+    date: "16 Dec 2025",
+    author: "Carl Deconinck",
+    imageUrl: "https://brusselssignal.eu/content/uploads/2025/12/13584305.jpg?fit=crop&crop=faces&q=75&auto=compress,format&w=630&h=420",
+    summary: "Read the full article for more details.",
+    category: "News",
+    url: "https://brusselssignal.eu/2025/12/european-geopolitical-analysts-sanctioned-for-claiming-ukraine-and-nato-triggered-russian-reaction/"
+  },
+  {
+    id: 'article-53',
+    title: "European Commission looks set to drop 2035 ban on new petrol and diesel cars",
+    date: "16 Dec 2025",
+    author: "AFP",
+    imageUrl: "https://brusselssignal.eu/content/uploads/2025/12/GettyImages-2252054618.jpg?fit=crop&crop=faces&q=75&auto=compress,format&w=630&h=420",
+    summary: "Read the full article for more details.",
+    category: "News",
+    url: "https://brusselssignal.eu/2025/12/european-commission-looks-set-to-drop-2035-ban-on-new-petrol-and-diesel-cars/"
+  },
+  {
+    id: 'article-54',
+    title: "'Stop taking Poland for granted,' President Nawrocki tells Zelensky",
+    date: "16 Dec 2025",
+    author: "Krzysztof Mularczyk",
+    imageUrl: "https://brusselssignal.eu/content/uploads/2025/12/13574102.jpg?fit=crop&crop=faces&q=75&auto=compress,format&w=630&h=420",
+    summary: "Read the full article for more details.",
+    category: "News",
+    url: "https://brusselssignal.eu/2025/12/stop-taking-poland-for-granted-president-nawrocki-tells-zelensky/"
+  },
+  {
+    id: 'article-55',
+    title: "France calls for 'robust security' deal for Ukraine after Trump hails 'good talks' with Zelensky",
+    date: "16 Dec 2025",
+    author: "AFP",
+    imageUrl: "https://brusselssignal.eu/content/uploads/2025/12/GettyImages-2252025968.jpg?fit=crop&crop=faces&q=75&auto=compress,format&w=630&h=420",
+    summary: "Read the full article for more details.",
+    category: "News",
+    url: "https://brusselssignal.eu/2025/12/france-calls-for-robust-security-deal-for-ukraine-after-trump-hails-good-talks-with-zelensky/"
+  },
+  {
+    id: 'article-56',
+    title: "Germany's former vice chancellor Habeck pays &euro;12,000 to avoid defamation proceedings",
+    date: "15 Dec 2025",
+    author: "Chris Gattringer",
+    imageUrl: "https://brusselssignal.eu/content/uploads/2025/12/GettyImages-2211751094.jpg?fit=crop&crop=faces&q=75&auto=compress,format&w=630&h=420",
+    summary: "Read the full article for more details.",
+    category: "News",
+    url: "https://brusselssignal.eu/2025/12/germanys-former-vice-chancellor-habeck-pays-e12000-to-avoid-defamation-proceedings/"
+  },
+  {
+    id: 'article-57',
+    title: "Greece repays &euro;5.29 billion early under first bailout loan",
+    date: "15 Dec 2025",
+    author: "Carl Deconinck",
+    imageUrl: "https://brusselssignal.eu/content/uploads/2025/12/12989548.jpg?fit=crop&crop=faces&q=75&auto=compress,format&w=630&h=420",
+    summary: "Read the full article for more details.",
+    category: "News",
+    url: "https://brusselssignal.eu/2025/12/greece-repays-e5-29-billion-early-under-first-bailout-loan/"
+  },
+  {
+    id: 'article-58',
+    title: "Palantir CEO trashes 'stupid' German policies on economics and migration",
+    date: "15 Dec 2025",
+    author: "Carl Deconinck",
+    imageUrl: "https://brusselssignal.eu/content/uploads/2025/12/GettyImages-2212772076.jpg?fit=crop&crop=faces&q=75&auto=compress,format&w=630&h=420",
+    summary: "Read the full article for more details.",
+    category: "News",
+    url: "https://brusselssignal.eu/2025/12/palantir-ceo-trashes-stupid-german-policies-on-economics-and-migration/"
+  },
+  {
+    id: 'article-59',
+    title: "International Chess Federation allows Russian and Belarusian youth to play under national flags",
+    date: "15 Dec 2025",
+    author: "Carl Deconinck",
+    imageUrl: "https://brusselssignal.eu/content/uploads/2025/12/13118915.jpg?fit=crop&crop=faces&q=75&auto=compress,format&w=630&h=420",
+    summary: "Read the full article for more details.",
+    category: "News",
+    url: "https://brusselssignal.eu/2025/12/international-chess-federation-allows-russian-and-belarusian-youth-to-play-under-national-flags/"
+  },
+  {
+    id: 'article-60',
+    title: "Spain fines Airbnb &euro;64 million for posting banned properties",
+    date: "15 Dec 2025",
+    author: "AFP",
+    imageUrl: "https://brusselssignal.eu/content/uploads/2025/12/GettyImages-2249804494.jpg?fit=crop&crop=faces&q=75&auto=compress,format&w=630&h=420",
+    summary: "Read the full article for more details.",
+    category: "News",
+    url: "https://brusselssignal.eu/2025/12/spain-fines-airbnb-e64-million-for-posting-banned-properties/"
+  },
+  {
+    id: 'article-61',
+    title: "Polish Government aims to cut opposition-aligned President's funds",
+    date: "15 Dec 2025",
+    author: "Krzysztof Mularczyk",
+    imageUrl: "https://brusselssignal.eu/content/uploads/2025/12/13579895.jpg?fit=crop&crop=faces&q=75&auto=compress,format&w=630&h=420",
+    summary: "Read the full article for more details.",
+    category: "News",
+    url: "https://brusselssignal.eu/2025/12/polish-government-aims-to-cut-opposition-aligned-presidents-funds/"
+  },
+  {
+    id: 'article-62',
+    title: "Zelensky to continue peace talks with EU allies and US – drops bid to join NATO",
+    date: "15 Dec 2025",
+    author: "Chris Nelson",
+    imageUrl: "https://brusselssignal.eu/content/uploads/2025/12/GettyImages-2251263055.jpg?fit=crop&crop=faces&q=75&auto=compress,format&w=630&h=420",
+    summary: "Read the full article for more details.",
+    category: "News",
+    url: "https://brusselssignal.eu/2025/12/zelensky-to-continue-peace-talks-with-eu-allies-and-us-drops-bid-to-join-nato/"
+  },
+  {
+    id: 'article-63',
+    title: "AfD candidate elected vice mayor of Gelsenkirchen despite CDU-SPD plot to keep him out",
+    date: "12 Dec 2025",
+    author: "Chris Gattringer",
+    imageUrl: "https://brusselssignal.eu/content/uploads/2025/12/GettyImages-1206176132.jpg?fit=crop&crop=faces&q=75&auto=compress,format&w=630&h=420",
+    summary: "Read the full article for more details.",
+    category: "News",
+    url: "https://brusselssignal.eu/2025/12/afd-candidate-elected-vice-mayor-of-gelsenkirchen-despite-cdu-spd-plot-to-keep-him-out/"
+  },
+  {
+    id: 'article-64',
+    title: "EU Finance Ministers seal deal on &euro;3 duty on cheap Chinese parcels.",
+    date: "12 Dec 2025",
+    author: "Carl Deconinck",
+    imageUrl: "https://brusselssignal.eu/content/uploads/2025/12/GettyImages-2212846103.jpg?fit=crop&crop=faces&q=75&auto=compress,format&w=630&h=420",
+    summary: "Read the full article for more details.",
+    category: "News",
+    url: "https://brusselssignal.eu/2025/12/eu-finance-ministers-seal-deal-on-e3-duty-on-cheap-chinese-parcels/"
+  },
+  {
+    id: 'article-65',
+    title: "Austrian parliament big majority vote bans Muslim headscarf for schoolgirls",
+    date: "12 Dec 2025",
+    author: "Chris Gattringer",
+    imageUrl: "https://brusselssignal.eu/content/uploads/2025/12/GettyImages-462416534.jpg?fit=crop&crop=faces&q=75&auto=compress,format&w=630&h=420",
+    summary: "Read the full article for more details.",
+    category: "News",
+    url: "https://brusselssignal.eu/2025/12/austrian-parliament-big-majority-vote-bans-muslim-headscarf-for-schoolgirls/"
+  },
+  {
+    id: 'article-66',
+    title: "Offshore wind farms produce much less energy than projected, study finds",
+    date: "12 Dec 2025",
+    author: "Carl Deconinck",
+    imageUrl: "https://brusselssignal.eu/content/uploads/2025/12/12787135.jpg?fit=crop&crop=faces&q=75&auto=compress,format&w=630&h=420",
+    summary: "Read the full article for more details.",
+    category: "News",
+    url: "https://brusselssignal.eu/2025/12/offshore-wind-farms-produce-much-less-energy-than-projected-study-finds/"
+  },
+  {
+    id: 'article-67',
+    title: "Nobody wants her: Paris mayor fails in bid for UN High Commissioner for Refugees",
+    date: "12 Dec 2025",
+    author: "Carl Deconinck",
+    imageUrl: "https://brusselssignal.eu/content/uploads/2025/12/13500268.jpg?fit=crop&crop=faces&q=75&auto=compress,format&w=630&h=420",
+    summary: "Read the full article for more details.",
+    category: "News",
+    url: "https://brusselssignal.eu/2025/12/nobody-wants-her-paris-mayor-fails-in-bid-for-un-high-commissioner-for-refugees/"
+  },
+  {
+    id: 'article-68',
+    title: "Polish doctor's late abortion case dropped, right-wing MEP on trial instead",
+    date: "12 Dec 2025",
+    author: "Krzysztof Mularczyk",
+    imageUrl: "https://brusselssignal.eu/content/uploads/2025/11/13505631-1.jpg?fit=crop&crop=faces&q=75&auto=compress,format&w=630&h=420",
+    summary: "Read the full article for more details.",
+    category: "News",
+    url: "https://brusselssignal.eu/2025/12/polish-doctors-late-abortion-case-dropped-right-wing-mep-on-trial-instead/"
+  },
+  {
+    id: 'article-69',
+    title: "Spanish senator and PSOE official Izquierdo steps down amid sexual harassment allegations",
+    date: "12 Dec 2025",
+    author: "Carl Deconinck",
+    imageUrl: "https://brusselssignal.eu/content/uploads/2025/12/GettyImages-1426295146.jpg?fit=crop&crop=faces&q=75&auto=compress,format&w=630&h=420",
+    summary: "Read the full article for more details.",
+    category: "News",
+    url: "https://brusselssignal.eu/2025/12/spanish-senator-and-psoe-official-izquierdo-steps-down-amid-sexual-harassment-allegations/"
+  },
+  {
+    id: 'article-70',
+    title: "Germany stops return of asylum seekers to Greece until June 2026",
+    date: "12 Dec 2025",
+    author: "Chris Gattringer",
+    imageUrl: "https://brusselssignal.eu/content/uploads/2025/12/13566576.jpg?fit=crop&crop=faces&q=75&auto=compress,format&w=630&h=420",
+    summary: "Read the full article for more details.",
+    category: "News",
+    url: "https://brusselssignal.eu/2025/12/germany-stops-return-of-asylum-seekers-to-greece-until-june-2026/"
+  },
+  {
+    id: 'article-71',
+    title: "Russia sues European banks over billions in frozen assets",
+    date: "12 Dec 2025",
+    author: "Claire Lemaire",
+    imageUrl: "https://brusselssignal.eu/content/uploads/2025/12/12911533.jpg?fit=crop&crop=faces&q=75&auto=compress,format&w=630&h=420",
+    summary: "Read the full article for more details.",
+    category: "News",
+    url: "https://brusselssignal.eu/2025/12/russia-sues-european-banks-over-billions-in-frozen-assets/"
+  },
+  {
+    id: 'article-72',
+    title: "European human rights system 'near breaking point over migration'",
+    date: "12 Dec 2025",
+    author: "Anne-Laure Dufeal",
+    imageUrl: "https://brusselssignal.eu/content/uploads/2025/12/GettyImages-1193777611.jpg?fit=crop&crop=faces&q=75&auto=compress,format&w=630&h=420",
+    summary: "Read the full article for more details.",
+    category: "News",
+    url: "https://brusselssignal.eu/2025/12/europes-human-rights-system-near-breaking-point-over-migration-ministers-warn/"
+  },
+  {
+    id: 'article-73',
+    title: "Starmer and Frederiksen call for Europe-wide overhaul of asylum rules",
+    date: "12 Dec 2025",
+    author: "Carl Deconinck",
+    imageUrl: "https://brusselssignal.eu/content/uploads/2025/12/13393963.jpg?fit=crop&crop=faces&q=75&auto=compress,format&w=630&h=420",
+    summary: "Read the full article for more details.",
+    category: "News",
+    url: "https://brusselssignal.eu/2025/12/starmer-and-frederiksen-call-for-europe-wide-overhaul-of-asylum-rules/"
+  },
+  {
+    id: 'article-74',
+    title: "Kosovo takes in migrants deported by US",
+    date: "12 Dec 2025",
+    author: "AFP",
+    imageUrl: "https://brusselssignal.eu/content/uploads/2025/12/12809603.jpg?fit=crop&crop=faces&q=75&auto=compress,format&w=630&h=420",
+    summary: "Read the full article for more details.",
+    category: "News",
+    url: "https://brusselssignal.eu/2025/12/kosovo-takes-in-migrants-deported-by-us/"
+  },
+  {
+    id: 'article-75',
+    title: "Bulgarian Government resigns after mass anti-corruption protests",
+    date: "12 Dec 2025",
+    author: "Carl Deconinck",
+    imageUrl: "https://brusselssignal.eu/content/uploads/2025/12/12745723.jpg?fit=crop&crop=faces&q=75&auto=compress,format&w=630&h=420",
+    summary: "Read the full article for more details.",
+    category: "News",
+    url: "https://brusselssignal.eu/2025/12/bulgarian-government-resigns-after-mass-anti-corruption-protests/"
+  },
+  {
+    id: 'article-76',
+    title: "Swiss Eurovision winner Nemo to return trophy in protest at Israel's participation next year",
+    date: "11 Dec 2025",
+    author: "Chris Nelson",
+    imageUrl: "https://brusselssignal.eu/content/uploads/2025/12/GettyImages-2215624570.jpg?fit=crop&crop=faces&q=75&auto=compress,format&w=630&h=420",
+    summary: "Read the full article for more details.",
+    category: "News",
+    url: "https://brusselssignal.eu/2025/12/swiss-eurovision-winner-nemo-to-return-trophy-in-protest-at-israels-participation-next-year/"
+  },
+  {
+    id: 'article-77',
+    title: "On a scale of 1 to 10, Spanish socialist corruption is at 50. Allegedly.",
+    date: "11 Dec 2025",
+    author: "Carl Deconinck",
+    imageUrl: "https://brusselssignal.eu/content/uploads/2025/12/13534674.jpg?fit=crop&crop=faces&q=75&auto=compress,format&w=630&h=420",
+    summary: "Read the full article for more details.",
+    category: "News",
+    url: "https://brusselssignal.eu/2025/12/on-a-scale-of-1-to-10-spanish-socialist-corruption-is-at-50-allegedly/"
+  },
+  {
+    id: 'article-78',
+    title: "German economy will continue to struggle with minimal growth, say leading institutes",
+    date: "11 Dec 2025",
+    author: "Carl Deconinck",
+    imageUrl: "https://brusselssignal.eu/content/uploads/2025/12/13571124.jpg?fit=crop&crop=faces&q=75&auto=compress,format&w=630&h=420",
+    summary: "Read the full article for more details.",
+    category: "News",
+    url: "https://brusselssignal.eu/2025/12/german-economy-will-continue-to-struggle-with-minimal-growth-say-leading-institutes/"
+  },
+  {
+    id: 'article-79',
+    title: "Spain's Vox party gains significant working-class support",
+    date: "11 Dec 2025",
+    author: "Bridget Ryder",
+    imageUrl: "https://brusselssignal.eu/content/uploads/2025/12/GettyImages-2235362682.jpg?fit=crop&crop=faces&q=75&auto=compress,format&w=630&h=420",
+    summary: "Read the full article for more details.",
+    category: "News",
+    url: "https://brusselssignal.eu/2025/12/spains-vox-party-gains-significant-working-class-support/"
+  },
+  {
+    id: 'article-80',
+    title: "French court liquidates appliance giant Brandt, 700 jobs to go",
+    date: "11 Dec 2025",
+    author: "Anne-Laure Dufeal",
+    imageUrl: "https://brusselssignal.eu/content/uploads/2025/12/GettyImages-520467552.jpg?fit=crop&crop=faces&q=75&auto=compress,format&w=630&h=420",
+    summary: "Read the full article for more details.",
+    category: "News",
+    url: "https://brusselssignal.eu/2025/12/french-court-liquidates-appliance-giant-brandt-700-jobs-to-go/"
+  },
+  {
+    id: 'article-81',
+    title: "EU tightens migration policies with JHA Council deal",
+    date: "11 Dec 2025",
+    author: "Luca Steinmann",
+    imageUrl: "https://brusselssignal.eu/content/uploads/2025/12/GettyImages-2245104658.jpg?fit=crop&crop=faces&q=75&auto=compress,format&w=630&h=420",
+    summary: "Read the full article for more details.",
+    category: "News",
+    url: "https://brusselssignal.eu/2025/12/eu-tightens-migration-policies-with-jha-council-deal/"
+  },
+  {
+    id: 'article-82',
+    title: "Belgian PM threatens to take EU to court over Russian assets",
+    date: "11 Dec 2025",
+    author: "Carl Deconinck",
+    imageUrl: "https://brusselssignal.eu/content/uploads/2025/12/GettyImages-2231484628.jpg?fit=crop&crop=faces&q=75&auto=compress,format&w=630&h=420",
+    summary: "Read the full article for more details.",
+    category: "News",
+    url: "https://brusselssignal.eu/2025/12/belgian-pm-threatens-to-take-eu-to-court-over-russian-assets/"
+  },
+  {
+    id: 'article-83',
+    title: "General strike hits planes, trains and services in Portugal",
+    date: "11 Dec 2025",
+    author: "AFP",
+    imageUrl: "https://brusselssignal.eu/content/uploads/2025/12/GettyImages-2248876366.jpg?fit=crop&crop=faces&q=75&auto=compress,format&w=630&h=420",
+    summary: "Read the full article for more details.",
+    category: "News",
+    url: "https://brusselssignal.eu/2025/12/general-strike-hits-planes-trains-and-services-in-portugal/"
+  },
+  {
+    id: 'article-84',
+    title: "Industry leaders warn EU over sweeping tobacco tax hikes",
+    date: "11 Dec 2025",
+    author: "Carl Deconinck",
+    imageUrl: "https://brusselssignal.eu/content/uploads/2025/12/GettyImages-2238819767.jpg?fit=crop&crop=faces&q=75&auto=compress,format&w=630&h=420",
+    summary: "Read the full article for more details.",
+    category: "News",
+    url: "https://brusselssignal.eu/2025/12/industry-leaders-warn-eu-over-sweeping-tobacco-tax-hikes/"
+  },
+  {
+    id: 'article-85',
+    title: "Ex-PMs Verhofstadt and Renzi call for regime change in Iran",
+    date: "11 Dec 2025",
+    author: "Carl Deconinck",
+    imageUrl: "https://brusselssignal.eu/content/uploads/2025/12/guy.jpg?fit=crop&crop=faces&q=75&auto=compress,format&w=630&h=420",
+    summary: "Read the full article for more details.",
+    category: "News",
+    url: "https://brusselssignal.eu/2025/12/ex-pms-verhofstadt-and-renzi-call-for-regime-change-in-iran/"
+  },
+  {
+    id: 'article-86',
+    title: "US-EU tensions rise as Trump has 'strong words' with European leaders",
+    date: "11 Dec 2025",
+    author: "Chris Nelson",
+    imageUrl: "https://brusselssignal.eu/content/uploads/2025/12/GettyImages-2251240546.jpg?fit=crop&crop=faces&q=75&auto=compress,format&w=630&h=420",
+    summary: "Read the full article for more details.",
+    category: "News",
+    url: "https://brusselssignal.eu/2025/12/us-eu-tensions-rise-as-trump-has-strong-words-with-european-leaders/"
+  },
+  {
+    id: 'article-87',
+    title: "ECB says EU has 'adapted faster' than expected to US tariffs",
+    date: "10 Dec 2025",
+    author: "Claire Lemaire",
+    imageUrl: "https://brusselssignal.eu/content/uploads/2025/12/GettyImages-520731742.jpg?fit=crop&crop=faces&q=75&auto=compress,format&w=630&h=420",
+    summary: "Read the full article for more details.",
+    category: "News",
+    url: "https://brusselssignal.eu/2025/12/ecb-says-eu-has-adapted-faster-than-expected-to-us-tariffs/"
+  },
+  {
+    id: 'article-88',
+    title: "Meloni urges Zelensky to make Ukraine territory concessions to forge peace",
+    date: "10 Dec 2025",
+    author: "Luca Steinmann",
+    imageUrl: "https://brusselssignal.eu/content/uploads/2025/12/GettyImages-2250269534.jpg?fit=crop&crop=faces&q=75&auto=compress,format&w=630&h=420",
+    summary: "Read the full article for more details.",
+    category: "News",
+    url: "https://brusselssignal.eu/2025/12/meloni-urges-zelensky-to-make-ukraine-territory-concessions-to-forge-peace/"
+  },
+  {
+    id: 'article-89',
+    title: "'EU is trying to export its disastrous economic model,' warn US lawmakers and industry",
+    date: "10 Dec 2025",
+    author: "Carl Deconinck",
+    imageUrl: "https://brusselssignal.eu/content/uploads/2025/12/GettyImages-2193467373.jpg?fit=crop&crop=faces&q=75&auto=compress,format&w=630&h=420",
+    summary: "Read the full article for more details.",
+    category: "News",
+    url: "https://brusselssignal.eu/2025/12/eu-is-trying-to-export-its-disastrous-economic-model-warn-us-lawmakers-and-industry/"
+  },
+  {
+    id: 'article-90',
+    title: "UK secret service 'let double agent commit murder during The Troubles', report says",
+    date: "10 Dec 2025",
+    author: "AFP",
+    imageUrl: "https://brusselssignal.eu/content/uploads/2025/12/GettyImages-646281374.jpg?fit=crop&crop=faces&q=75&auto=compress,format&w=630&h=420",
+    summary: "Read the full article for more details.",
+    category: "News",
+    url: "https://brusselssignal.eu/2025/12/uk-secret-service-let-double-agent-commit-murder-during-the-troubles-report-says/"
+  },
+  {
+    id: 'article-91',
+    title: "Poland offers Ukraine MiG fighters, wants drone and missile technology in return",
+    date: "10 Dec 2025",
+    author: "Krzysztof Mularczyk",
+    imageUrl: "https://brusselssignal.eu/content/uploads/2025/12/11304006.jpg?fit=crop&crop=faces&q=75&auto=compress,format&w=630&h=420",
+    summary: "Read the full article for more details.",
+    category: "News",
+    url: "https://brusselssignal.eu/2025/12/poland-offers-ukraine-mig-fighters-wants-drone-and-missile-technology-in-return/"
+  },
+  {
+    id: 'article-92',
+    title: "Allied military support for Ukraine at lowest level since war started",
+    date: "10 Dec 2025",
+    author: "Carl Deconinck",
+    imageUrl: "https://brusselssignal.eu/content/uploads/2025/12/13563404.jpg?fit=crop&crop=faces&q=75&auto=compress,format&w=630&h=420",
+    summary: "Read the full article for more details.",
+    category: "News",
+    url: "https://brusselssignal.eu/2025/12/allied-military-support-for-ukraine-at-lowest-level-since-war-started/"
+  },
+  {
+    id: 'article-93',
+    title: "Exclusive: Brothers of Italy seeks to bridge diverging US and EU interests",
+    date: "10 Dec 2025",
+    author: "Luca Steinmann",
+    imageUrl: "https://brusselssignal.eu/content/uploads/2025/12/GettyImages-2210745217.jpg?fit=crop&crop=faces&q=75&auto=compress,format&w=630&h=420",
+    summary: "Read the full article for more details.",
+    category: "News",
+    url: "https://brusselssignal.eu/2025/12/exclusive-brothers-of-italy-seeks-to-bridge-diverging-us-and-eu-interests/"
+  },
+  {
+    id: 'article-94',
+    title: "Ex-AfD MPs found Javier Milei Institute for 'radical deregulation' in Germany",
+    date: "9 Dec 2025",
+    author: "Chris Gattringer",
+    imageUrl: "https://brusselssignal.eu/content/uploads/2025/12/GettyImages-1701035489.jpg?fit=crop&crop=faces&q=75&auto=compress,format&w=630&h=420",
+    summary: "Read the full article for more details.",
+    category: "News",
+    url: "https://brusselssignal.eu/2025/12/ex-afd-mps-found-javier-milei-institute-for-radical-deregulation-in-germany/"
+  },
+  {
+    id: 'article-95',
+    title: "EU authority sanctions the Left over financing of non-EU national party",
+    date: "9 Dec 2025",
+    author: "Anne-Laure Dufeal",
+    imageUrl: "https://brusselssignal.eu/content/uploads/2025/12/GettyImages-2160806230.jpg?fit=crop&crop=faces&q=75&auto=compress,format&w=630&h=420",
+    summary: "Read the full article for more details.",
+    category: "News",
+    url: "https://brusselssignal.eu/2025/12/eu-authority-sanctions-the-left-over-financing-of-non-eu-national-party/"
+  },
+  {
+    id: 'article-96',
+    title: "Conservative gatherings spark fierce debate in Italy's culture war",
+    date: "9 Dec 2025",
+    author: "Luca Steinmann",
+    imageUrl: "https://brusselssignal.eu/content/uploads/2025/12/GettyImages-526510878.jpg?fit=crop&crop=faces&q=75&auto=compress,format&w=630&h=420",
+    summary: "Read the full article for more details.",
+    category: "News",
+    url: "https://brusselssignal.eu/2025/12/conservative-gatherings-spark-fierce-debate-in-italys-culture-war/"
+  },
+  {
+    id: 'article-97',
+    title: "Ryanair to cut 1m passengers from Belgium over doubling of aviation tax",
+    date: "9 Dec 2025",
+    author: "Carl Deconinck",
+    imageUrl: "https://brusselssignal.eu/content/uploads/2025/12/13412077.jpg?fit=crop&crop=faces&q=75&auto=compress,format&w=630&h=420",
+    summary: "Read the full article for more details.",
+    category: "News",
+    url: "https://brusselssignal.eu/2025/12/ryanair-to-cut-1m-passengers-from-belgium-over-doubling-of-aviation-tax/"
+  },
+  {
+    id: 'article-98',
+    title: "Foreigners in Germany much less worried about right-wing extremism than ethnic Germans",
+    date: "9 Dec 2025",
+    author: "Chris Gattringer",
+    imageUrl: "https://brusselssignal.eu/content/uploads/2025/12/GettyImages-815139570.jpg?fit=crop&crop=faces&q=75&auto=compress,format&w=630&h=420",
+    summary: "Read the full article for more details.",
+    category: "News",
+    url: "https://brusselssignal.eu/2025/12/foreigners-in-germany-much-less-worried-about-right-wing-extremism-than-ethnic-germans/"
+  },
+  {
+    id: 'article-99',
+    title: "Three face German court on Russia spying charges",
+    date: "9 Dec 2025",
+    author: "AFP",
+    imageUrl: "https://brusselssignal.eu/content/uploads/2025/12/GettyImages-2218761578-1.jpg?fit=crop&crop=faces&q=75&auto=compress,format&w=630&h=420",
+    summary: "Read the full article for more details.",
+    category: "News",
+    url: "https://brusselssignal.eu/2025/12/three-face-german-court-on-russia-spying-charges/"
+  },
+  {
+    id: 'article-100',
+    title: "European Commission denies EU-funded NGOs 'infiltrated by Hamas'",
+    date: "9 Dec 2025",
+    author: "Carl Deconinck",
+    imageUrl: "https://brusselssignal.eu/content/uploads/2025/12/12822986.jpg?fit=crop&crop=faces&q=75&auto=compress,format&w=630&h=420",
+    summary: "Read the full article for more details.",
+    category: "News",
+    url: "https://brusselssignal.eu/2025/12/european-commission-denies-eu-funded-ngos-infiltrated-by-hamas/"
+  },
+  {
+    id: 'article-101',
+    title: "'Curb your enthusiasm' Polish opposition tells PM Tusk over EU Migration Pact",
+    date: "9 Dec 2025",
+    author: "Krzysztof Mularczyk",
+    imageUrl: "https://brusselssignal.eu/content/uploads/2025/12/13303753.jpg?fit=crop&crop=faces&q=75&auto=compress,format&w=630&h=420",
+    summary: "Read the full article for more details.",
+    category: "News",
+    url: "https://brusselssignal.eu/2025/12/curb-your-enthusiasm-polish-opposition-tells-pm-tusk-over-eu-migration-pact/"
+  },
+  {
+    id: 'article-102',
+    title: "European leaders rally behind Zelensky as Trump's Ukraine peace plan ruffles feathers",
+    date: "9 Dec 2025",
+    author: "Chris Nelson",
+    imageUrl: "https://brusselssignal.eu/content/uploads/2025/12/GettyImages-2250094545.jpg?fit=crop&crop=faces&q=75&auto=compress,format&w=630&h=420",
+    summary: "Read the full article for more details.",
+    category: "News",
+    url: "https://brusselssignal.eu/2025/12/european-leaders-rally-behind-zelensky-as-trumps-ukraine-peace-plan-ruffles-feathers/"
+  },
+  {
+    id: 'article-103',
+    title: "Sharp rise in bankruptcies burns Swedish solar installation sector",
+    date: "8 Dec 2025",
+    author: "Carl Deconinck",
+    imageUrl: "https://brusselssignal.eu/content/uploads/2025/12/11320207.jpg?fit=crop&crop=faces&q=75&auto=compress,format&w=630&h=420",
+    summary: "Read the full article for more details.",
+    category: "News",
+    url: "https://brusselssignal.eu/2025/12/sharp-rise-in-bankruptcies-burns-swedish-solar-installation-sector/"
+  },
+  {
+    id: 'article-104',
+    title: "EU leaders see Trump's new security strategy as 'interference'",
+    date: "8 Dec 2025",
+    author: "Claire Lemaire",
+    imageUrl: "https://brusselssignal.eu/content/uploads/2025/12/GettyImages-2247317749-1.jpg?fit=crop&crop=faces&q=75&auto=compress,format&w=630&h=420",
+    summary: "Read the full article for more details.",
+    category: "News",
+    url: "https://brusselssignal.eu/2025/12/eu-leaders-see-trumps-new-security-strategy-as-interference/"
+  },
+  {
+    id: 'article-105',
+    title: "Meloni ditches Trump-supporting CPAC in Italy amid US-Europe tensions",
+    date: "8 Dec 2025",
+    author: "Luca Steinmann",
+    imageUrl: "https://brusselssignal.eu/content/uploads/2025/12/GettyImages-2210761335.jpg?fit=crop&crop=faces&q=75&auto=compress,format&w=630&h=420",
+    summary: "Read the full article for more details.",
+    category: "News",
+    url: "https://brusselssignal.eu/2025/12/meloni-ditches-trump-supporting-cpac-in-italy-amid-us-europe-tensions/"
+  },
+  {
+    id: 'article-106',
+    title: "Water leak at Paris Louvre Museum soaks valuable books on ancient Egypt",
+    date: "8 Dec 2025",
+    author: "Carl Deconinck",
+    imageUrl: "https://brusselssignal.eu/content/uploads/2025/12/GettyImages-2243446842.jpg?fit=crop&crop=faces&q=75&auto=compress,format&w=630&h=420",
+    summary: "Read the full article for more details.",
+    category: "News",
+    url: "https://brusselssignal.eu/2025/12/water-leak-at-paris-louvre-museum-soaks-valuable-books-on-ancient-egypt/"
+  },
+  {
+    id: 'article-107',
+    title: "Italy's Left splits over anti-Semitism bill, exposing deep ideological fault lines",
+    date: "8 Dec 2025",
+    author: "Luca Steinmann",
+    imageUrl: "https://brusselssignal.eu/content/uploads/2025/12/GettyImages-1164780052.jpg?fit=crop&crop=faces&q=75&auto=compress,format&w=630&h=420",
+    summary: "Read the full article for more details.",
+    category: "News",
+    url: "https://brusselssignal.eu/2025/12/italys-left-splits-over-anti-semitism-bill-exposing-deep-ideological-fault-lines/"
+  },
+  {
+    id: 'article-108',
+    title: "IMF issues warning over EU's push to tap frozen Russian assets",
+    date: "8 Dec 2025",
+    author: "Carl Deconinck",
+    imageUrl: "https://brusselssignal.eu/content/uploads/2025/12/3002389.jpg?fit=crop&crop=faces&q=75&auto=compress,format&w=630&h=420",
+    summary: "Read the full article for more details.",
+    category: "News",
+    url: "https://brusselssignal.eu/2025/12/imf-issues-warning-over-eus-push-to-tap-frozen-russian-assets/"
+  },
+  {
+    id: 'article-109',
+    title: "Support for EU 'Polexit' at historic high, latest opinion poll shows",
+    date: "8 Dec 2025",
+    author: "Krzysztof Mularczyk",
+    imageUrl: "https://brusselssignal.eu/content/uploads/2025/12/5802195.jpg?fit=crop&crop=faces&q=75&auto=compress,format&w=630&h=420",
+    summary: "Read the full article for more details.",
+    category: "News",
+    url: "https://brusselssignal.eu/2025/12/support-for-eu-polexit-at-historic-high-latest-opinion-poll-shows/"
+  },
+  {
+    id: 'article-110',
+    title: "Polish PM Tusk claims 'Russian influence' blocked crypto-currency legislation",
+    date: "8 Dec 2025",
+    author: "Krzysztof Mularczyk",
+    imageUrl: "https://brusselssignal.eu/content/uploads/2025/12/13261219-1.jpg?fit=crop&crop=faces&q=75&auto=compress,format&w=630&h=420",
+    summary: "Read the full article for more details.",
+    category: "News",
+    url: "https://brusselssignal.eu/2025/12/polish-pm-tusk-claims-russian-influence-blocked-crypto-currency-legislation/"
+  },
+  {
+    id: 'article-111',
+    title: "Poland's Sikorski tells Musk 'Go to Mars' after he calls for end of EU",
+    date: "8 Dec 2025",
+    author: "Krzysztof Mularczyk",
+    imageUrl: "https://brusselssignal.eu/content/uploads/2025/12/13515680.jpg?fit=crop&crop=faces&q=75&auto=compress,format&w=630&h=420",
+    summary: "Read the full article for more details.",
+    category: "News",
+    url: "https://brusselssignal.eu/2025/12/polands-sikorski-tells-musk-go-to-mars-after-he-calls-for-end-of-eu/"
+  },
+  {
+    id: 'article-112',
+    title: "'No evidence of Russian interference in Romania elections,' says Liberal candidate",
+    date: "5 Dec 2025",
+    author: "Carl Deconinck",
+    imageUrl: "https://brusselssignal.eu/content/uploads/2025/12/13014226.jpg?fit=crop&crop=faces&q=75&auto=compress,format&w=630&h=420",
+    summary: "Read the full article for more details.",
+    category: "News",
+    url: "https://brusselssignal.eu/2025/12/no-evidence-of-russian-interference-in-romania-elections-says-liberal-candidate/"
+  },
+  {
+    id: 'article-113',
+    title: "MEPs demand urgent investigation into EU-funded NGOs 'infiltrated by Hamas'",
+    date: "5 Dec 2025",
+    author: "Carl Deconinck",
+    imageUrl: "https://brusselssignal.eu/content/uploads/2025/12/GettyImages-1839925579.jpg?fit=crop&crop=faces&q=75&auto=compress,format&w=630&h=420",
+    summary: "Read the full article for more details.",
+    category: "News",
+    url: "https://brusselssignal.eu/2025/12/15-meps-demand-urgent-investigation-into-eu-funded-ngos-infiltrated-by-hamas/"
+  },
+  {
+    id: 'article-114',
+    title: "Flood of EU money headed for Bosnia ahead of bloc membership",
+    date: "5 Dec 2025",
+    author: "Claire Lemaire",
+    imageUrl: "https://brusselssignal.eu/content/uploads/2025/12/GettyImages-1180218802.jpg?fit=crop&crop=faces&q=75&auto=compress,format&w=630&h=420",
+    summary: "Read the full article for more details.",
+    category: "News",
+    url: "https://brusselssignal.eu/2025/12/flood-of-eu-money-headed-for-bosnia-ahead-of-bloc-membership/"
+  },
+  {
+    id: 'article-115',
+    title: "German city in GDPR probe after wishing citizen 'happy birthday'",
+    date: "5 Dec 2025",
+    author: "Chris Gattringer",
+    imageUrl: "https://brusselssignal.eu/content/uploads/2025/12/8322293.jpg?fit=crop&crop=faces&q=75&auto=compress,format&w=630&h=420",
+    summary: "Read the full article for more details.",
+    category: "News",
+    url: "https://brusselssignal.eu/2025/12/german-city-in-gdpr-probe-after-wishing-citizen-happy-birthday/"
+  },
+  {
+    id: 'article-116',
+    title: "German parliament quietly lifts ban on business-class flights for MPs",
+    date: "5 Dec 2025",
+    author: "Chris Gattringer",
+    imageUrl: "https://brusselssignal.eu/content/uploads/2025/12/GettyImages-2149531517.jpg?fit=crop&crop=faces&q=75&auto=compress,format&w=630&h=420",
+    summary: "Read the full article for more details.",
+    category: "News",
+    url: "https://brusselssignal.eu/2025/12/german-parliament-quietly-lifts-ban-on-business-class-flights-for-mps/"
+  },
+  {
+    id: 'article-117',
+    title: "European Commission opens anti-trust probe into Meta",
+    date: "5 Dec 2025",
+    author: "Anne-Laure Dufeal",
+    imageUrl: "https://brusselssignal.eu/content/uploads/2025/12/GettyImages-520866968.jpg?fit=crop&crop=faces&q=75&auto=compress,format&w=630&h=420",
+    summary: "Read the full article for more details.",
+    category: "News",
+    url: "https://brusselssignal.eu/2025/12/european-commission-opens-anti-trust-probe-into-meta/"
+  },
+  {
+    id: 'article-118',
+    title: "Blasphemy law victim thanks God — and European Parliament — for release",
+    date: "5 Dec 2025",
+    author: "Justin Stares",
+    imageUrl: "https://brusselssignal.eu/content/uploads/2025/12/Kausar-e1764925380145.jpeg?fit=crop&crop=faces&q=75&auto=compress,format&w=630&h=420",
+    summary: "Read the full article for more details.",
+    category: "News",
+    url: "https://brusselssignal.eu/2025/12/blasphemy-law-victim-thanks-god-and-european-parliament-for-release/"
+  },
+  {
+    id: 'article-119',
+    title: "Attempt to censor a right-wing publisher sparks cultural firestorm in Italy",
+    date: "5 Dec 2025",
+    author: "Luca Steinmann",
+    imageUrl: "https://brusselssignal.eu/content/uploads/2025/12/ernst.jpg?fit=crop&crop=faces&q=75&auto=compress,format&w=630&h=420",
+    summary: "Read the full article for more details.",
+    category: "News",
+    url: "https://brusselssignal.eu/2025/12/attempt-to-censor-a-right-wing-publisher-sparks-cultural-firestorm-in-italy/"
+  },
+  {
+    id: 'article-120',
+    title: "Four EU countries pull out of Eurovision as Israel's place confirmed",
+    date: "5 Dec 2025",
+    author: "Chris Nelson",
+    imageUrl: "https://brusselssignal.eu/content/uploads/2025/12/GettyImages-2152500884.jpg?fit=crop&crop=faces&q=75&auto=compress,format&w=630&h=420",
+    summary: "Read the full article for more details.",
+    category: "News",
+    url: "https://brusselssignal.eu/2025/12/four-eu-countries-pull-out-of-eurovision-as-israels-place-confirmed/"
+  }
+];
+
+export const WATCH_VIDEOS: VideoItem[] = [
+  {
+    id: 'v1',
+    title: "Macron still doesn't get it: All France agrees Macronism must go",
+    author: 'Henry Olsen',
+    date: '12 SEP 2025',
+    duration: '60 SECONDS',
+    imageUrl: 'https://picsum.photos/seed/macron_speech/600/900'
+  },
+  {
+    id: 'v2',
+    title: "Shanghai Blues: We risk losing more than money when pushing India to BRICS",
+    author: 'Konstantinos Bogdanos',
+    date: '12 SEP 2025',
+    duration: '60 SECONDS',
+    imageUrl: 'https://picsum.photos/seed/brics_summit/600/900'
+  },
+  {
+    id: 'v3',
+    title: "Au revoir, Bayou? What a Le Pen-Bardella tandem could mean for France",
+    author: 'Rafael Pinto Borges',
+    date: '12 SEP 2025',
+    duration: '60 SECONDS',
+    imageUrl: 'https://picsum.photos/seed/le_pen/600/900'
+  },
+  {
+    id: 'v4',
+    title: "Suppressing free speech and free votes: EU intent on crippling democratic resilience",
+    author: 'Karl Pfefferkorn',
+    date: '12 SEP 2025',
+    duration: '60 SECONDS',
+    imageUrl: 'https://picsum.photos/seed/voting_booth/600/900'
+  },
+  {
+    id: 'v5',
+    title: "Digital Euro: Privacy dream or surveillance nightmare?",
+    author: 'Anne Lemaire',
+    date: '10 SEP 2025',
+    duration: '90 SECONDS',
+    imageUrl: 'https://picsum.photos/seed/digital_currency/600/900'
+  },
+  {
+    id: 'v6',
+    title: "The Battle for the Arctic: NATO's new frontier",
+    author: 'Carl Deconinck',
+    date: '08 SEP 2025',
+    duration: '120 SECONDS',
+    imageUrl: 'https://picsum.photos/seed/nato_arctic/600/900'
+  },
+  {
+    id: 'v7',
+    title: "Energy Crisis 2.0: Is Europe prepared for a cold winter?",
+    author: 'Krzysztof Mularczyk',
+    date: '05 SEP 2025',
+    duration: '45 SECONDS',
+    imageUrl: 'https://picsum.photos/seed/energy_grid/600/900'
+  },
+  {
+    id: 'v8',
+    title: "Brussels' Power Grab: The end of national sovereignty?",
+    author: 'Karl Pfefferkorn',
+    date: '02 SEP 2025',
+    duration: '60 SECONDS',
+    imageUrl: 'https://picsum.photos/seed/brussels_parliament/600/900'
+  }
+];
+
+export const INTERFERENCE_PODCASTS: NewsItem[] = [
+  {
+    id: 'p-int-1',
+    title: 'The Battle for the Airwaves',
+    podcastSeries: 'Interference',
+    date: '14 SEP 2025',
+    imageUrl: 'https://picsum.photos/seed/pod_int_1/600/600',
+    summary: 'Justin Stares and Alexandra Phillips discuss the latest in EU media interference and the fight for transparency.'
+  },
+  {
+    id: 'p-int-2',
+    title: 'Shadow Lobbying in the Bubble',
+    podcastSeries: 'Interference',
+    date: '08 SEP 2025',
+    imageUrl: 'https://picsum.photos/seed/pod_int_2/600/600',
+    summary: 'Uncovering the hidden influencers who shape legislation in the European Parliament behind closed doors.'
+  },
+  {
+    id: 'p-int-3',
+    title: 'Censorship or Content Moderation?',
+    podcastSeries: 'Interference',
+    date: '01 SEP 2025',
+    imageUrl: 'https://picsum.photos/seed/pod_int_3/600/600',
+    summary: 'A deep dive into the DSA and its implications for free speech across the continent.'
+  }
+];
+
+export const HORIZON_PODCASTS: NewsItem[] = [
+  {
+    id: 'p-hor-1',
+    title: 'Global Realignments and Europe',
+    podcastSeries: 'Horizon Podcast',
+    date: '12 SEP 2025',
+    imageUrl: 'https://picsum.photos/seed/pod_hor_1/600/600',
+    summary: 'Ralph Schoellhammer looks at the shifting geopolitical sands and what they mean for the European project.'
+  },
+  {
+    id: 'p-hor-2',
+    title: 'The New Silk Road Dilemma',
+    podcastSeries: 'Horizon Podcast',
+    date: '05 SEP 2025',
+    imageUrl: 'https://picsum.photos/seed/pod_hor_2/600/600',
+    summary: 'How Europe navigates Chinese investment while maintaining its strategic autonomy and security.'
+  },
+  {
+    id: 'p-hor-3',
+    title: 'Energy Security on the Horizon',
+    podcastSeries: 'Horizon Podcast',
+    date: '28 AUG 2025',
+    imageUrl: 'https://picsum.photos/seed/pod_hor_3/600/600',
+    summary: 'Exploring the long-term prospects for European energy independence in a post-fossil fuel world.'
+  }
+];
+
+export const HAMMER_TIME_PODCASTS: NewsItem[] = [
+  {
+    id: 'p-ham-1',
+    title: 'The Cost of Bureaucracy',
+    podcastSeries: 'Hammer Time',
+    date: '10 SEP 2025',
+    imageUrl: 'https://picsum.photos/seed/pod_ham_1/600/600',
+    summary: 'Ralph Schoellhammer on why Brussels red tape is killing European industry and innovation.'
+  },
+  {
+    id: 'p-ham-2',
+    title: 'Agricultural Sovereignty',
+    podcastSeries: 'Hammer Time',
+    date: '01 SEP 2025',
+    imageUrl: 'https://picsum.photos/seed/pod_ham_2/600/600',
+    summary: 'Why the CAP reform is failing the local farmer and threatening the food security of the continent.'
+  },
+  {
+    id: 'p-ham-3',
+    title: 'Democracy Under Pressure',
+    podcastSeries: 'Hammer Time',
+    date: '22 AUG 2025',
+    imageUrl: 'https://picsum.photos/seed/pod_ham_3/600/600',
+    summary: 'A hard-hitting analysis of the centralization of power within the European Commission.'
+  }
+];
+
+export const ECONOMY: NewsItem[] = [
+  {
+    id: 'e1',
+    title: 'Peace could save European economy — so why are EU leaders sabotaging it?',
+    date: '11 SEP 2025',
+    imageUrl: 'https://picsum.photos/seed/euro_currency/400/250'
+  },
+  {
+    id: 'e2',
+    title: "'Western sanctions against Russia have had no effect,' says Kremlin",
+    date: '10 SEP 2025',
+    imageUrl: 'https://picsum.photos/seed/kremlin/400/250'
+  },
+  {
+    id: 'e3',
+    title: 'Poland\'s financial rating questioned as result of hole in public finances',
+    date: '9 SEP 2025',
+    imageUrl: 'https://picsum.photos/seed/poland_bank/400/250'
+  }
+];
+
+export const SOCIETY: NewsItem[] = [
+  {
+    id: 's1',
+    title: "'Vive la révolte!' Mélenchon calls for new French revolution",
+    date: '8 SEP 2025',
+    imageUrl: 'https://picsum.photos/seed/revolt/400/250'
+  },
+  {
+    id: 's2',
+    title: "'Thousands of fake language and integration certificates circulating in Germany'",
+    date: '10 SEP 2025',
+    imageUrl: 'https://picsum.photos/seed/germany_flag/400/250'
+  },
+  {
+    id: 's3',
+    title: 'More than half of Berlin police cadets \'need\' help',
+    date: '8 SEP 2025',
+    imageUrl: 'https://picsum.photos/seed/berlin_police/400/250'
+  }
+];
+
+export const PHOTO_STORIES: NewsItem[] = [
+  {
+    id: 'ph1',
+    title: 'Russia and Ukraine exchange prisoners of war in Belarus',
+    date: '25 AUG 2025',
+    author: 'Claire Lemaire',
+    imageUrl: 'https://picsum.photos/seed/prisoner_exchange/800/600'
+  },
+  {
+    id: 'ph2',
+    title: 'Thousands rally in Brussels to protest at Israeli actions in Gaza',
+    date: '16 JUN 2025',
+    author: 'Anne-Laure Dufeal',
+    imageUrl: 'https://picsum.photos/seed/brussels_protest/800/600'
+  },
+  {
+    id: 'ph3',
+    title: 'Leo XIV elected: \'Habemus Papam — We have a Pope\'',
+    date: '16 JUN 2025',
+    author: 'Carl Deconinck',
+    imageUrl: 'https://picsum.photos/seed/vatican/800/600'
+  },
+  {
+    id: 'ph4',
+    title: 'Goodbye, now-former German chancellor Scholz!',
+    date: '9 MAY 2025',
+    author: 'Carl Deconinck',
+    imageUrl: 'https://picsum.photos/seed/scholz_exit/800/600'
+  }
+];
