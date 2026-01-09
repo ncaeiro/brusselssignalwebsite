@@ -65,7 +65,7 @@ const PodcastCategoryPage: React.FC<PodcastCategoryPageProps> = ({ onPodcastClic
               </div>
             </div>
             <p className="text-[10px] text-gray-400 font-bold mb-2 uppercase tracking-widest">{ep.date}</p>
-            <h4 className="text-base font-bold leading-tight text-[#1a2a44] group-hover:text-red-600 transition-colors mb-3 line-clamp-2">
+            <h4 className="text-base font-bold leading-tight text-[#1a2a44] group-hover:text-[#EE6260] transition-colors mb-3 line-clamp-2">
               {ep.title}
             </h4>
             <p className="text-xs text-gray-500 line-clamp-2 leading-relaxed">
@@ -84,7 +84,7 @@ const PodcastCategoryPage: React.FC<PodcastCategoryPageProps> = ({ onPodcastClic
         <div className="absolute inset-0 opacity-10 pointer-events-none bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-white via-transparent to-transparent"></div>
         <div className="container mx-auto px-4 lg:px-8 relative z-10 text-center">
             <div className="inline-flex items-center gap-2 mb-6 px-3 py-1 bg-white/5 rounded-full border border-white/10">
-                <svg className="w-4 h-4 text-red-500" fill="currentColor" viewBox="0 0 24 24"><path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3z"/><path d="M17 11c0 2.76-2.24 5-5 5s-5-2.24-5-5H5c0 3.53 2.61 6.43 6 6.92V21h2v-3.08c3.39-.49 6-3.39 6-6.92h-2z"/></svg>
+                <svg className="w-4 h-4 text-[#EE6260]" fill="currentColor" viewBox="0 0 24 24"><path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3z"/><path d="M17 11c0 2.76-2.24 5-5 5s-5-2.24-5-5H5c0 3.53 2.61 6.43 6 6.92V21h2v-3.08c3.39-.49 6-3.39 6-6.92h-2z"/></svg>
                 <span className="text-[10px] text-white font-black uppercase tracking-[0.2em]">SIGNAL PODCAST NETWORK</span>
             </div>
             <h1 className="font-serif text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
@@ -98,19 +98,19 @@ const PodcastCategoryPage: React.FC<PodcastCategoryPageProps> = ({ onPodcastClic
 
       <div className="container mx-auto px-4 lg:px-8 max-w-6xl">
         {/* Interference Show */}
-        <PodcastSection 
-          title="Interference" 
-          hosts="Justin Stares & Alexandra Phillips" 
+        <PodcastSection
+          title="Interference"
+          hosts="Justin Stares & Alexandra Phillips"
           description="Tackling the most controversial topics in European politics with unfiltered honesty."
           episodes={INTERFERENCE_PODCASTS}
-          colorClass="text-red-600"
+          colorClass="text-[#EE6260]"
           bgClass="bg-[#eb6761]"
         />
 
         {/* Horizon Podcast Show */}
-        <PodcastSection 
-          title="Horizon Podcast" 
-          hosts="Ralph Schoellhammer" 
+        <PodcastSection
+          title="Horizon Podcast"
+          hosts="Ralph Schoellhammer"
           description="Exploring the future of the continent and the strategic signals on the horizon."
           episodes={HORIZON_PODCASTS}
           colorClass="text-blue-600"
@@ -118,9 +118,9 @@ const PodcastCategoryPage: React.FC<PodcastCategoryPageProps> = ({ onPodcastClic
         />
 
         {/* Hammer Time Show */}
-        <PodcastSection 
-          title="Hammer Time" 
-          hosts="Ralph Schoellhammer" 
+        <PodcastSection
+          title="Hammer Time"
+          hosts="Ralph Schoellhammer"
           description="Hard-hitting, direct analysis of current events with a sharp focus on bureaucratic failure."
           episodes={HAMMER_TIME_PODCASTS}
           colorClass="text-orange-600"

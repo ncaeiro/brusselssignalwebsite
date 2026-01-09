@@ -14,7 +14,7 @@ const Ticker: React.FC = () => {
       <div className="container mx-auto px-4 lg:px-8 flex items-center whitespace-nowrap relative">
         {/* The 'LATEST' label with a solid background to hide text scrolling behind it */}
         <div className="relative z-10 bg-white pr-6 py-1 flex-shrink-0">
-          <span className="bg-red-600 text-white px-2 py-0.5 text-[10px] font-bold uppercase rounded-sm">LATEST</span>
+          <span className="bg-[#EE6260] text-white px-2 py-0.5 text-[10px] font-bold uppercase rounded-sm">LATEST</span>
         </div>
         
         {/* The scrolling marquee container */}

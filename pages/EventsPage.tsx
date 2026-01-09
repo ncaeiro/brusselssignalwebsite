@@ -37,7 +37,7 @@ const EventsPage: React.FC = () => {
   return (
     <main className="flex-grow container mx-auto px-4 md:px-6 lg:px-8 py-12">
       {/* Page Header */}
-      <div className="mb-12 border-b-2 border-red-600 pb-6">
+      <div className="mb-12 border-b-2 border-[#EE6260] pb-6">
         <h1 className="text-4xl md:text-5xl font-black text-[#1a2a44] mb-3 tracking-tight">Events</h1>
         <p className="text-lg text-gray-600 max-w-3xl">
           Join Brussels Signal at our upcoming events, panel discussions, and workshops.
@@ -102,7 +102,7 @@ const EventsPage: React.FC = () => {
                 <p className="text-gray-700 mb-4 leading-relaxed">{event.description}</p>
 
                 {event.type === 'Upcoming' && (
-                  <button className="bg-[#EE6260] text-white px-6 py-2 font-bold text-sm uppercase rounded hover:bg-red-700 transition">
+                  <button className="bg-[#EE6260] text-white px-6 py-2 font-bold text-sm uppercase rounded hover:bg-[#d44947] transition">
                     Register Now
                   </button>
                 )}

@@ -11,9 +11,10 @@ interface MegaMenuProps {
   onPodcastClick?: (article: NewsItem) => void;
   onNewslettersClick?: () => void;
   onAuthorsClick?: () => void;
+  onPartnerWithUsClick?: () => void;
 }
 
-const MegaMenu: React.FC<MegaMenuProps> = ({ onClose, onCategoryClick, onPodcastClick, onNewslettersClick, onAuthorsClick }) => {
+const MegaMenu: React.FC<MegaMenuProps> = ({ onClose, onCategoryClick, onPodcastClick, onNewslettersClick, onAuthorsClick, onPartnerWithUsClick }) => {
   const navigate = useNavigate();
 
   // Get the MegaMenu videos (vm1-vm6) from WATCH_VIDEOS
@@ -36,6 +37,11 @@ const MegaMenu: React.FC<MegaMenuProps> = ({ onClose, onCategoryClick, onPodcast
     onClose();
   };
 
+  const handlePartnerWithUsNav = () => {
+    onPartnerWithUsClick?.();
+    onClose();
+  };
+
   return (
     <div className="absolute top-full left-0 w-full bg-[#121c2d]/95 backdrop-blur-md border-t border-white/10 text-white shadow-2xl z-50 overflow-y-auto max-h-[90vh] animate-fadeIn">
       <div className="container mx-auto px-4 lg:px-8 py-10">
@@ -47,8 +53,9 @@ const MegaMenu: React.FC<MegaMenuProps> = ({ onClose, onCategoryClick, onPodcast
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 flex-grow">
             {/* Politics */}
             <div>
-              <button onClick={() => onCategoryClick?.('Politics')} className="text-red-500 font-black text-sm mb-6 tracking-wider uppercase hover:underline">POLITICS</button>
+              <button onClick={() => onCategoryClick?.('Politics')} className="text-[#EE6260] font-black text-sm mb-6 tracking-wider uppercase hover:underline">POLITICS</button>
               <ul className="text-[13px] space-y-3 font-normal text-gray-200">
+                <li><button onClick={() => onCategoryClick?.('Politics')} className="hover:text-[#FFEAD5] transition-colors text-left">EU Bubble</button></li>
                 <li><button onClick={() => onCategoryClick?.('Politics')} className="hover:text-[#FFEAD5] transition-colors text-left">From the capitals</button></li>
                 <li><button onClick={() => onCategoryClick?.('Politics')} className="hover:text-[#FFEAD5] transition-colors text-left">Elections</button></li>
                 <li><button onClick={() => onCategoryClick?.('Politics')} className="hover:text-[#FFEAD5] transition-colors text-left">Corruption</button></li>
@@ -58,7 +65,7 @@ const MegaMenu: React.FC<MegaMenuProps> = ({ onClose, onCategoryClick, onPodcast
             
             {/* Economy */}
             <div>
-              <button onClick={() => onCategoryClick?.('Economy')} className="text-red-500 font-black text-sm mb-6 tracking-wider uppercase hover:underline">ECONOMY</button>
+              <button onClick={() => onCategoryClick?.('Economy')} className="text-[#EE6260] font-black text-sm mb-6 tracking-wider uppercase hover:underline">ECONOMY</button>
               <ul className="text-[13px] space-y-3 font-normal text-gray-200">
                 <li><button onClick={() => onCategoryClick?.('Economy')} className="hover:text-[#FFEAD5] transition-colors text-left">Finance</button></li>
                 <li><button onClick={() => onCategoryClick?.('Economy')} className="hover:text-[#FFEAD5] transition-colors text-left">Tech</button></li>
@@ -70,7 +77,7 @@ const MegaMenu: React.FC<MegaMenuProps> = ({ onClose, onCategoryClick, onPodcast
 
             {/* Society */}
             <div>
-              <button onClick={() => onCategoryClick?.('Society')} className="text-red-500 font-black text-sm mb-6 tracking-wider uppercase hover:underline">SOCIETY</button>
+              <button onClick={() => onCategoryClick?.('Society')} className="text-[#EE6260] font-black text-sm mb-6 tracking-wider uppercase hover:underline">SOCIETY</button>
               <ul className="text-[13px] space-y-3 font-normal text-gray-200">
                 <li><button onClick={() => onCategoryClick?.('Society')} className="hover:text-[#FFEAD5] transition-colors text-left">Free speech</button></li>
                 <li><button onClick={() => onCategoryClick?.('Society')} className="hover:text-[#FFEAD5] transition-colors text-left">Migration</button></li>
@@ -83,7 +90,7 @@ const MegaMenu: React.FC<MegaMenuProps> = ({ onClose, onCategoryClick, onPodcast
 
             {/* World */}
             <div>
-              <button onClick={() => onCategoryClick?.('Politics')} className="text-red-500 font-black text-sm mb-6 tracking-wider uppercase hover:underline">WORLD</button>
+              <button onClick={() => onCategoryClick?.('Politics')} className="text-[#EE6260] font-black text-sm mb-6 tracking-wider uppercase hover:underline">WORLD</button>
               <ul className="text-[13px] space-y-3 font-normal text-gray-200">
                 <li><button onClick={() => onCategoryClick?.('Politics')} className="hover:text-[#FFEAD5] transition-colors text-left">War</button></li>
                 <li><button onClick={() => onCategoryClick?.('Politics')} className="hover:text-[#FFEAD5] transition-colors text-left">US</button></li>
@@ -95,12 +102,12 @@ const MegaMenu: React.FC<MegaMenuProps> = ({ onClose, onCategoryClick, onPodcast
 
             {/* Opinion */}
             <div>
-              <button onClick={() => onCategoryClick?.('Commentary')} className="text-red-500 font-black text-sm mb-6 tracking-wider uppercase hover:underline">OPINION</button>
+              <button onClick={() => onCategoryClick?.('Commentary')} className="text-[#EE6260] font-black text-sm mb-6 tracking-wider uppercase hover:underline">OPINION</button>
               <ul className="text-[13px] space-y-3 font-normal text-gray-200">
                 <li><button onClick={() => onCategoryClick?.('Commentary')} className="hover:text-[#FFEAD5] transition-colors text-left">Columns</button></li>
                 <li><button onClick={() => onCategoryClick?.('Commentary')} className="hover:text-[#FFEAD5] transition-colors text-left">Guest Analysis</button></li>
                 <li><button onClick={() => onCategoryClick?.('Commentary')} className="hover:text-[#FFEAD5] transition-colors text-left">MEPs views</button></li>
-                <li><button onClick={() => onCategoryClick?.('Commentary')} className="hover:text-[#FFEAD5] transition-colors text-left">Polls and surveys</button></li>
+                <li><button onClick={() => onCategoryClick?.('Commentary')} className="hover:text-[#FFEAD5] transition-colors text-left">Polls and Surveys</button></li>
               </ul>
             </div>
           </div>
@@ -110,7 +117,7 @@ const MegaMenu: React.FC<MegaMenuProps> = ({ onClose, onCategoryClick, onPodcast
 
           {/* Authors Column */}
           <div className="w-full lg:w-64">
-            <button onClick={handleAuthorsNav} className="text-gray-300 font-black text-sm mb-6 tracking-wider uppercase hover:text-red-400 transition-colors">AUTHORS</button>
+            <button onClick={handleAuthorsNav} className="text-gray-300 font-black text-sm mb-6 tracking-wider uppercase hover:text-[#EE6260] transition-colors">AUTHORS</button>
             <div className="space-y-4">
               {[
                 'Krzysztof Mularczyk',
@@ -147,7 +154,7 @@ const MegaMenu: React.FC<MegaMenuProps> = ({ onClose, onCategoryClick, onPodcast
                       </div>
                     )}
                     <div>
-                      <p className="text-[11px] font-bold leading-none group-hover:text-red-400 transition-colors">{authorName}</p>
+                      <p className="text-[11px] font-bold leading-none group-hover:text-[#EE6260] transition-colors">{authorName}</p>
                       <p className="text-[9px] text-gray-500 mt-0.5">
                         {articleCount} {articleCount === 1 ? 'article' : 'articles'}
                       </p>
@@ -158,15 +165,16 @@ const MegaMenu: React.FC<MegaMenuProps> = ({ onClose, onCategoryClick, onPodcast
             </div>
           </div>
 
-          {/* Other Column */}
+          {/* More Column */}
           <div className="w-full lg:w-32">
-            <h3 className="text-gray-300 font-black text-sm mb-6 tracking-wider uppercase">OTHER</h3>
+            <h3 className="text-gray-300 font-black text-sm mb-6 tracking-wider uppercase">MORE</h3>
             <ul className="text-[13px] space-y-3 font-normal text-gray-200">
+              <li><button className="hover:text-[#FFEAD5] transition-colors text-left">Sign In</button></li>
               <li><button onClick={() => onCategoryClick?.('Videos')} className="hover:text-[#FFEAD5] transition-colors text-left">Videos</button></li>
-              <li><button onClick={() => onCategoryClick?.('Podcasts')} className="hover:text-[#FFEAD5] transition-colors text-left">Podcasts</button></li>
-              <li><button onClick={handleNewsletterNav} className="hover:text-[#FFEAD5] transition-colors text-left">Newsletters</button></li>
               <li><button onClick={() => onCategoryClick?.('Politics')} className="hover:text-[#FFEAD5] transition-colors text-left">Events</button></li>
+              <li><button className="hover:text-[#FFEAD5] transition-colors text-left">Become a Member</button></li>
               <li><button className="hover:text-[#FFEAD5] transition-colors text-left">About Us</button></li>
+              <li><button onClick={handlePartnerWithUsNav} className="hover:text-[#FFEAD5] transition-colors text-left">Partner with Us</button></li>
             </ul>
           </div>
         </div>
@@ -177,7 +185,7 @@ const MegaMenu: React.FC<MegaMenuProps> = ({ onClose, onCategoryClick, onPodcast
           <span className="text-[10px] text-gray-300 font-bold uppercase tracking-tight">WHAT'S DRIVING GLOBAL CONVERSATIONS.</span>
           <div className="flex flex-wrap gap-4 ml-2">
             {['#FrenchConfidenceVote', '#FarageDeportationPlan', '#UKImmigrationProtests', '#UkraineDefenseAid', '#EUUSTradeTensions'].map(tag => (
-              <a key={tag} href="#" className="text-[11px] font-bold text-gray-200 hover:text-red-500 transition-colors">{tag}</a>
+              <a key={tag} href="#" className="text-[11px] font-bold text-gray-200 hover:text-[#EE6260] transition-colors">{tag}</a>
             ))}
           </div>
         </div>
@@ -189,7 +197,7 @@ const MegaMenu: React.FC<MegaMenuProps> = ({ onClose, onCategoryClick, onPodcast
           <div>
             <div className="flex justify-between items-center border-b border-white/10 pb-4 mb-8">
                 <h2 className="text-xl font-black tracking-widest uppercase">VIDEOS</h2>
-                <button onClick={() => onCategoryClick?.('Videos')} className="text-[10px] font-black hover:text-red-500">VIEW ALL</button>
+                <button onClick={() => onCategoryClick?.('Videos')} className="text-[10px] font-black hover:text-[#EE6260]">VIEW ALL</button>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
               {menuVideos.map((vid) => (
@@ -203,11 +211,11 @@ const MegaMenu: React.FC<MegaMenuProps> = ({ onClose, onCategoryClick, onPodcast
                     <img src={vid.imageUrl} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt={vid.title} />
                     <div className="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors flex items-center justify-center">
                       <div className="bg-white/90 rounded-full p-2 transform transition-transform group-hover:scale-110">
-                        <svg className="w-5 h-5 text-red-600 block" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                        <svg className="w-5 h-5 text-[#EE6260] block" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                       </div>
                     </div>
                   </div>
-                  <p className="text-[9px] font-bold mb-1 uppercase"><span className="text-red-500">Video</span> <span className="text-gray-400">{vid.date}</span></p>
+                  <p className="text-[9px] font-bold mb-1 uppercase"><span className="text-[#EE6260]">Video</span> <span className="text-gray-400">{vid.date}</span></p>
                   <h4 className="text-[11px] font-bold leading-tight group-hover:text-[#FFEAD5] transition-colors">{vid.title}</h4>
                 </div>
               ))}
@@ -218,7 +226,7 @@ const MegaMenu: React.FC<MegaMenuProps> = ({ onClose, onCategoryClick, onPodcast
           <div>
             <div className="flex justify-between items-center border-b border-white/10 pb-4 mb-8">
                 <h2 className="text-xl font-black tracking-widest uppercase">LATEST NEWS</h2>
-                <button onClick={() => onCategoryClick?.('News')} className="text-[10px] font-black hover:text-red-500">VIEW ALL</button>
+                <button onClick={() => onCategoryClick?.('News')} className="text-[10px] font-black hover:text-[#EE6260]">VIEW ALL</button>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
               {latestNews.map((article) => (
@@ -231,7 +239,7 @@ const MegaMenu: React.FC<MegaMenuProps> = ({ onClose, onCategoryClick, onPodcast
                   <div className="aspect-video relative overflow-hidden rounded mb-3 shadow-lg">
                     <img src={article.imageUrl} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt={article.title} />
                   </div>
-                  <p className="text-[9px] font-bold mb-1 uppercase"><span className="text-red-500">{article.category}</span> <span className="text-gray-400">{article.date}</span></p>
+                  <p className="text-[9px] font-bold mb-1 uppercase"><span className="text-[#EE6260]">{article.category}</span> <span className="text-gray-400">{article.date}</span></p>
                   <h4 className="text-[11px] font-bold leading-tight group-hover:text-[#FFEAD5] transition-colors">{article.title}</h4>
                 </div>
               ))}

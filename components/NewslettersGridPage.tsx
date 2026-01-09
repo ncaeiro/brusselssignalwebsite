@@ -20,11 +20,11 @@ const NewslettersGridPage: React.FC = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {/* Brussels Calling Card */}
-            <div className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+            <div className="bg-[#f5e6d3] rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
               {/* Header */}
-              <div className="bg-[#1a2a44] text-white px-6 py-8 text-center">
+              <div className="bg-[#1a2a44] text-white px-6 py-5 text-center">
                 <div className="inline-flex items-center gap-2 mb-3 px-3 py-1 bg-white/10 rounded-full">
-                  <svg className="w-4 h-4 text-red-500" fill="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-4 h-4 text-[#EE6260]" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
                   </svg>
                   <span className="text-[10px] font-black uppercase tracking-wider">Daily Brief</span>
@@ -37,26 +37,34 @@ const NewslettersGridPage: React.FC = () => {
               <div className="p-6 bg-[#f5e6d3]">
                 <div className="flex items-start gap-4 mb-6">
                   <div className="flex-shrink-0">
-                    <svg className="w-12 h-12 text-[#1a2a44]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"/>
-                    </svg>
+                    <img
+                      src={import.meta.env.BASE_URL + "images/newsletter-card-icon-1.png"}
+                      alt="Brussels Calling"
+                      className="w-16 h-auto"
+                    />
                   </div>
                   <div>
-                    <p className="text-gray-700 text-sm leading-relaxed mb-4">
+                    <p className="text-gray-700 text-xl leading-relaxed mb-8">
                       Political news, views and analysis from the heart of the European Union, the latest news on all things EU
                     </p>
-                    <ul className="text-xs text-gray-600 space-y-2">
-                      <li className="flex items-start gap-2">
-                        <span className="text-red-600 mt-0.5">•</span>
-                        <span>Directly from EU institutions</span>
+                    <ul className="space-y-4">
+                      <li className="flex items-start gap-3">
+                        <div className="mt-1 w-5 h-5 rounded-full bg-blue-100 flex items-center justify-center flex-shrink-0">
+                          <svg className="w-3 h-3 text-blue-600" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>
+                        </div>
+                        <span className="text-gray-700 font-medium">Directly from EU institutions</span>
                       </li>
-                      <li className="flex items-start gap-2">
-                        <span className="text-red-600 mt-0.5">•</span>
-                        <span>Latest from industry lobbyists</span>
+                      <li className="flex items-start gap-3">
+                        <div className="mt-1 w-5 h-5 rounded-full bg-blue-100 flex items-center justify-center flex-shrink-0">
+                          <svg className="w-3 h-3 text-blue-600" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>
+                        </div>
+                        <span className="text-gray-700 font-medium">Latest from industry lobbyists</span>
                       </li>
-                      <li className="flex items-start gap-2">
-                        <span className="text-red-600 mt-0.5">•</span>
-                        <span>Key legislative updates</span>
+                      <li className="flex items-start gap-3">
+                        <div className="mt-1 w-5 h-5 rounded-full bg-blue-100 flex items-center justify-center flex-shrink-0">
+                          <svg className="w-3 h-3 text-blue-600" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>
+                        </div>
+                        <span className="text-gray-700 font-medium">Key legislative updates</span>
                       </li>
                     </ul>
                   </div>
@@ -68,7 +76,7 @@ const NewslettersGridPage: React.FC = () => {
                     placeholder="Your email address"
                     className="flex-grow px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 ring-red-500 outline-none text-sm"
                   />
-                  <button className="px-6 py-3 bg-red-600 text-white font-bold text-sm rounded-lg hover:bg-red-700 transition flex-shrink-0">
+                  <button className="px-6 py-3 bg-[#EE6260] text-white font-bold text-sm rounded-lg hover:bg-[#d44947] transition flex-shrink-0">
                     Subscribe
                   </button>
                 </div>
@@ -76,9 +84,9 @@ const NewslettersGridPage: React.FC = () => {
             </div>
 
             {/* Signal Horizon Card */}
-            <div className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+            <div className="bg-[#f5e6d3] rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
               {/* Header */}
-              <div className="bg-[#1a2a44] text-white px-6 py-8 text-center">
+              <div className="bg-[#1a2a44] text-white px-6 py-5 text-center">
                 <div className="inline-flex items-center gap-2 mb-3 px-3 py-1 bg-white/10 rounded-full">
                   <svg className="w-4 h-4 text-blue-400" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
@@ -93,26 +101,34 @@ const NewslettersGridPage: React.FC = () => {
               <div className="p-6 bg-[#f5e6d3]">
                 <div className="flex items-start gap-4 mb-6">
                   <div className="flex-shrink-0">
-                    <svg className="w-12 h-12 text-[#1a2a44]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.364-6.364l-.707-.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M16.95 7.05a7 7 0 00-9.9 0m9.9 9.9a7 7 0 01-9.9 0"/>
-                    </svg>
+                    <img
+                      src={import.meta.env.BASE_URL + "images/newsletter-card-icon-2.png"}
+                      alt="Signal Horizon"
+                      className="w-16 h-auto"
+                    />
                   </div>
                   <div>
-                    <p className="text-gray-700 text-sm leading-relaxed mb-4">
+                    <p className="text-gray-700 text-xl leading-relaxed mb-8">
                       Exclusive weekly newsletter analyzing emerging trends and shifts in politics, technology, all the EU
                     </p>
-                    <ul className="text-xs text-gray-600 space-y-2">
-                      <li className="flex items-start gap-2">
-                        <span className="text-blue-600 mt-0.5">•</span>
-                        <span>Long-form geopolitical analysis</span>
+                    <ul className="space-y-4">
+                      <li className="flex items-start gap-3">
+                        <div className="mt-1 w-5 h-5 rounded-full bg-blue-100 flex items-center justify-center flex-shrink-0">
+                          <svg className="w-3 h-3 text-blue-600" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>
+                        </div>
+                        <span className="text-gray-700 font-medium">Long-form geopolitical analysis</span>
                       </li>
-                      <li className="flex items-start gap-2">
-                        <span className="text-blue-600 mt-0.5">•</span>
-                        <span>Deep dives into technology</span>
+                      <li className="flex items-start gap-3">
+                        <div className="mt-1 w-5 h-5 rounded-full bg-blue-100 flex items-center justify-center flex-shrink-0">
+                          <svg className="w-3 h-3 text-blue-600" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>
+                        </div>
+                        <span className="text-gray-700 font-medium">Deep dives into technology</span>
                       </li>
-                      <li className="flex items-start gap-2">
-                        <span className="text-blue-600 mt-0.5">•</span>
-                        <span>Cultural and societal trends</span>
+                      <li className="flex items-start gap-3">
+                        <div className="mt-1 w-5 h-5 rounded-full bg-blue-100 flex items-center justify-center flex-shrink-0">
+                          <svg className="w-3 h-3 text-blue-600" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>
+                        </div>
+                        <span className="text-gray-700 font-medium">Cultural and societal trends</span>
                       </li>
                     </ul>
                   </div>
@@ -124,7 +140,7 @@ const NewslettersGridPage: React.FC = () => {
                     placeholder="Your email address"
                     className="flex-grow px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 ring-red-500 outline-none text-sm"
                   />
-                  <button className="px-6 py-3 bg-red-600 text-white font-bold text-sm rounded-lg hover:bg-red-700 transition flex-shrink-0">
+                  <button className="px-6 py-3 bg-[#EE6260] text-white font-bold text-sm rounded-lg hover:bg-[#d44947] transition flex-shrink-0">
                     Subscribe
                   </button>
                 </div>
@@ -137,15 +153,26 @@ const NewslettersGridPage: React.FC = () => {
       {/* Decision-maker Newsletters Section */}
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4 lg:px-8">
-          <h2 className="text-3xl font-bold text-[#1a2a44] mb-8">Decision - maker Newsletters</h2>
+          <div className="flex items-center gap-3 mb-8">
+            <h2 className="text-3xl font-bold text-[#1a2a44]">Decision - maker Newsletters</h2>
+            <span className="inline-flex items-center px-3 py-1 bg-gradient-to-r from-amber-400 to-yellow-500 text-[#1a2a44] text-xs font-black uppercase tracking-wider rounded-full shadow-md">
+              Premium
+            </span>
+          </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {/* Brussels Calling Decision Maker */}
-            <div className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+            <div className="bg-[#f5e6d3] rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow relative">
+              {/* Premium Corner Ribbon */}
+              <div className="absolute top-0 right-0 overflow-hidden w-24 h-24 z-10">
+                <div className="absolute top-0 right-0 w-32 h-8 bg-gradient-to-br from-amber-400 to-yellow-500 transform rotate-45 translate-x-8 translate-y-4 shadow-lg">
+                  <span className="text-[#1a2a44] text-[9px] font-black uppercase tracking-wider flex items-center justify-center h-full">Premium</span>
+                </div>
+              </div>
               {/* Header */}
-              <div className="bg-[#1a2a44] text-white px-6 py-8 text-center">
+              <div className="bg-[#1a2a44] text-white px-6 py-5 text-center">
                 <div className="inline-flex items-center gap-2 mb-3 px-3 py-1 bg-white/10 rounded-full">
-                  <svg className="w-4 h-4 text-red-500" fill="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-4 h-4 text-[#EE6260]" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
                   </svg>
                   <span className="text-[10px] font-black uppercase tracking-wider">Daily Brief</span>
@@ -158,26 +185,34 @@ const NewslettersGridPage: React.FC = () => {
               <div className="p-6 bg-[#f5e6d3]">
                 <div className="flex items-start gap-4 mb-6">
                   <div className="flex-shrink-0">
-                    <svg className="w-12 h-12 text-[#1a2a44]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
-                    </svg>
+                    <img
+                      src={import.meta.env.BASE_URL + "images/newsletter-card-icon-1.png"}
+                      alt="Brussels Calling"
+                      className="w-16 h-auto"
+                    />
                   </div>
                   <div>
-                    <p className="text-gray-700 text-sm leading-relaxed mb-4">
+                    <p className="text-gray-700 text-xl leading-relaxed mb-8">
                       Political news, views and analysis from the heart of the European Union, the latest news on all things EU
                     </p>
-                    <ul className="text-xs text-gray-600 space-y-2">
-                      <li className="flex items-start gap-2">
-                        <span className="text-red-600 mt-0.5">•</span>
-                        <span>Executive briefings</span>
+                    <ul className="space-y-4">
+                      <li className="flex items-start gap-3">
+                        <div className="mt-1 w-5 h-5 rounded-full bg-blue-100 flex items-center justify-center flex-shrink-0">
+                          <svg className="w-3 h-3 text-blue-600" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>
+                        </div>
+                        <span className="text-gray-700 font-medium">Executive briefings</span>
                       </li>
-                      <li className="flex items-start gap-2">
-                        <span className="text-red-600 mt-0.5">•</span>
-                        <span>Policy impact analysis</span>
+                      <li className="flex items-start gap-3">
+                        <div className="mt-1 w-5 h-5 rounded-full bg-blue-100 flex items-center justify-center flex-shrink-0">
+                          <svg className="w-3 h-3 text-blue-600" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>
+                        </div>
+                        <span className="text-gray-700 font-medium">Policy impact analysis</span>
                       </li>
-                      <li className="flex items-start gap-2">
-                        <span className="text-red-600 mt-0.5">•</span>
-                        <span>Strategic insights</span>
+                      <li className="flex items-start gap-3">
+                        <div className="mt-1 w-5 h-5 rounded-full bg-blue-100 flex items-center justify-center flex-shrink-0">
+                          <svg className="w-3 h-3 text-blue-600" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>
+                        </div>
+                        <span className="text-gray-700 font-medium">Strategic insights</span>
                       </li>
                     </ul>
                   </div>
@@ -189,7 +224,7 @@ const NewslettersGridPage: React.FC = () => {
                     placeholder="Your email address"
                     className="flex-grow px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 ring-red-500 outline-none text-sm"
                   />
-                  <button className="px-6 py-3 bg-red-600 text-white font-bold text-sm rounded-lg hover:bg-red-700 transition flex-shrink-0">
+                  <button className="px-6 py-3 bg-[#EE6260] text-white font-bold text-sm rounded-lg hover:bg-[#d44947] transition flex-shrink-0">
                     Subscribe
                   </button>
                 </div>
@@ -197,9 +232,15 @@ const NewslettersGridPage: React.FC = () => {
             </div>
 
             {/* Signal Horizon Decision Maker */}
-            <div className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+            <div className="bg-[#f5e6d3] rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow relative">
+              {/* Premium Corner Ribbon */}
+              <div className="absolute top-0 right-0 overflow-hidden w-24 h-24 z-10">
+                <div className="absolute top-0 right-0 w-32 h-8 bg-gradient-to-br from-amber-400 to-yellow-500 transform rotate-45 translate-x-8 translate-y-4 shadow-lg">
+                  <span className="text-[#1a2a44] text-[9px] font-black uppercase tracking-wider flex items-center justify-center h-full">Premium</span>
+                </div>
+              </div>
               {/* Header */}
-              <div className="bg-[#1a2a44] text-white px-6 py-8 text-center">
+              <div className="bg-[#1a2a44] text-white px-6 py-5 text-center">
                 <div className="inline-flex items-center gap-2 mb-3 px-3 py-1 bg-white/10 rounded-full">
                   <svg className="w-4 h-4 text-blue-400" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
@@ -214,26 +255,34 @@ const NewslettersGridPage: React.FC = () => {
               <div className="p-6 bg-[#f5e6d3]">
                 <div className="flex items-start gap-4 mb-6">
                   <div className="flex-shrink-0">
-                    <svg className="w-12 h-12 text-[#1a2a44]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
-                    </svg>
+                    <img
+                      src={import.meta.env.BASE_URL + "images/newsletter-card-icon-2.png"}
+                      alt="Signal Horizon"
+                      className="w-16 h-auto"
+                    />
                   </div>
                   <div>
-                    <p className="text-gray-700 text-sm leading-relaxed mb-4">
+                    <p className="text-gray-700 text-xl leading-relaxed mb-8">
                       Exclusive weekly newsletter analyzing emerging trends and shifts in politics, technology, all the EU
                     </p>
-                    <ul className="text-xs text-gray-600 space-y-2">
-                      <li className="flex items-start gap-2">
-                        <span className="text-blue-600 mt-0.5">•</span>
-                        <span>Strategic foresight reports</span>
+                    <ul className="space-y-4">
+                      <li className="flex items-start gap-3">
+                        <div className="mt-1 w-5 h-5 rounded-full bg-blue-100 flex items-center justify-center flex-shrink-0">
+                          <svg className="w-3 h-3 text-blue-600" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>
+                        </div>
+                        <span className="text-gray-700 font-medium">Strategic foresight reports</span>
                       </li>
-                      <li className="flex items-start gap-2">
-                        <span className="text-blue-600 mt-0.5">•</span>
-                        <span>Market intelligence</span>
+                      <li className="flex items-start gap-3">
+                        <div className="mt-1 w-5 h-5 rounded-full bg-blue-100 flex items-center justify-center flex-shrink-0">
+                          <svg className="w-3 h-3 text-blue-600" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>
+                        </div>
+                        <span className="text-gray-700 font-medium">Market intelligence</span>
                       </li>
-                      <li className="flex items-start gap-2">
-                        <span className="text-blue-600 mt-0.5">•</span>
-                        <span>Expert commentary</span>
+                      <li className="flex items-start gap-3">
+                        <div className="mt-1 w-5 h-5 rounded-full bg-blue-100 flex items-center justify-center flex-shrink-0">
+                          <svg className="w-3 h-3 text-blue-600" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>
+                        </div>
+                        <span className="text-gray-700 font-medium">Expert commentary</span>
                       </li>
                     </ul>
                   </div>
@@ -245,7 +294,7 @@ const NewslettersGridPage: React.FC = () => {
                     placeholder="Your email address"
                     className="flex-grow px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 ring-red-500 outline-none text-sm"
                   />
-                  <button className="px-6 py-3 bg-red-600 text-white font-bold text-sm rounded-lg hover:bg-red-700 transition flex-shrink-0">
+                  <button className="px-6 py-3 bg-[#EE6260] text-white font-bold text-sm rounded-lg hover:bg-[#d44947] transition flex-shrink-0">
                     Subscribe
                   </button>
                 </div>
@@ -262,7 +311,7 @@ const NewslettersGridPage: React.FC = () => {
           <p className="text-white/70 mb-8 max-w-2xl mx-auto">
             Join thousands of readers who trust us for independent European news and analysis
           </p>
-          <button className="px-10 py-4 bg-red-600 text-white font-bold text-sm uppercase tracking-wider rounded-lg hover:bg-red-700 transition shadow-xl">
+          <button className="px-10 py-4 bg-[#EE6260] text-white font-bold text-sm uppercase tracking-wider rounded-lg hover:bg-[#d44947] transition shadow-xl">
             Subscribe Now
           </button>
         </div>

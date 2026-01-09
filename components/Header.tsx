@@ -12,9 +12,10 @@ interface HeaderProps {
   onNewslettersClick?: () => void;
   onAuthorsClick?: () => void;
   onEventsClick?: () => void;
+  onPartnerWithUsClick?: () => void;
 }
 
-const Header: React.FC<HeaderProps> = ({ onLogoClick, onSignInClick, onBecomeMemberClick, onCategoryClick, onPodcastClick, onNewslettersClick, onAuthorsClick, onEventsClick }) => {
+const Header: React.FC<HeaderProps> = ({ onLogoClick, onSignInClick, onBecomeMemberClick, onCategoryClick, onPodcastClick, onNewslettersClick, onAuthorsClick, onEventsClick, onPartnerWithUsClick }) => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [newsDropdownOpen, setNewsDropdownOpen] = useState(false);
 
@@ -35,7 +36,7 @@ const Header: React.FC<HeaderProps> = ({ onLogoClick, onSignInClick, onBecomeMem
         <div className="flex items-center gap-6">
             <button 
                 onClick={() => setMenuOpen(!menuOpen)}
-                className={`flex items-center gap-2 transition-colors ${menuOpen ? 'text-red-500' : 'hover:text-red-400'}`}
+                className={`flex items-center gap-2 transition-colors ${menuOpen ? 'text-[#EE6260]' : 'hover:text-[#EE6260]'}`}
             >
                 {menuOpen ? (
                   <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path></svg>
@@ -44,7 +45,7 @@ const Header: React.FC<HeaderProps> = ({ onLogoClick, onSignInClick, onBecomeMem
                 )}
                 <span>MENU</span>
             </button>
-            <button className="hover:text-red-400 transition">
+            <button className="hover:text-[#EE6260] transition">
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
             </button>
         </div>
@@ -60,8 +61,8 @@ const Header: React.FC<HeaderProps> = ({ onLogoClick, onSignInClick, onBecomeMem
         </div>
 
         <div className="flex items-center gap-4">
-            <button onClick={onSignInClick} className="hover:text-red-400">SIGN IN</button>
-            <button onClick={onBecomeMemberClick} className="bg-[#EE6260] px-4 py-2 hover:bg-red-700 transition">BECOME A MEMBER</button>
+            <button onClick={onSignInClick} className="hover:text-[#EE6260]">SIGN IN</button>
+            <button onClick={onBecomeMemberClick} className="bg-[#EE6260] px-4 py-2 hover:bg-[#d44947] transition">BECOME A MEMBER</button>
         </div>
       </div>
 
@@ -126,11 +127,11 @@ const Header: React.FC<HeaderProps> = ({ onLogoClick, onSignInClick, onBecomeMem
                 </div>
 
                 <button onClick={() => handleCategoryClick('News')} className="hover:text-white uppercase">News</button>
+                <button onClick={() => handleCategoryClick('Commentary')} className="hover:text-white uppercase">Opinion</button>
                 <button onClick={() => handleCategoryClick('Politics')} className="hover:text-white uppercase">Politics</button>
                 <button onClick={() => handleCategoryClick('Economy')} className="hover:text-white uppercase">Economy</button>
                 <button onClick={() => handleCategoryClick('Society')} className="hover:text-white uppercase">Society</button>
                 <button onClick={() => handleCategoryClick('World')} className="hover:text-white uppercase">World</button>
-                <button onClick={() => handleCategoryClick('Commentary')} className="hover:text-white uppercase">Opinion</button>
                 <button onClick={() => handleCategoryClick('Videos')} className="hover:text-white uppercase">Videos</button>
                 <button onClick={onEventsClick} className="hover:text-white uppercase">Events</button>
 
@@ -153,6 +154,7 @@ const Header: React.FC<HeaderProps> = ({ onLogoClick, onSignInClick, onBecomeMem
           onPodcastClick={handlePodcastClick}
           onNewslettersClick={onNewslettersClick}
           onAuthorsClick={onAuthorsClick}
+          onPartnerWithUsClick={onPartnerWithUsClick}
         />
       )}
     </header>

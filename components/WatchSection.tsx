@@ -27,10 +27,10 @@ const WatchSection: React.FC<WatchSectionProps> = ({ videos, onItemClick, onHead
 
     return (
         <div className="relative group/watch">
-            <div className="flex justify-between items-center border-b-2 border-red-600 pb-2 mb-6">
+            <div className="flex justify-between items-center border-b-2 border-[#EE6260] pb-2 mb-6">
                 <h2 className="text-xl font-bold uppercase tracking-tight flex items-center gap-2 cursor-pointer group" onClick={onHeaderClick}>
-                    <svg className="w-6 h-6 text-red-600 transition-transform group-hover:scale-110 block" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                    <span className="group-hover:text-red-600 transition-colors">Watch</span>
+                    <svg className="w-6 h-6 text-[#EE6260] transition-transform group-hover:scale-110 block" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                    <span className="group-hover:text-[#EE6260] transition-colors">Watch</span>
                 </h2>
                 <div className="flex gap-2">
                     <button
@@ -76,7 +76,7 @@ const WatchSection: React.FC<WatchSectionProps> = ({ videos, onItemClick, onHead
 
                             {/* Center Play Button Overlay */}
                             <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                                <div className="bg-red-600/0 group-hover:bg-red-600/90 rounded-full p-5 text-white scale-75 group-hover:scale-100 transition-all duration-300 opacity-0 group-hover:opacity-100">
+                                <div className="bg-[#EE6260]/0 group-hover:bg-[#EE6260]/90 rounded-full p-5 text-white scale-75 group-hover:scale-100 transition-all duration-300 opacity-0 group-hover:opacity-100">
                                     <svg className="w-8 h-8 block" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                                 </div>
                             </div>
@@ -84,7 +84,7 @@ const WatchSection: React.FC<WatchSectionProps> = ({ videos, onItemClick, onHead
                             {/* Bottom Content Area */}
                             <div className="absolute bottom-8 left-8 right-8 text-white">
                                 <div className="mb-4">
-                                    <span className="bg-red-600 text-[10px] font-bold px-2 py-0.5 rounded-sm uppercase tracking-wider">
+                                    <span className="bg-[#EE6260] text-[10px] font-bold px-2 py-0.5 rounded-sm uppercase tracking-wider">
                                         {vid.podcastSeries || 'VIDEO'}
                                     </span>
                                 </div>
@@ -92,7 +92,7 @@ const WatchSection: React.FC<WatchSectionProps> = ({ videos, onItemClick, onHead
                                     {vid.title}
                                 </h3>
                                 <div className="text-[10px] font-bold text-gray-300 uppercase tracking-widest flex items-center gap-2">
-                                    <div className="w-4 h-px bg-red-600"></div>
+                                    <div className="w-4 h-px bg-[#EE6260]"></div>
                                     <span>By {vid.author}</span>
                                 </div>
                             </div>
@@ -100,7 +100,7 @@ const WatchSection: React.FC<WatchSectionProps> = ({ videos, onItemClick, onHead
                         
                         <div className="mt-4 px-2">
                             <p className="text-[10px] text-gray-500 uppercase font-bold flex items-center gap-2">
-                                <span className="text-red-600">NEW SERIES</span>
+                                <span className="text-[#EE6260]">NEW SERIES</span>
                                 <span className="w-1 h-1 bg-gray-300 rounded-full"></span>
                                 {vid.date}
                             </p>

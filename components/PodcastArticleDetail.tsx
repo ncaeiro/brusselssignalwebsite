@@ -12,8 +12,8 @@ const PodcastArticleDetail: React.FC<PodcastArticleDetailProps> = ({ article }) 
     switch (series) {
       case 'Interference':
         return {
-          color: 'text-red-600',
-          bg: 'bg-red-600',
+          color: 'text-[#EE6260]',
+          bg: 'bg-[#EE6260]',
           hosts: 'Justin Stares & Alexandra Phillips',
           desc: 'Tackling the most controversial topics in European politics.'
         };
@@ -85,17 +85,17 @@ const PodcastArticleDetail: React.FC<PodcastArticleDetailProps> = ({ article }) 
               <div className="bg-white rounded-2xl shadow-xl p-6 md:p-8 border border-gray-100 mb-8 max-w-2xl">
                 <div className="flex flex-col gap-4">
                   <div className="flex items-center justify-between">
-                    <button className="text-gray-400 hover:text-red-600 transition">
+                    <button className="text-gray-400 hover:text-[#EE6260] transition">
                       <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M7 6v12l10-6z"/></svg>
                     </button>
                     <div className="flex items-center gap-6">
-                      <button className="text-gray-400 hover:text-red-600 transition"><svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 5V1L7 6l5 5V7c3.31 0 6 2.69 6 6s-2.69 6-6 6-6-2.69-6-6H4c0 4.42 3.58 8 8 8s8-3.58 8-8-3.58-8-8-8z"/><path d="M10 12c0-.55.45-1 1-1s1 .45 1 1v4c0 .55-.45 1-1 1s-1-.45-1-1v-4zm4 0c0-.55.45-1 1-1s1 .45 1 1v4c0 .55-.45 1-1 1s-1-.45-1-1v-4z"/></svg></button>
+                      <button className="text-gray-400 hover:text-[#EE6260] transition"><svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 5V1L7 6l5 5V7c3.31 0 6 2.69 6 6s-2.69 6-6 6-6-2.69-6-6H4c0 4.42 3.58 8 8 8s8-3.58 8-8-3.58-8-8-8z"/><path d="M10 12c0-.55.45-1 1-1s1 .45 1 1v4c0 .55-.45 1-1 1s-1-.45-1-1v-4zm4 0c0-.55.45-1 1-1s1 .45 1 1v4c0 .55-.45 1-1 1s-1-.45-1-1v-4z"/></svg></button>
                       <button className={`w-16 h-16 ${branding.bg} text-white rounded-full flex items-center justify-center shadow-lg hover:scale-105 transition-transform`}>
                         <svg className="w-8 h-8 block" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                       </button>
-                      <button className="text-gray-400 hover:text-red-600 transition"><svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 5V1l5 5-5 5V7c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6h2c0 4.42-3.58 8-8 8s-8-3.58-8-8 3.58-8 8-8z"/><path d="M10 12c0-.55.45-1 1-1s1 .45 1 1v4c0 .55-.45 1-1 1s-1-.45-1-1v-4zm4 0c0-.55.45-1 1-1s1 .45 1 1v4c0 .55-.45 1-1 1s-1-.45-1-1v-4z"/></svg></button>
+                      <button className="text-gray-400 hover:text-[#EE6260] transition"><svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 5V1l5 5-5 5V7c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6h2c0 4.42-3.58 8-8 8s-8-3.58-8-8 3.58-8 8-8z"/><path d="M10 12c0-.55.45-1 1-1s1 .45 1 1v4c0 .55-.45 1-1 1s-1-.45-1-1v-4zm4 0c0-.55.45-1 1-1s1 .45 1 1v4c0 .55-.45 1-1 1s-1-.45-1-1v-4z"/></svg></button>
                     </div>
-                    <button className="text-gray-400 hover:text-red-600 transition">
+                    <button className="text-gray-400 hover:text-[#EE6260] transition">
                       <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/></svg>
                     </button>
                   </div>

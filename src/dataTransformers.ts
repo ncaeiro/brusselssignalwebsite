@@ -61,6 +61,25 @@ function normalizeDate(date: string): string {
   return date;
 }
 
+// Helper to create a smart summary that ends at a complete word or sentence
+function createSmartSummary(text: string, maxLength: number = 200): string {
+  if (text.length <= maxLength) return text;
+
+  const excerpt = text.substring(0, maxLength);
+  const lastPeriod = excerpt.lastIndexOf('.');
+  const lastSpace = excerpt.lastIndexOf(' ');
+
+  // If we find a period in the last 50 chars, use it
+  if (lastPeriod > maxLength - 50) {
+    return excerpt.substring(0, lastPeriod + 1);
+  }
+  // Otherwise trim to last complete word
+  if (lastSpace > 0) {
+    return excerpt.substring(0, lastSpace) + '...';
+  }
+  return excerpt + '...';
+}
+
 // Transform news article to NewsItem
 export function transformNewsArticle(article: ScrapedNewsArticle, index: number): NewsItem {
   return {
@@ -70,7 +89,7 @@ export function transformNewsArticle(article: ScrapedNewsArticle, index: number)
     date: normalizeDate(article.articleDate),
     imageUrl: article.articleImage,
     author: article.author || 'Brussels Signal',
-    summary: article.articleText.substring(0, 200) + '...',
+    summary: createSmartSummary(article.articleText, 200),
     url: article.url,
     fullContent: article.articleText,
     tags: article.tags,
@@ -87,7 +106,7 @@ export function transformCommentArticle(article: ScrapedCommentArticle, index: n
     date: normalizeDate(article.articleDate),
     imageUrl: article.articleImage,
     author: article.author || 'Brussels Signal',
-    summary: article.articleText.substring(0, 200) + '...',
+    summary: createSmartSummary(article.articleText, 200),
     url: article.url,
     fullContent: article.articleText,
     tags: article.tags,
@@ -119,7 +138,7 @@ export function transformVideoArticle(article: ScrapedVideoArticle, index: numbe
     date: normalizeDate(article.headerDate),
     imageUrl: article.videoImage,
     author: article.author || 'Video',
-    summary: article.articleText.substring(0, 200) + '...',
+    summary: createSmartSummary(article.articleText, 200),
     url: article.url,
     fullContent: article.articleText,
     tags: article.tags,

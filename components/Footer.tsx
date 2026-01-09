@@ -6,9 +6,10 @@ interface FooterProps {
   onBecomeMemberClick?: () => void;
   onCategoryClick?: (category: string) => void;
   onNewslettersClick?: () => void;
+  onPartnerWithUsClick?: () => void;
 }
 
-const Footer: React.FC<FooterProps> = ({ onSignInClick, onBecomeMemberClick, onCategoryClick, onNewslettersClick }) => {
+const Footer: React.FC<FooterProps> = ({ onSignInClick, onBecomeMemberClick, onCategoryClick, onNewslettersClick, onPartnerWithUsClick }) => {
   return (
     <footer className="bg-[#1a2a44] text-white pt-16 pb-8">
       <div className="container mx-auto px-4 lg:px-8">
@@ -16,7 +17,7 @@ const Footer: React.FC<FooterProps> = ({ onSignInClick, onBecomeMemberClick, onC
         {/* Newsletter Promotional Box */}
         <div className="bg-[#24375a] p-8 flex flex-col md:flex-row items-center justify-between mb-16 rounded shadow-lg border border-white/10">
             <div className="flex items-center gap-6 mb-6 md:mb-0">
-                <div className="hidden sm:flex w-14 h-14 bg-red-600 rounded-full items-center justify-center flex-shrink-0 shadow-lg">
+                <div className="hidden sm:flex w-14 h-14 bg-[#EE6260] rounded-full items-center justify-center flex-shrink-0 shadow-lg">
                     <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
                 </div>
                 <div>
@@ -27,7 +28,7 @@ const Footer: React.FC<FooterProps> = ({ onSignInClick, onBecomeMemberClick, onC
             <div className="flex flex-wrap items-center gap-4 w-full md:w-auto">
                 <button 
                   onClick={onNewslettersClick} 
-                  className="flex-grow md:flex-none bg-red-600 px-8 py-3 text-xs font-black uppercase tracking-widest hover:bg-red-700 transition shadow-lg"
+                  className="flex-grow md:flex-none bg-[#EE6260] px-8 py-3 text-xs font-black uppercase tracking-widest hover:bg-[#d44947] transition shadow-lg"
                 >
                     SUBSCRIBE NOW
                 </button>
@@ -45,48 +46,49 @@ const Footer: React.FC<FooterProps> = ({ onSignInClick, onBecomeMemberClick, onC
             <div>
                 <h4 className="text-xs font-black uppercase tracking-widest text-gray-400 mb-6">HOT TOPICS</h4>
                 <ul className="text-sm space-y-3 font-medium">
-                    <li><button onClick={() => onCategoryClick?.('Society')} className="hover:text-red-400">Mass Migration</button></li>
-                    <li><button onClick={() => onCategoryClick?.('Society')} className="hover:text-red-400">Free Speech</button></li>
-                    <li><button onClick={() => onCategoryClick?.('Politics')} className="hover:text-red-400">Ukraine</button></li>
-                    <li><button onClick={() => onCategoryClick?.('Politics')} className="hover:text-red-400">DSA Pact</button></li>
-                    <li><button onClick={() => onCategoryClick?.('Economy')} className="hover:text-red-400">Tariffs</button></li>
+                    <li><button onClick={() => onCategoryClick?.('Society')} className="hover:text-[#EE6260]">Mass Migration</button></li>
+                    <li><button onClick={() => onCategoryClick?.('Society')} className="hover:text-[#EE6260]">Free Speech</button></li>
+                    <li><button onClick={() => onCategoryClick?.('Politics')} className="hover:text-[#EE6260]">Ukraine</button></li>
+                    <li><button onClick={() => onCategoryClick?.('Politics')} className="hover:text-[#EE6260]">DSA Pact</button></li>
+                    <li><button onClick={() => onCategoryClick?.('Economy')} className="hover:text-[#EE6260]">Tariffs</button></li>
                 </ul>
             </div>
             <div>
                 <h4 className="text-xs font-black uppercase tracking-widest text-gray-400 mb-6">CATEGORIES</h4>
                 <ul className="text-sm space-y-3 font-medium">
-                    <li><button onClick={() => onCategoryClick?.('Politics')} className="hover:text-red-400">Politics</button></li>
-                    <li><button onClick={() => onCategoryClick?.('Economy')} className="hover:text-red-400">Economy</button></li>
-                    <li><button onClick={() => onCategoryClick?.('Society')} className="hover:text-red-400">Society</button></li>
-                    <li><button onClick={() => onCategoryClick?.('Politics')} className="hover:text-red-400">World</button></li>
-                    <li><button onClick={() => onCategoryClick?.('Commentary')} className="hover:text-red-400">Opinion</button></li>
+                    <li><button onClick={() => onCategoryClick?.('Politics')} className="hover:text-[#EE6260]">Politics</button></li>
+                    <li><button onClick={() => onCategoryClick?.('Economy')} className="hover:text-[#EE6260]">Economy</button></li>
+                    <li><button onClick={() => onCategoryClick?.('Society')} className="hover:text-[#EE6260]">Society</button></li>
+                    <li><button onClick={() => onCategoryClick?.('Politics')} className="hover:text-[#EE6260]">World</button></li>
+                    <li><button onClick={() => onCategoryClick?.('Commentary')} className="hover:text-[#EE6260]">Opinion</button></li>
                 </ul>
             </div>
             <div>
                 <h4 className="text-xs font-black uppercase tracking-widest text-gray-400 mb-6">NEWSLETTERS</h4>
                 <ul className="text-sm space-y-3 font-medium">
-                    <li><button onClick={onNewslettersClick} className="hover:text-red-400">Brussels Calling</button></li>
-                    <li><button onClick={onNewslettersClick} className="hover:text-red-400">Signal Horizon</button></li>
-                    <li><button onClick={onNewslettersClick} className="hover:text-red-400">Manage My Subscriptions</button></li>
+                    <li><button onClick={onNewslettersClick} className="hover:text-[#EE6260]">Brussels Calling</button></li>
+                    <li><button onClick={onNewslettersClick} className="hover:text-[#EE6260]">Signal Horizon</button></li>
+                    <li><button onClick={onNewslettersClick} className="hover:text-[#EE6260]">Manage My Subscriptions</button></li>
                 </ul>
             </div>
             <div>
                 <h4 className="text-xs font-black uppercase tracking-widest text-gray-400 mb-6">AUTHORS</h4>
                 <ul className="text-sm space-y-3 font-medium">
-                    <li><a href="#" className="hover:text-red-400">Krzysztof Mularczyk</a></li>
-                    <li><a href="#" className="hover:text-red-400">Carl Deconinck</a></li>
-                    <li><a href="#" className="hover:text-red-400">Claire Lemaire</a></li>
-                    <li><a href="#" className="hover:text-red-400">Chris Gatttringer</a></li>
+                    <li><a href="#" className="hover:text-[#EE6260]">Krzysztof Mularczyk</a></li>
+                    <li><a href="#" className="hover:text-[#EE6260]">Carl Deconinck</a></li>
+                    <li><a href="#" className="hover:text-[#EE6260]">Claire Lemaire</a></li>
+                    <li><a href="#" className="hover:text-[#EE6260]">Chris Gatttringer</a></li>
                 </ul>
             </div>
             <div>
-                <h4 className="text-xs font-black uppercase tracking-widest text-gray-400 mb-6">OTHERS</h4>
+                <h4 className="text-xs font-black uppercase tracking-widest text-gray-400 mb-6">MORE</h4>
                 <ul className="text-sm space-y-3 font-medium">
-                    <li><button onClick={onSignInClick} className="font-bold text-white hover:text-red-400">Sign In</button></li>
-                    <li><button onClick={onBecomeMemberClick} className="font-bold text-red-500 hover:text-red-600 transition-colors">Become a Member</button></li>
-                    <li><a href="#" className="hover:text-red-400">About Us</a></li>
-                    <li><button onClick={() => onCategoryClick?.('Politics')} className="hover:text-red-400">Events</button></li>
-                    <li><a href="#" className="hover:text-red-400">Contact Us</a></li>
+                    <li><button onClick={onSignInClick} className="font-bold text-white hover:text-[#EE6260]">Sign In</button></li>
+                    <li><button onClick={onBecomeMemberClick} className="font-bold text-[#EE6260] hover:text-[#EE6260] transition-colors">Become a Member</button></li>
+                    <li><a href="#" className="hover:text-[#EE6260]">About Us</a></li>
+                    <li><button onClick={() => onCategoryClick?.('Politics')} className="hover:text-[#EE6260]">Events</button></li>
+                    <li><button onClick={onPartnerWithUsClick} className="hover:text-[#EE6260]">Partner with Us</button></li>
+                    <li><a href="#" className="hover:text-[#EE6260]">Contact Us</a></li>
                 </ul>
             </div>
         </div>

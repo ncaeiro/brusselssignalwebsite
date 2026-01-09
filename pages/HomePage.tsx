@@ -59,7 +59,7 @@ const HomePage: React.FC<HomePageProps> = ({ onNewslettersClick, onSubscriptions
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
         {/* Left: Most Read */}
         <aside className="lg:col-span-3 order-2 lg:order-1">
-          <h2 className="text-xl font-bold border-b-2 border-red-600 pb-2 mb-4">Most Read</h2>
+          <h2 className="text-xl font-bold border-b-2 border-[#EE6260] pb-2 mb-4">Most Read</h2>
           <div className="space-y-6">
             {MOST_READ.map(item => (
               <div key={item.id} className="flex gap-3 group cursor-pointer" onClick={() => navigateToArticle(item)}>
@@ -69,7 +69,7 @@ const HomePage: React.FC<HomePageProps> = ({ onNewslettersClick, onSubscriptions
                     {item.title}
                   </h3>
                   <p className="text-[10px] text-gray-500 mt-1 uppercase font-bold">
-                      <span className="text-red-600">NEWS</span> {item.date}
+                      <span className="text-[#EE6260]">NEWS</span> {item.date}
                   </p>
                 </div>
               </div>
@@ -77,14 +77,14 @@ const HomePage: React.FC<HomePageProps> = ({ onNewslettersClick, onSubscriptions
           </div>
 
           <div className="mt-12">
-              <h2 className="text-xl font-bold border-b-2 border-red-600 pb-2 mb-4">Top Videos</h2>
+              <h2 className="text-xl font-bold border-b-2 border-[#EE6260] pb-2 mb-4">Top Videos</h2>
               <div className="grid grid-cols-2 gap-3">
                    {WATCH_VIDEOS.slice(0, 4).map(video => (
                       <div key={video.id} className="relative group cursor-pointer" onClick={() => navigateToArticle(video)}>
                           <div className="relative h-24 overflow-hidden">
                               <img src={video.imageUrl} alt={video.title} className="w-full h-full object-cover transition-transform group-hover:scale-105 duration-300" />
                               <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors flex items-center justify-center">
-                                  <div className="bg-red-600 rounded-full p-1.5 text-white transform transition-transform group-hover:scale-110">
+                                  <div className="bg-[#EE6260] rounded-full p-1.5 text-white transform transition-transform group-hover:scale-110">
                                       <svg className="w-4 h-4 block" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                                   </div>
                               </div>
@@ -103,19 +103,19 @@ const HomePage: React.FC<HomePageProps> = ({ onNewslettersClick, onSubscriptions
 
         {/* Right: Commentary */}
         <aside className="lg:col-span-3 order-3">
-          <div className="flex justify-between items-center border-b-2 border-red-600 pb-2 mb-4">
+          <div className="flex justify-between items-center border-b-2 border-[#EE6260] pb-2 mb-4">
             <h2 className="text-xl font-bold">Commentary</h2>
-            <button onClick={() => { navigate('/category/commentary'); window.scrollTo(0, 0); }} className="text-[10px] font-bold text-gray-500 hover:text-red-600">VIEW ALL</button>
+            <button onClick={() => { navigate('/category/commentary'); window.scrollTo(0, 0); }} className="text-[10px] font-bold text-gray-500 hover:text-[#EE6260]">VIEW ALL</button>
           </div>
           <div className="space-y-6">
             {COMMENTARY.slice(0, 5).map(item => (
               <div key={item.id} className="flex gap-3 group cursor-pointer" onClick={() => navigateToArticle(item)}>
                 <div className="flex-grow">
-                  {item.premium && <span className="text-[10px] bg-red-600 text-white px-1 font-bold">PREMIUM</span>}
+                  {item.premium && <span className="text-[10px] bg-[#EE6260] text-white px-1 font-bold">PREMIUM</span>}
                   <p className="text-xs font-bold mt-1 uppercase">
                     <button
                       onClick={(e) => navigateToAuthor(item.author || 'Brussels Signal', e)}
-                      className="text-red-600 hover:text-red-700 transition-colors underline decoration-transparent hover:decoration-red-700"
+                      className="text-[#EE6260] hover:text-[#d44947] transition-colors underline decoration-transparent hover:decoration-red-700"
                     >
                       {item.author}
                     </button>
@@ -135,7 +135,7 @@ const HomePage: React.FC<HomePageProps> = ({ onNewslettersClick, onSubscriptions
           <div className="mt-8 bg-gray-100 p-4 border border-gray-200">
               <h3 className="font-bold text-lg mb-2">Brussels Calling</h3>
               <p className="text-xs text-gray-600 mb-4">The must-read morning briefing for anyone interested in European politics.</p>
-              <button onClick={onNewslettersClick} className="w-full bg-red-600 text-white py-2 text-sm font-bold hover:bg-red-700 transition">SUBSCRIBE NOW</button>
+              <button onClick={onNewslettersClick} className="w-full bg-[#EE6260] text-white py-2 text-sm font-bold hover:bg-[#d44947] transition">SUBSCRIBE NOW</button>
           </div>
         </aside>
       </div>
@@ -143,11 +143,11 @@ const HomePage: React.FC<HomePageProps> = ({ onNewslettersClick, onSubscriptions
       {/* Membership Top Promotion Banner (moved) */}
       <div className="mt-12 mb-10 w-full cursor-pointer group" onClick={onSubscriptionsClick}>
           <div className="relative h-24 md:h-32 bg-[#1a2a44] rounded-lg overflow-hidden shadow-lg flex items-center border border-white/5">
-            <div className="absolute inset-0 opacity-20 pointer-events-none bg-[radial-gradient(circle_at_right,_var(--tw-gradient-stops))] from-red-600 via-transparent to-transparent"></div>
+            <div className="absolute inset-0 opacity-20 pointer-events-none bg-[radial-gradient(circle_at_right,_var(--tw-gradient-stops))] from-[#EE6260] via-transparent to-transparent"></div>
             <div className="relative z-10 w-full px-6 md:px-12 flex items-center justify-between gap-4">
                 <div className="flex-grow">
                     <div className="flex items-center gap-3 mb-2">
-                        <span className="bg-red-600 text-white px-2 py-0.5 text-[9px] font-black uppercase tracking-widest rounded-sm">MEMBERSHIP</span>
+                        <span className="bg-[#EE6260] text-white px-2 py-0.5 text-[9px] font-black uppercase tracking-widest rounded-sm">MEMBERSHIP</span>
                         <span className="text-white/40 text-[9px] font-black uppercase tracking-widest hidden sm:inline">INDEPENDENT JOURNALISM</span>
                     </div>
                     <h3 className="text-white text-xl md:text-2xl lg:text-3xl font-serif font-bold leading-tight">
@@ -155,7 +155,7 @@ const HomePage: React.FC<HomePageProps> = ({ onNewslettersClick, onSubscriptions
                     </h3>
                 </div>
                 <div className="flex-shrink-0">
-                    <button className="bg-white text-[#1a2a44] px-6 py-3 font-black text-[10px] md:text-xs uppercase tracking-[0.15em] rounded hover:bg-red-600 hover:text-white transition-all transform group-hover:scale-105 shadow-xl">
+                    <button className="bg-white text-[#1a2a44] px-6 py-3 font-black text-[10px] md:text-xs uppercase tracking-[0.15em] rounded hover:bg-[#EE6260] hover:text-white transition-all transform group-hover:scale-105 shadow-xl">
                         VIEW OFFERS
                     </button>
                 </div>
@@ -195,11 +195,11 @@ const HomePage: React.FC<HomePageProps> = ({ onNewslettersClick, onSubscriptions
             />
             <div className="relative z-10 w-full px-8 flex flex-col md:flex-row items-center justify-between gap-8">
                 <div className="text-center md:text-left">
-                    <div className="inline-block px-2 py-0.5 bg-red-600 text-[10px] font-black uppercase tracking-widest text-white mb-3">Newsletter Briefing</div>
+                    <div className="inline-block px-2 py-0.5 bg-[#EE6260] text-[10px] font-black uppercase tracking-widest text-white mb-3">Newsletter Briefing</div>
                     <h3 className="text-white text-3xl md:text-4xl font-serif font-bold mb-2">The signals you need, in your inbox.</h3>
                     <p className="text-white/70 text-base font-medium">Daily briefings and weekly strategic analysis. Join 25,000+ readers today.</p>
                 </div>
-                <button className="bg-white text-[#1a2a44] px-10 py-5 font-black text-xs uppercase tracking-widest rounded shadow-xl group-hover:bg-red-600 group-hover:text-white transition-all transform group-hover:scale-105">
+                <button className="bg-white text-[#1a2a44] px-10 py-5 font-black text-xs uppercase tracking-widest rounded shadow-xl group-hover:bg-[#EE6260] group-hover:text-white transition-all transform group-hover:scale-105">
                     EXPLORE OUR NEWSLETTERS
                 </button>
             </div>

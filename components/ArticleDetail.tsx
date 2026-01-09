@@ -27,7 +27,7 @@ const ArticleDetail: React.FC<ArticleDetailProps> = ({ article }) => {
       <div className="container mx-auto px-4 md:px-6 lg:px-8 py-10 lg:py-16">
         <div className="max-w-4xl mx-auto">
           <div className="mb-6 flex items-center gap-4">
-            <span className="bg-red-600 text-white px-3 py-1 text-xs font-black uppercase tracking-widest">{article.category || 'NEWS'}</span>
+            <span className="bg-[#EE6260] text-white px-3 py-1 text-xs font-black uppercase tracking-widest">{article.category || 'NEWS'}</span>
             <span className="text-gray-400 text-xs font-bold uppercase">{article.date}</span>
           </div>
 
@@ -49,7 +49,7 @@ const ArticleDetail: React.FC<ArticleDetailProps> = ({ article }) => {
                 )}
               </div>
               <div>
-                <p className="text-xs font-black text-red-600 uppercase tracking-widest group-hover:text-red-700 transition-colors">
+                <p className="text-xs font-black text-[#EE6260] uppercase tracking-widest group-hover:text-[#d44947] transition-colors">
                   {article.author || 'Brussels Signal Staff'}
                 </p>
                 <p className="text-[10px] text-gray-500 font-bold uppercase tracking-tight">European Correspondent</p>
@@ -76,7 +76,7 @@ const ArticleDetail: React.FC<ArticleDetailProps> = ({ article }) => {
 
           <div className="prose prose-lg max-w-none leading-relaxed">
             {article.summary && (
-              <p className="text-xl md:text-2xl font-semibold text-gray-900 mb-12 leading-[1.5] first-letter:text-7xl first-letter:font-bold first-letter:text-red-600 first-letter:mr-3 first-letter:float-left first-letter:leading-[0.9] font-serif">
+              <p className="text-xl md:text-2xl font-semibold text-gray-900 mb-12 leading-[1.5] first-letter:text-7xl first-letter:font-bold first-letter:text-[#EE6260] first-letter:mr-3 first-letter:float-left first-letter:leading-[0.9] font-serif">
                 {article.summary}
               </p>
             )}
@@ -114,9 +114,9 @@ const ArticleDetail: React.FC<ArticleDetailProps> = ({ article }) => {
 
             {/* Pull Quote - Add visual interest for longer articles */}
             {article.fullContent && article.fullContent.length > 500 && (
-              <div className="my-12 py-8 px-8 border-l-4 border-red-600 bg-gray-50 rounded-r-lg">
+              <div className="my-12 py-8 px-8 border-l-4 border-[#EE6260] bg-gray-50 rounded-r-lg">
                 <blockquote className="text-2xl md:text-3xl font-serif italic text-gray-900 leading-tight">
-                  <svg className="w-10 h-10 text-red-600 mb-4 opacity-50" fill="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-10 h-10 text-[#EE6260] mb-4 opacity-50" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
                   </svg>
                   <p className="mb-4">
@@ -153,7 +153,7 @@ const ArticleDetail: React.FC<ArticleDetailProps> = ({ article }) => {
           </div>
 
           <div className="mt-16 pt-8 border-t border-gray-100 flex items-center justify-end">
-            <button className="text-xs font-black text-red-600 uppercase hover:underline">Report a correction</button>
+            <button className="text-xs font-black text-[#EE6260] uppercase hover:underline">Report a correction</button>
           </div>
         </div>
       </div>

@@ -26,8 +26,8 @@ const CategoryPage: React.FC<CategoryPageProps> = ({ categoryName, articles, onA
       <section className="bg-gray-50 border-b border-gray-200 py-12 lg:py-20">
         <div className="container mx-auto px-4 lg:px-8">
             <div className="flex items-center gap-4 mb-4">
-                <div className="w-12 h-1 bg-red-600"></div>
-                <span className="text-red-600 font-black text-xs uppercase tracking-[0.3em]">EXPLORE CONTENT</span>
+                <div className="w-12 h-1 bg-[#EE6260]"></div>
+                <span className="text-[#EE6260] font-black text-xs uppercase tracking-[0.3em]">EXPLORE CONTENT</span>
             </div>
             <h1 className="font-serif text-5xl md:text-6xl font-bold text-[#1a2a44] mb-6 tracking-tight capitalize">
                 {categoryName}
@@ -58,12 +58,12 @@ const CategoryPage: React.FC<CategoryPageProps> = ({ categoryName, articles, onA
                                 {categoryName.toLowerCase() === 'videos' && (
                                     <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors flex items-center justify-center">
                                         <div className="bg-white/90 rounded-full p-2 transform transition-transform group-hover:scale-110">
-                                            <svg className="w-5 h-5 text-red-600 block" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                                            <svg className="w-5 h-5 text-[#EE6260] block" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                                         </div>
                                     </div>
                                 )}
                                 {article.premium && (
-                                    <div className="absolute top-4 left-4 bg-red-600 text-white px-2 py-0.5 text-[9px] font-black uppercase tracking-widest rounded-sm shadow-lg">
+                                    <div className="absolute top-4 left-4 bg-[#EE6260] text-white px-2 py-0.5 text-[9px] font-black uppercase tracking-widest rounded-sm shadow-lg">
                                         PREMIUM
                                     </div>
                                 )}
@@ -73,17 +73,17 @@ const CategoryPage: React.FC<CategoryPageProps> = ({ categoryName, articles, onA
                                 <p className="text-[10px] text-gray-500 uppercase font-black tracking-widest mb-3 flex items-center gap-2">
                                     {categoryName.toLowerCase() === 'news' && article.category ? (
                                         <>
-                                            <span className="text-red-600">NEWS</span>
+                                            <span className="text-[#EE6260]">NEWS</span>
                                             <span className="w-1 h-1 bg-gray-300 rounded-full"></span>
                                             <span className="text-gray-400">{article.category.toUpperCase()}</span>
                                         </>
                                     ) : (
-                                        <span className="text-red-600">{categoryName.toUpperCase()}</span>
+                                        <span className="text-[#EE6260]">{categoryName.toUpperCase()}</span>
                                     )}
                                     <span className="w-1 h-1 bg-gray-300 rounded-full"></span>
                                     {article.date}
                                 </p>
-                                <h3 className="font-serif text-xl font-bold leading-tight mb-4 group-hover:text-red-600 transition-colors">
+                                <h3 className="font-serif text-xl font-bold leading-tight mb-4 group-hover:text-[#EE6260] transition-colors">
                                     {article.title}
                                 </h3>
                                 {article.summary && (
@@ -100,7 +100,7 @@ const CategoryPage: React.FC<CategoryPageProps> = ({ categoryName, articles, onA
                                 <span className="text-[10px] font-black text-gray-400 uppercase tracking-tight">
                                     By <button
                                         onClick={(e) => handleAuthorClick(article.author || 'Brussels Signal', e)}
-                                        className="hover:text-red-600 transition-colors underline decoration-transparent hover:decoration-red-600"
+                                        className="hover:text-[#EE6260] transition-colors underline decoration-transparent hover:decoration-red-600"
                                     >
                                         {article.author || 'Brussels Signal'}
                                     </button>

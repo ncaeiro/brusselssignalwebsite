@@ -40,7 +40,7 @@ const ReadingProgressBar: React.FC = () => {
       style={{ backdropFilter: 'blur(8px)' }}
     >
       <div
-        className="h-full bg-gradient-to-r from-red-600 to-red-500 transition-all duration-150 ease-out shadow-sm"
+        className="h-full bg-gradient-to-r from-[#EE6260] to-red-500 transition-all duration-150 ease-out shadow-sm"
         style={{ width: `${scrollProgress}%` }}
       />
     </div>

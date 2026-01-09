@@ -55,7 +55,7 @@ const NewslettersPromoPage: React.FC = () => {
                   className="w-full h-full object-cover"
                 />
                 <div className="absolute top-4 left-4">
-                  <span className="bg-red-600 text-white px-3 py-1 text-xs font-black uppercase tracking-widest rounded">
+                  <span className="bg-[#EE6260] text-white px-3 py-1 text-xs font-black uppercase tracking-widest rounded">
                     Daily
                   </span>
                 </div>
@@ -74,19 +74,19 @@ const NewslettersPromoPage: React.FC = () => {
 
                   <ul className="space-y-3 mb-8">
                     <li className="flex items-start gap-3">
-                      <svg className="w-5 h-5 text-red-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <svg className="w-5 h-5 text-[#EE6260] mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                         <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"/>
                       </svg>
                       <span className="text-gray-700 text-sm">Daily updates from EU institutions</span>
                     </li>
                     <li className="flex items-start gap-3">
-                      <svg className="w-5 h-5 text-red-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <svg className="w-5 h-5 text-[#EE6260] mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                         <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"/>
                       </svg>
                       <span className="text-gray-700 text-sm">Key legislative updates</span>
                     </li>
                     <li className="flex items-start gap-3">
-                      <svg className="w-5 h-5 text-red-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <svg className="w-5 h-5 text-[#EE6260] mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                         <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"/>
                       </svg>
                       <span className="text-gray-700 text-sm">Curated reading list</span>
@@ -110,7 +110,7 @@ const NewslettersPromoPage: React.FC = () => {
                   />
                   <button
                     type="submit"
-                    className="px-6 py-3 bg-red-600 text-white font-bold text-xs uppercase tracking-wider rounded-md hover:bg-red-700 transition-colors whitespace-nowrap"
+                    className="px-6 py-3 bg-[#EE6260] text-white font-bold text-xs uppercase tracking-wider rounded-md hover:bg-[#d44947] transition-colors whitespace-nowrap"
                   >
                     Subscribe
                   </button>
@@ -221,7 +221,7 @@ const NewslettersPromoPage: React.FC = () => {
                     className="w-full h-full object-cover"
                   />
                   <div className="absolute top-4 left-4">
-                    <span className="bg-red-600 text-white px-3 py-1 text-xs font-black uppercase tracking-widest rounded">
+                    <span className="bg-[#EE6260] text-white px-3 py-1 text-xs font-black uppercase tracking-widest rounded">
                       Daily
                     </span>
                   </div>
@@ -240,19 +240,19 @@ const NewslettersPromoPage: React.FC = () => {
 
                     <ul className="space-y-3 mb-8">
                       <li className="flex items-start gap-3">
-                        <svg className="w-5 h-5 text-red-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                        <svg className="w-5 h-5 text-[#EE6260] mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                           <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"/>
                         </svg>
                         <span className="text-gray-700 text-sm">Daily updates from EU institutions</span>
                       </li>
                       <li className="flex items-start gap-3">
-                        <svg className="w-5 h-5 text-red-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                        <svg className="w-5 h-5 text-[#EE6260] mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                           <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"/>
                         </svg>
                         <span className="text-gray-700 text-sm">Key legislative updates</span>
                       </li>
                       <li className="flex items-start gap-3">
-                        <svg className="w-5 h-5 text-red-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                        <svg className="w-5 h-5 text-[#EE6260] mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                           <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"/>
                         </svg>
                         <span className="text-gray-700 text-sm">Curated reading list</span>
@@ -276,7 +276,7 @@ const NewslettersPromoPage: React.FC = () => {
                     />
                     <button
                       type="submit"
-                      className="px-6 py-3 bg-red-600 text-white font-bold text-xs uppercase tracking-wider rounded-md hover:bg-red-700 transition-colors whitespace-nowrap"
+                      className="px-6 py-3 bg-[#EE6260] text-white font-bold text-xs uppercase tracking-wider rounded-md hover:bg-[#d44947] transition-colors whitespace-nowrap"
                     >
                       Subscribe
                     </button>
@@ -372,7 +372,7 @@ const NewslettersPromoPage: React.FC = () => {
           <div className="grid md:grid-cols-3 gap-8">
             <div className="text-center">
               <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <svg className="w-8 h-8 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-8 h-8 text-[#EE6260]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
                 </svg>
               </div>
@@ -383,7 +383,7 @@ const NewslettersPromoPage: React.FC = () => {
             </div>
             <div className="text-center">
               <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <svg className="w-8 h-8 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-8 h-8 text-[#EE6260]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
                 </svg>
               </div>
@@ -394,7 +394,7 @@ const NewslettersPromoPage: React.FC = () => {
             </div>
             <div className="text-center">
               <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <svg className="w-8 h-8 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-8 h-8 text-[#EE6260]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
                 </svg>
               </div>
@@ -423,7 +423,7 @@ const NewslettersPromoPage: React.FC = () => {
                 e.preventDefault();
                 window.scrollTo({ top: 0, behavior: 'smooth' });
               }}
-              className="px-8 py-4 bg-red-600 text-white font-bold text-xs uppercase tracking-wider rounded-md hover:bg-red-700 transition-colors"
+              className="px-8 py-4 bg-[#EE6260] text-white font-bold text-xs uppercase tracking-wider rounded-md hover:bg-[#d44947] transition-colors"
             >
               Subscribe Now
             </a>

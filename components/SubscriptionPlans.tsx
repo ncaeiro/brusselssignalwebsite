@@ -18,7 +18,7 @@ const SubscriptionPlans: React.FC<SubscriptionPlansProps> = ({ onPlanSelect }) =
       {/* Hero Header Section */}
       <section className="bg-[#1a2a44] text-white py-20 lg:py-32 relative overflow-hidden">
         {/* Abstract background elements */}
-        <div className="absolute top-0 right-0 w-1/3 h-full bg-red-600/10 skew-x-[-15deg] translate-x-1/2"></div>
+        <div className="absolute top-0 right-0 w-1/3 h-full bg-[#EE6260]/10 skew-x-[-15deg] translate-x-1/2"></div>
         <div className="absolute bottom-0 left-0 w-1/4 h-full bg-blue-500/5 skew-x-[15deg] -translate-x-1/2"></div>
         
         <div className="container mx-auto px-4 lg:px-8 relative z-10 text-center">
@@ -29,7 +29,7 @@ const SubscriptionPlans: React.FC<SubscriptionPlansProps> = ({ onPlanSelect }) =
                 Register for full access to daily news, plus explore premium reporting with a free trial.
             </p>
             <div className="flex justify-center gap-4">
-                <div className="w-16 h-1 bg-red-600"></div>
+                <div className="w-16 h-1 bg-[#EE6260]"></div>
                 <div className="w-16 h-1 bg-white/20"></div>
                 <div className="w-16 h-1 bg-white/20"></div>
             </div>
@@ -39,7 +39,7 @@ const SubscriptionPlans: React.FC<SubscriptionPlansProps> = ({ onPlanSelect }) =
       {/* Main Pitch Section */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4 lg:px-8 text-center mb-16">
-            <h2 className="text-red-600 font-black text-sm uppercase tracking-[0.3em] mb-4">More Access. More Insights. More Transparency.</h2>
+            <h2 className="text-[#EE6260] font-black text-sm uppercase tracking-[0.3em] mb-4">More Access. More Insights. More Transparency.</h2>
             <h3 className="text-4xl md:text-5xl font-bold text-[#1a2a44] mb-6 tracking-tight">Unlock a Different Brussels.</h3>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
                 Choose your plan to get unlimited premium access and support independent journalism.
@@ -62,7 +62,7 @@ const SubscriptionPlans: React.FC<SubscriptionPlansProps> = ({ onPlanSelect }) =
                     <ul className="space-y-4 mb-10 flex-grow">
                         {commonFeatures.map((f, i) => (
                             <li key={i} className="flex items-start gap-3 text-sm text-gray-700">
-                                <svg className="w-5 h-5 text-red-600 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"></path></svg>
+                                <svg className="w-5 h-5 text-[#EE6260] flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"></path></svg>
                                 {f}
                             </li>
                         ))}
@@ -76,8 +76,8 @@ const SubscriptionPlans: React.FC<SubscriptionPlansProps> = ({ onPlanSelect }) =
                 </div>
 
                 {/* Plan 2: The Insider */}
-                <div className="bg-white border-2 border-red-600 rounded-2xl p-8 flex flex-col shadow-2xl relative scale-105 z-10">
-                    <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-red-600 text-white px-6 py-1.5 text-[10px] font-black rounded-full uppercase tracking-[0.2em]">
+                <div className="bg-white border-2 border-[#EE6260] rounded-2xl p-8 flex flex-col shadow-2xl relative scale-105 z-10">
+                    <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#EE6260] text-white px-6 py-1.5 text-[10px] font-black rounded-full uppercase tracking-[0.2em]">
                         Recommended
                     </div>
                     <div className="mb-6">
@@ -85,20 +85,20 @@ const SubscriptionPlans: React.FC<SubscriptionPlansProps> = ({ onPlanSelect }) =
                         <p className="text-xs text-gray-500 font-medium h-10">Three months of unfiltered Brussels reporting</p>
                     </div>
                     <div className="flex items-baseline gap-1 mb-8">
-                        <span className="text-5xl font-black text-[#1a2a44]">12,99€</span>
+                        <span className="text-5xl font-black text-[#1a2a44]">13,99€</span>
                         <span className="text-gray-400 font-bold">/3 months</span>
                     </div>
                     <ul className="space-y-4 mb-10 flex-grow">
                         {commonFeatures.map((f, i) => (
                             <li key={i} className="flex items-start gap-3 text-sm text-gray-700 font-medium">
-                                <svg className="w-5 h-5 text-red-600 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"></path></svg>
+                                <svg className="w-5 h-5 text-[#EE6260] flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"></path></svg>
                                 {f}
                             </li>
                         ))}
                     </ul>
                     <button 
                         onClick={onPlanSelect}
-                        className="w-full py-4 bg-red-600 text-white font-black text-xs uppercase tracking-widest rounded-lg hover:bg-red-700 transition-all shadow-lg"
+                        className="w-full py-4 bg-[#EE6260] text-white font-black text-xs uppercase tracking-widest rounded-lg hover:bg-[#d44947] transition-all shadow-lg"
                     >
                         Become an insider
                     </button>
@@ -111,18 +111,18 @@ const SubscriptionPlans: React.FC<SubscriptionPlansProps> = ({ onPlanSelect }) =
                         <p className="text-xs text-gray-500 font-medium h-10">365 days of reporting that holds decision-makers accountable</p>
                     </div>
                     <div className="flex items-baseline gap-1 mb-8">
-                        <span className="text-5xl font-black text-[#1a2a44]">79€</span>
+                        <span className="text-5xl font-black text-[#1a2a44]">89€</span>
                         <span className="text-gray-400 font-bold">/year</span>
                     </div>
                     <ul className="space-y-4 mb-10 flex-grow">
                         {commonFeatures.map((f, i) => (
                             <li key={i} className="flex items-start gap-3 text-sm text-gray-700">
-                                <svg className="w-5 h-5 text-red-600 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"></path></svg>
+                                <svg className="w-5 h-5 text-[#EE6260] flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"></path></svg>
                                 {f}
                             </li>
                         ))}
-                        <li className="flex items-start gap-3 text-sm text-red-600 font-bold">
-                            <svg className="w-5 h-5 text-red-600 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"></path></svg>
+                        <li className="flex items-start gap-3 text-sm text-[#EE6260] font-bold">
+                            <svg className="w-5 h-5 text-[#EE6260] flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"></path></svg>
                             Save 35% over monthly billing
                         </li>
                     </ul>

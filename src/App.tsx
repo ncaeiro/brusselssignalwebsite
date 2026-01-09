@@ -13,6 +13,8 @@ import NewslettersPromoPage from '../pages/NewslettersPromoPage.tsx';
 import SubscriptionPlans from '../components/SubscriptionPlans.tsx';
 import AuthorsPage from '../pages/AuthorsPage.tsx';
 import EventsPage from '../pages/EventsPage.tsx';
+import PartnerWithUsPage from '../pages/PartnerWithUsPage.tsx';
+import VideosAndPodcastsPage from '../components/VideosAndPodcastsPage.tsx';
 import LoginModal from '../components/LoginModal.tsx';
 import SignUpModal from '../components/SignUpModal.tsx';
 
@@ -40,7 +42,7 @@ const AppContent: React.FC = () => {
   };
 
   const navigateToNewsletters = () => {
-    navigate('/newsletters-promo');
+    navigate('/newsletters-grid');
     window.scrollTo(0, 0);
   };
 
@@ -59,6 +61,11 @@ const AppContent: React.FC = () => {
     window.scrollTo(0, 0);
   };
 
+  const navigateToPartnerWithUs = () => {
+    navigate('/partner-with-us');
+    window.scrollTo(0, 0);
+  };
+
   return (
     <div className="min-h-screen flex flex-col relative">
       <Header
@@ -70,6 +77,7 @@ const AppContent: React.FC = () => {
         onNewslettersClick={navigateToNewsletters}
         onAuthorsClick={navigateToAuthors}
         onEventsClick={navigateToEvents}
+        onPartnerWithUsClick={navigateToPartnerWithUs}
       />
       <Ticker />
 
@@ -87,6 +95,7 @@ const AppContent: React.FC = () => {
         <Route path="/subscriptions" element={<SubscriptionPlans onPlanSelect={openSignUp} />} />
         <Route path="/authors" element={<AuthorsPage />} />
         <Route path="/events" element={<EventsPage />} />
+        <Route path="/partner-with-us" element={<PartnerWithUsPage />} />
       </Routes>
 
       <Footer
@@ -94,6 +103,7 @@ const AppContent: React.FC = () => {
         onBecomeMemberClick={navigateToSubscriptions}
         onCategoryClick={navigateToCategory}
         onNewslettersClick={navigateToNewsletters}
+        onPartnerWithUsClick={navigateToPartnerWithUs}
       />
 
       <LoginModal isOpen={isLoginModalOpen} onClose={closeLogin} onSwitchToSignUp={openSignUp} />

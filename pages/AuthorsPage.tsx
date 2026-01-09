@@ -63,7 +63,7 @@ const AuthorsPage: React.FC = () => {
   return (
     <main className="flex-grow container mx-auto px-4 md:px-6 lg:px-8 py-12">
       {/* Page Header */}
-      <div className="mb-12 border-b-2 border-red-600 pb-6">
+      <div className="mb-12 border-b-2 border-[#EE6260] pb-6">
         <h1 className="text-4xl md:text-5xl font-black text-[#1a2a44] mb-3 tracking-tight">Our Authors</h1>
         <p className="text-lg text-gray-600 max-w-3xl">
           Meet the journalists and analysts behind Brussels Signal's independent reporting on European affairs,
@@ -72,50 +72,44 @@ const AuthorsPage: React.FC = () => {
       </div>
 
       {/* Authors Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
         {AUTHORS_DATA.map((author, index) => {
           const authorPhoto = getAuthorPhoto(author.name);
-          const articleCount = getAuthorArticleCount(author.name);
 
           return (
             <div
               key={index}
               onClick={() => handleAuthorClick(author.name)}
-              className="bg-white border border-gray-200 rounded-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 group cursor-pointer"
+              className="bg-white rounded-lg p-6 hover:shadow-xl transition-shadow duration-300 group cursor-pointer text-center"
             >
-              {/* Author Image */}
-              <div className="relative h-64 overflow-hidden bg-gray-100">
+              {/* Author Image - Circular */}
+              <div className="relative w-40 h-40 mx-auto mb-4 overflow-hidden rounded-full bg-gray-100">
                 {authorPhoto ? (
                   <img
                     src={authorPhoto}
                     alt={author.name}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                   />
                 ) : (
-                  <div className="w-full h-full flex items-center justify-center bg-gray-600 text-white text-6xl font-bold">
+                  <div className="w-full h-full flex items-center justify-center bg-[#1a2a44] text-white text-5xl font-bold">
                     {author.name.charAt(0)}
                   </div>
                 )}
-                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6">
-                  <h2 className="text-2xl font-bold text-white mb-1">{author.name}</h2>
-                  <p className="text-sm text-gray-300 font-semibold">
-                    {articleCount} {articleCount === 1 ? 'article' : 'articles'}
-                  </p>
-                </div>
               </div>
 
               {/* Author Info */}
-              <div className="p-6">
-                <p className="text-gray-700 text-sm leading-relaxed mb-4">
+              <div>
+                <h2 className="text-xl font-bold text-[#1a2a44] mb-2">{author.name}</h2>
+                <p className="text-gray-600 text-sm mb-4 leading-relaxed">
                   {author.bio}
                 </p>
 
                 {/* Expertise Tags */}
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-2 justify-center">
                   {author.expertise.map((skill, idx) => (
                     <span
                       key={idx}
-                      className="bg-red-50 text-red-700 text-xs font-bold px-3 py-1 rounded-full border border-red-200"
+                      className="bg-blue-50 text-blue-700 text-xs font-semibold px-3 py-1 rounded-full"
                     >
                       {skill}
                     </span>
@@ -135,7 +129,7 @@ const AuthorsPage: React.FC = () => {
         <p className="text-gray-300 mb-6 max-w-2xl mx-auto">
           Brussels Signal is always looking for talented writers and analysts passionate about European affairs.
         </p>
-        <button className="bg-red-600 text-white px-8 py-3 font-bold text-sm uppercase tracking-wider rounded hover:bg-red-700 transition-colors">
+        <button className="bg-[#EE6260] text-white px-8 py-3 font-bold text-sm uppercase tracking-wider rounded hover:bg-[#d44947] transition-colors">
           Contact Us
         </button>
       </div>
