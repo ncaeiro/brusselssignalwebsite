@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ALL_ARTICLES } from '../src/data.ts';
-import { createAuthorSlug, getAuthorPhoto } from '../src/utils.ts';
+import { createAuthorSlug, getAuthorPhoto, getAuthorEmail } from '../src/utils.ts';
 
 const AUTHORS_DATA = [
   {
@@ -75,15 +75,18 @@ const AuthorsPage: React.FC = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
         {AUTHORS_DATA.map((author, index) => {
           const authorPhoto = getAuthorPhoto(author.name);
+          const authorEmail = getAuthorEmail(author.name);
 
           return (
             <div
               key={index}
-              onClick={() => handleAuthorClick(author.name)}
-              className="bg-white rounded-lg p-6 hover:shadow-xl transition-shadow duration-300 group cursor-pointer text-center"
+              className="bg-white rounded-lg p-6 hover:shadow-xl transition-shadow duration-300 group text-center"
             >
               {/* Author Image - Circular */}
-              <div className="relative w-40 h-40 mx-auto mb-4 overflow-hidden rounded-full bg-gray-100">
+              <div
+                onClick={() => handleAuthorClick(author.name)}
+                className="relative w-40 h-40 mx-auto mb-4 overflow-hidden rounded-full bg-gray-100 cursor-pointer"
+              >
                 {authorPhoto ? (
                   <img
                     src={authorPhoto}
@@ -99,13 +102,33 @@ const AuthorsPage: React.FC = () => {
 
               {/* Author Info */}
               <div>
-                <h2 className="text-xl font-bold text-[#1a2a44] mb-2">{author.name}</h2>
+                <h2
+                  onClick={() => handleAuthorClick(author.name)}
+                  className="text-xl font-bold text-[#1a2a44] mb-2 cursor-pointer hover:text-[#EE6260] transition-colors"
+                >
+                  {author.name}
+                </h2>
+
+                {/* Author Email */}
+                {authorEmail && (
+                  <a
+                    href={`mailto:${authorEmail}`}
+                    onClick={(e) => e.stopPropagation()}
+                    className="inline-flex items-center gap-1.5 text-sm text-gray-600 hover:text-[#EE6260] transition-colors mb-3"
+                  >
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                    </svg>
+                    <span className="underline decoration-gray-300 hover:decoration-[#EE6260]">{authorEmail}</span>
+                  </a>
+                )}
+
                 <p className="text-gray-600 text-sm mb-4 leading-relaxed">
                   {author.bio}
                 </p>
 
                 {/* Expertise Tags */}
-                <div className="flex flex-wrap gap-2 justify-center">
+                <div className="flex flex-wrap gap-2 justify-center mb-4">
                   {author.expertise.map((skill, idx) => (
                     <span
                       key={idx}
@@ -115,6 +138,14 @@ const AuthorsPage: React.FC = () => {
                     </span>
                   ))}
                 </div>
+
+                {/* View Profile Button */}
+                <button
+                  onClick={() => handleAuthorClick(author.name)}
+                  className="text-sm font-bold text-[#EE6260] hover:text-[#d44947] transition-colors uppercase tracking-wider"
+                >
+                  View Profile →
+                </button>
               </div>
             </div>
           );

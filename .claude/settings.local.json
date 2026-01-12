@@ -23,7 +23,10 @@
       "Bash(rm:*)",
       "Bash(mv:*)",
       "Bash(wc:*)",
-      "Bash(npm --prefix /Applications/MAMP/htdocs/brusselssignalwebsite run build)"
+      "Bash(npm --prefix /Applications/MAMP/htdocs/brusselssignalwebsite run build)",
+      "Bash(python3:*)",
+      "Bash(npm run dev:*)",
+      "Bash(npx tsc:*)"
     ]
   }
 }

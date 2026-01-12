@@ -17,14 +17,14 @@ interface MegaMenuProps {
 const MegaMenu: React.FC<MegaMenuProps> = ({ onClose, onCategoryClick, onPodcastClick, onNewslettersClick, onAuthorsClick, onPartnerWithUsClick }) => {
   const navigate = useNavigate();
 
-  // Get the MegaMenu videos (vm1-vm6) from WATCH_VIDEOS
-  const menuVideos = WATCH_VIDEOS.filter(v => v.id.startsWith('vm'));
+  // Get the first 6 videos from WATCH_VIDEOS (non-podcast videos)
+  const menuVideos = WATCH_VIDEOS.slice(0, 6);
 
   // Get latest news articles - mix from different categories
   const latestNews = [
     ...POLITICS.slice(0, 2),
     ...ECONOMY.slice(0, 2),
-    ...SOCIETY.slice(0, 2)
+    ...SOCIETY.slice(0, 3)
   ].slice(0, 6);
 
   const handleNewsletterNav = () => {
@@ -53,61 +53,61 @@ const MegaMenu: React.FC<MegaMenuProps> = ({ onClose, onCategoryClick, onPodcast
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 flex-grow">
             {/* Politics */}
             <div>
-              <button onClick={() => onCategoryClick?.('Politics')} className="text-[#EE6260] font-black text-sm mb-6 tracking-wider uppercase hover:underline">POLITICS</button>
+              <button onClick={() => { onCategoryClick?.('Politics'); onClose(); }} className="text-[#EE6260] font-black text-sm mb-6 tracking-wider uppercase hover:underline">POLITICS</button>
               <ul className="text-[13px] space-y-3 font-normal text-gray-200">
-                <li><button onClick={() => onCategoryClick?.('Politics')} className="hover:text-[#FFEAD5] transition-colors text-left">EU Bubble</button></li>
-                <li><button onClick={() => onCategoryClick?.('Politics')} className="hover:text-[#FFEAD5] transition-colors text-left">From the capitals</button></li>
-                <li><button onClick={() => onCategoryClick?.('Politics')} className="hover:text-[#FFEAD5] transition-colors text-left">Elections</button></li>
-                <li><button onClick={() => onCategoryClick?.('Politics')} className="hover:text-[#FFEAD5] transition-colors text-left">Corruption</button></li>
-                <li><button onClick={() => onCategoryClick?.('Politics')} className="hover:text-[#FFEAD5] transition-colors text-left">Bureaucracy</button></li>
+                <li><button onClick={() => { navigate('/category/politics/tag/eu-bubble'); onClose(); window.scrollTo(0, 0); }} className="hover:text-[#FFEAD5] transition-colors text-left">EU Bubble</button></li>
+                <li><button onClick={() => { navigate('/category/politics/tag/from-the-capitals'); onClose(); window.scrollTo(0, 0); }} className="hover:text-[#FFEAD5] transition-colors text-left">From the capitals</button></li>
+                <li><button onClick={() => { navigate('/category/politics/tag/elections'); onClose(); window.scrollTo(0, 0); }} className="hover:text-[#FFEAD5] transition-colors text-left">Elections</button></li>
+                <li><button onClick={() => { navigate('/category/politics/tag/corruption'); onClose(); window.scrollTo(0, 0); }} className="hover:text-[#FFEAD5] transition-colors text-left">Corruption</button></li>
+                <li><button onClick={() => { navigate('/category/politics/tag/bureaucracy'); onClose(); window.scrollTo(0, 0); }} className="hover:text-[#FFEAD5] transition-colors text-left">Bureaucracy</button></li>
               </ul>
             </div>
-            
+
             {/* Economy */}
             <div>
-              <button onClick={() => onCategoryClick?.('Economy')} className="text-[#EE6260] font-black text-sm mb-6 tracking-wider uppercase hover:underline">ECONOMY</button>
+              <button onClick={() => { onCategoryClick?.('Economy'); onClose(); }} className="text-[#EE6260] font-black text-sm mb-6 tracking-wider uppercase hover:underline">ECONOMY</button>
               <ul className="text-[13px] space-y-3 font-normal text-gray-200">
-                <li><button onClick={() => onCategoryClick?.('Economy')} className="hover:text-[#FFEAD5] transition-colors text-left">Finance</button></li>
-                <li><button onClick={() => onCategoryClick?.('Economy')} className="hover:text-[#FFEAD5] transition-colors text-left">Tech</button></li>
-                <li><button onClick={() => onCategoryClick?.('Economy')} className="hover:text-[#FFEAD5] transition-colors text-left">Energy & Climate</button></li>
-                <li><button onClick={() => onCategoryClick?.('Economy')} className="hover:text-[#FFEAD5] transition-colors text-left">Trade</button></li>
-                <li><button onClick={() => onCategoryClick?.('Economy')} className="hover:text-[#FFEAD5] transition-colors text-left">Industrial policy</button></li>
+                <li><button onClick={() => { navigate('/category/economy/tag/finance'); onClose(); window.scrollTo(0, 0); }} className="hover:text-[#FFEAD5] transition-colors text-left">Finance</button></li>
+                <li><button onClick={() => { navigate('/category/economy/tag/tech'); onClose(); window.scrollTo(0, 0); }} className="hover:text-[#FFEAD5] transition-colors text-left">Tech</button></li>
+                <li><button onClick={() => { navigate('/category/economy/tag/energy-climate'); onClose(); window.scrollTo(0, 0); }} className="hover:text-[#FFEAD5] transition-colors text-left">Energy & Climate</button></li>
+                <li><button onClick={() => { navigate('/category/economy/tag/trade'); onClose(); window.scrollTo(0, 0); }} className="hover:text-[#FFEAD5] transition-colors text-left">Trade</button></li>
+                <li><button onClick={() => { navigate('/category/economy/tag/industrial-policy'); onClose(); window.scrollTo(0, 0); }} className="hover:text-[#FFEAD5] transition-colors text-left">Industrial policy</button></li>
               </ul>
             </div>
 
             {/* Society */}
             <div>
-              <button onClick={() => onCategoryClick?.('Society')} className="text-[#EE6260] font-black text-sm mb-6 tracking-wider uppercase hover:underline">SOCIETY</button>
+              <button onClick={() => { onCategoryClick?.('Society'); onClose(); }} className="text-[#EE6260] font-black text-sm mb-6 tracking-wider uppercase hover:underline">SOCIETY</button>
               <ul className="text-[13px] space-y-3 font-normal text-gray-200">
-                <li><button onClick={() => onCategoryClick?.('Society')} className="hover:text-[#FFEAD5] transition-colors text-left">Free speech</button></li>
-                <li><button onClick={() => onCategoryClick?.('Society')} className="hover:text-[#FFEAD5] transition-colors text-left">Migration</button></li>
-                <li><button onClick={() => onCategoryClick?.('Society')} className="hover:text-[#FFEAD5] transition-colors text-left">Culture War</button></li>
-                <li><button onClick={() => onCategoryClick?.('Society')} className="hover:text-[#FFEAD5] transition-colors text-left">Consumer rights</button></li>
-                <li><button onClick={() => onCategoryClick?.('Society')} className="hover:text-[#FFEAD5] transition-colors text-left">Democracy</button></li>
-                <li><button onClick={() => onCategoryClick?.('Society')} className="hover:text-[#FFEAD5] transition-colors text-left">Living in Brussels</button></li>
+                <li><button onClick={() => { navigate('/category/society/tag/free-speech'); onClose(); window.scrollTo(0, 0); }} className="hover:text-[#FFEAD5] transition-colors text-left">Free speech</button></li>
+                <li><button onClick={() => { navigate('/category/society/tag/migration'); onClose(); window.scrollTo(0, 0); }} className="hover:text-[#FFEAD5] transition-colors text-left">Migration</button></li>
+                <li><button onClick={() => { navigate('/category/society/tag/culture-war'); onClose(); window.scrollTo(0, 0); }} className="hover:text-[#FFEAD5] transition-colors text-left">Culture War</button></li>
+                <li><button onClick={() => { navigate('/category/society/tag/consumer-rights'); onClose(); window.scrollTo(0, 0); }} className="hover:text-[#FFEAD5] transition-colors text-left">Consumer rights</button></li>
+                <li><button onClick={() => { navigate('/category/society/tag/democracy'); onClose(); window.scrollTo(0, 0); }} className="hover:text-[#FFEAD5] transition-colors text-left">Democracy</button></li>
+                <li><button onClick={() => { navigate('/category/society/tag/living-in-brussels'); onClose(); window.scrollTo(0, 0); }} className="hover:text-[#FFEAD5] transition-colors text-left">Living in Brussels</button></li>
               </ul>
             </div>
 
             {/* World */}
             <div>
-              <button onClick={() => onCategoryClick?.('Politics')} className="text-[#EE6260] font-black text-sm mb-6 tracking-wider uppercase hover:underline">WORLD</button>
+              <button onClick={() => { onCategoryClick?.('World'); onClose(); }} className="text-[#EE6260] font-black text-sm mb-6 tracking-wider uppercase hover:underline">WORLD</button>
               <ul className="text-[13px] space-y-3 font-normal text-gray-200">
-                <li><button onClick={() => onCategoryClick?.('Politics')} className="hover:text-[#FFEAD5] transition-colors text-left">War</button></li>
-                <li><button onClick={() => onCategoryClick?.('Politics')} className="hover:text-[#FFEAD5] transition-colors text-left">US</button></li>
-                <li><button onClick={() => onCategoryClick?.('Politics')} className="hover:text-[#FFEAD5] transition-colors text-left">China</button></li>
-                <li><button onClick={() => onCategoryClick?.('Politics')} className="hover:text-[#FFEAD5] transition-colors text-left">International institutions</button></li>
-                <li><button onClick={() => onCategoryClick?.('Politics')} className="hover:text-[#FFEAD5] transition-colors text-left">Rest of the world</button></li>
+                <li><button onClick={() => { navigate('/category/world/tag/war'); onClose(); window.scrollTo(0, 0); }} className="hover:text-[#FFEAD5] transition-colors text-left">War</button></li>
+                <li><button onClick={() => { navigate('/category/world/tag/us'); onClose(); window.scrollTo(0, 0); }} className="hover:text-[#FFEAD5] transition-colors text-left">US</button></li>
+                <li><button onClick={() => { navigate('/category/world/tag/china'); onClose(); window.scrollTo(0, 0); }} className="hover:text-[#FFEAD5] transition-colors text-left">China</button></li>
+                <li><button onClick={() => { navigate('/category/world/tag/international-institutions'); onClose(); window.scrollTo(0, 0); }} className="hover:text-[#FFEAD5] transition-colors text-left">International institutions</button></li>
+                <li><button onClick={() => { navigate('/category/world/tag/rest-of-the-world'); onClose(); window.scrollTo(0, 0); }} className="hover:text-[#FFEAD5] transition-colors text-left">Rest of the world</button></li>
               </ul>
             </div>
 
             {/* Opinion */}
             <div>
-              <button onClick={() => onCategoryClick?.('Commentary')} className="text-[#EE6260] font-black text-sm mb-6 tracking-wider uppercase hover:underline">OPINION</button>
+              <button onClick={() => { onCategoryClick?.('Commentary'); onClose(); }} className="text-[#EE6260] font-black text-sm mb-6 tracking-wider uppercase hover:underline">OPINION</button>
               <ul className="text-[13px] space-y-3 font-normal text-gray-200">
-                <li><button onClick={() => onCategoryClick?.('Commentary')} className="hover:text-[#FFEAD5] transition-colors text-left">Columns</button></li>
-                <li><button onClick={() => onCategoryClick?.('Commentary')} className="hover:text-[#FFEAD5] transition-colors text-left">Guest Analysis</button></li>
-                <li><button onClick={() => onCategoryClick?.('Commentary')} className="hover:text-[#FFEAD5] transition-colors text-left">MEPs views</button></li>
-                <li><button onClick={() => onCategoryClick?.('Commentary')} className="hover:text-[#FFEAD5] transition-colors text-left">Polls and Surveys</button></li>
+                <li><button onClick={() => { navigate('/category/commentary/tag/columns'); onClose(); window.scrollTo(0, 0); }} className="hover:text-[#FFEAD5] transition-colors text-left">Columns</button></li>
+                <li><button onClick={() => { navigate('/category/commentary/tag/guest-analysis'); onClose(); window.scrollTo(0, 0); }} className="hover:text-[#FFEAD5] transition-colors text-left">Guest Analysis</button></li>
+                <li><button onClick={() => { navigate('/category/commentary/tag/meps-views'); onClose(); window.scrollTo(0, 0); }} className="hover:text-[#FFEAD5] transition-colors text-left">MEPs views</button></li>
+                <li><button onClick={() => { navigate('/category/commentary/tag/polls-and-surveys'); onClose(); window.scrollTo(0, 0); }} className="hover:text-[#FFEAD5] transition-colors text-left">Polls and Surveys</button></li>
               </ul>
             </div>
           </div>
@@ -184,8 +184,24 @@ const MegaMenu: React.FC<MegaMenuProps> = ({ onClose, onCategoryClick, onPodcast
           <span className="bg-white text-black px-2 py-0.5 text-[10px] font-black uppercase rounded-sm">HOT TOPICS</span>
           <span className="text-[10px] text-gray-300 font-bold uppercase tracking-tight">WHAT'S DRIVING GLOBAL CONVERSATIONS.</span>
           <div className="flex flex-wrap gap-4 ml-2">
-            {['#FrenchConfidenceVote', '#FarageDeportationPlan', '#UKImmigrationProtests', '#UkraineDefenseAid', '#EUUSTradeTensions'].map(tag => (
-              <a key={tag} href="#" className="text-[11px] font-bold text-gray-200 hover:text-[#EE6260] transition-colors">{tag}</a>
+            {[
+              { tag: '#FrenchConfidenceVote', category: 'politics' },
+              { tag: '#FarageDeportationPlan', category: 'politics' },
+              { tag: '#UKImmigrationProtests', category: 'society' },
+              { tag: '#UkraineDefenseAid', category: 'politics' },
+              { tag: '#EUUSTradeTensions', category: 'economy' }
+            ].map(({ tag, category }) => (
+              <button
+                key={tag}
+                onClick={() => {
+                  navigate(`/category/${category}/tag/${encodeURIComponent(tag.replace('#', ''))}`);
+                  onClose();
+                  window.scrollTo(0, 0);
+                }}
+                className="text-[11px] font-bold text-gray-200 hover:text-[#EE6260] transition-colors cursor-pointer"
+              >
+                {tag}
+              </button>
             ))}
           </div>
         </div>

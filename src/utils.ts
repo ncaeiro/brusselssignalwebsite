@@ -31,6 +31,18 @@ const AUTHOR_PHOTOS: Record<string, string> = {
   'krzysztof mularczyk': 'krzysztof mularczyk.jpeg'
 };
 
+// Author email mapping - maps author names to their email addresses
+const AUTHOR_EMAILS: Record<string, string> = {
+  'carl deconinck': 'carl.deconinck@brusselssignal.eu',
+  'chris gattringer': 'chris.gattringer@brusselssignal.eu',
+  'chris nelson': 'chris.nelson@brusselssignal.eu',
+  'claire lemaire': 'claire.lemaire@brusselssignal.eu',
+  'kevin myers': 'kevin.myers@brusselssignal.eu',
+  'luca steinmann': 'luca.steinmann@brusselssignal.eu',
+  'rafael pinto borges': 'rafael.borges@brusselssignal.eu',
+  'krzysztof mularczyk': 'krzysztof.mularczyk@brusselssignal.eu'
+};
+
 // Function to get author photo URL
 export const getAuthorPhoto = (authorName: string): string | null => {
   const normalizedName = authorName.toLowerCase();
@@ -41,4 +53,25 @@ export const getAuthorPhoto = (authorName: string): string | null => {
   }
 
   return null;
+};
+
+// Function to get author email address
+export const getAuthorEmail = (authorName: string): string | null => {
+  const normalizedName = authorName.toLowerCase();
+  return AUTHOR_EMAILS[normalizedName] || null;
+};
+
+// Function to calculate reading time in minutes
+// Average reading speed: 225 words per minute
+export const calculateReadingTime = (text: string): number => {
+  if (!text) return 1;
+
+  // Count words (split by whitespace and filter out empty strings)
+  const words = text.trim().split(/\s+/).filter(word => word.length > 0);
+  const wordCount = words.length;
+
+  // Calculate minutes (round up to at least 1 minute)
+  const minutes = Math.ceil(wordCount / 225);
+
+  return Math.max(1, minutes);
 };

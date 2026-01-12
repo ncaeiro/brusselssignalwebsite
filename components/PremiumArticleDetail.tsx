@@ -2,8 +2,11 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { NewsItem } from '../src/types.ts';
-import { createAuthorSlug, getAuthorPhoto } from '../src/utils.ts';
+import { createAuthorSlug, getAuthorPhoto, calculateReadingTime } from '../src/utils.ts';
 import ReadingProgressBar from './ReadingProgressBar.tsx';
+import SocialShare from './SocialShare.tsx';
+import StickySocialShare from './StickySocialShare.tsx';
+import { useFavorites } from '../src/FavoritesContext.tsx';
 
 interface PremiumArticleDetailProps {
   article: NewsItem;
@@ -13,6 +16,11 @@ interface PremiumArticleDetailProps {
 const PremiumArticleDetail: React.FC<PremiumArticleDetailProps> = ({ article, onSignInClick }) => {
   const navigate = useNavigate();
   const authorPhoto = getAuthorPhoto(article.author || '');
+  const { toggleFavorite, isFavorited } = useFavorites();
+
+  // Calculate reading time based on full content and summary
+  const contentText = `${article.summary || ''} ${article.fullContent || ''}`;
+  const readingTime = calculateReadingTime(contentText);
 
   const handleAuthorClick = () => {
     if (article.author) {
@@ -21,6 +29,11 @@ const PremiumArticleDetail: React.FC<PremiumArticleDetailProps> = ({ article, on
       window.scrollTo(0, 0);
     }
   };
+
+  const handleFavoriteClick = () => {
+    toggleFavorite(article);
+  };
+
   const commonFeatures = [
     "Full access to daily news ad-free",
     "Unlimited access to premium articles",
@@ -31,6 +44,11 @@ const PremiumArticleDetail: React.FC<PremiumArticleDetailProps> = ({ article, on
   return (
     <main className="bg-white flex-grow">
       <ReadingProgressBar />
+      <StickySocialShare
+        title={article.title}
+        onFavoriteClick={handleFavoriteClick}
+        isFavorited={isFavorited(article.id)}
+      />
       {/* Premium Gradient Bar */}
       <div className="bg-gradient-to-r from-[#1a2a44] to-[#121c2d] py-1"></div>
 
@@ -45,9 +63,18 @@ const PremiumArticleDetail: React.FC<PremiumArticleDetailProps> = ({ article, on
             <span className="text-gray-400 text-[10px] font-bold uppercase tracking-widest">{article.date}</span>
           </div>
 
-          <h1 className="font-serif text-4xl md:text-6xl font-bold leading-tight mb-8 text-[#121c2d]">
+          <h1 className="font-serif text-4xl md:text-6xl font-bold leading-tight mb-4 text-[#121c2d]">
             {article.title}
           </h1>
+
+          <div className="flex items-center gap-2 mb-8">
+            <svg className="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            <span className="text-sm text-gray-500 font-medium">
+              {readingTime} {readingTime === 1 ? 'minute' : 'minutes'} read
+            </span>
+          </div>
 
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 border-y border-gray-100 py-6 mb-12">
             <div className="flex items-center gap-4 cursor-pointer group" onClick={handleAuthorClick}>
@@ -69,10 +96,13 @@ const PremiumArticleDetail: React.FC<PremiumArticleDetailProps> = ({ article, on
                 <p className="text-[10px] text-gray-500 font-bold uppercase tracking-tight">Contributing Editor</p>
               </div>
             </div>
-            
-            <div className="flex gap-3">
-               <button className="px-4 py-2 bg-[#1a2a44] text-white text-[10px] font-bold uppercase rounded-sm hover:bg-[#EE6260] transition">Save Article</button>
-               <button className="p-2 border border-gray-200 rounded-sm hover:bg-gray-50 transition"><div className="w-4 h-4 bg-gray-400/30 rounded-full"></div></button>
+
+            <div className="flex gap-3 items-center">
+               <SocialShare
+                 title={article.title}
+                 onFavoriteClick={handleFavoriteClick}
+                 isFavorited={isFavorited(article.id)}
+               />
             </div>
           </div>
 

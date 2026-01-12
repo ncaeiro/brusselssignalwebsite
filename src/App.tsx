@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { BrowserRouter, Routes, Route, useNavigate } from 'react-router-dom';
+import { FavoritesProvider } from './FavoritesContext.tsx';
 import Header from '../components/Header.tsx';
 import Ticker from '../components/Ticker.tsx';
 import Footer from '../components/Footer.tsx';
@@ -14,7 +15,11 @@ import SubscriptionPlans from '../components/SubscriptionPlans.tsx';
 import AuthorsPage from '../pages/AuthorsPage.tsx';
 import EventsPage from '../pages/EventsPage.tsx';
 import PartnerWithUsPage from '../pages/PartnerWithUsPage.tsx';
+import FavoritesPage from '../pages/FavoritesPage.tsx';
+import UserProfilePage from '../pages/UserProfilePage.tsx';
+import SiteArchitecturePage from '../pages/SiteArchitecturePage.tsx';
 import VideosAndPodcastsPage from '../components/VideosAndPodcastsPage.tsx';
+import FilteredVideosAndPodcastsPage from '../components/FilteredVideosAndPodcastsPage.tsx';
 import LoginModal from '../components/LoginModal.tsx';
 import SignUpModal from '../components/SignUpModal.tsx';
 
@@ -87,6 +92,8 @@ const AppContent: React.FC = () => {
         <Route path="/premium/:slug" element={<ArticlePage type="premium" onSignInClick={openLogin} />} />
         <Route path="/video/:slug" element={<ArticlePage type="video" onSignInClick={openLogin} />} />
         <Route path="/podcast/:slug" element={<ArticlePage type="podcast" onSignInClick={openLogin} />} />
+        <Route path="/category/videos-filtered" element={<CategoryPageWrapper useFilteredVideos={true} />} />
+        <Route path="/category/:category/tag/:tag" element={<CategoryPageWrapper />} />
         <Route path="/category/:category" element={<CategoryPageWrapper />} />
         <Route path="/author/:authorSlug" element={<AuthorPageWrapper />} />
         <Route path="/newsletters" element={<NewsletterPage />} />
@@ -96,6 +103,9 @@ const AppContent: React.FC = () => {
         <Route path="/authors" element={<AuthorsPage />} />
         <Route path="/events" element={<EventsPage />} />
         <Route path="/partner-with-us" element={<PartnerWithUsPage />} />
+        <Route path="/favorites" element={<FavoritesPage />} />
+        <Route path="/profile" element={<UserProfilePage />} />
+        <Route path="/site-architecture" element={<SiteArchitecturePage />} />
       </Routes>
 
       <Footer
@@ -115,7 +125,9 @@ const AppContent: React.FC = () => {
 const App: React.FC = () => {
   return (
     <BrowserRouter basename="/brusselssignal/website">
-      <AppContent />
+      <FavoritesProvider>
+        <AppContent />
+      </FavoritesProvider>
     </BrowserRouter>
   );
 };

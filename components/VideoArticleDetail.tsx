@@ -4,6 +4,9 @@ import { useNavigate } from 'react-router-dom';
 import { NewsItem, VideoItem } from '../src/types.ts';
 import { createAuthorSlug, getAuthorPhoto } from '../src/utils.ts';
 import ReadingProgressBar from './ReadingProgressBar.tsx';
+import SocialShare from './SocialShare.tsx';
+import StickySocialShare from './StickySocialShare.tsx';
+import { useFavorites } from '../src/FavoritesContext.tsx';
 
 interface VideoArticleDetailProps {
   article: VideoItem;
@@ -13,6 +16,7 @@ interface VideoArticleDetailProps {
 const VideoArticleDetail: React.FC<VideoArticleDetailProps> = ({ article, onRelatedVideoClick }) => {
   const navigate = useNavigate();
   const authorPhoto = getAuthorPhoto(article.author || '');
+  const { toggleFavorite, isFavorited } = useFavorites();
 
   const handleAuthorClick = () => {
     if (article.author) {
@@ -21,9 +25,19 @@ const VideoArticleDetail: React.FC<VideoArticleDetailProps> = ({ article, onRela
       window.scrollTo(0, 0);
     }
   };
+
+  const handleFavoriteClick = () => {
+    toggleFavorite(article);
+  };
+
   return (
     <main className="flex-grow bg-white">
       <ReadingProgressBar />
+      <StickySocialShare
+        title={article.title}
+        onFavoriteClick={handleFavoriteClick}
+        isFavorited={isFavorited(article.id)}
+      />
       {/* Video Hero Section */}
       <section className="bg-[#0a111a] pt-6 pb-12 lg:pb-20">
         <div className="container mx-auto px-4 lg:px-8">
@@ -134,13 +148,13 @@ const VideoArticleDetail: React.FC<VideoArticleDetailProps> = ({ article, onRela
               </div>
               
               {/* Action Bar */}
-              <div className="mt-12 pt-8 border-t border-gray-100 flex items-center justify-between">
-                <div className="flex gap-4">
-                  <button className="flex items-center gap-2 px-4 py-2 bg-[#1a2a44] text-white text-[10px] font-bold uppercase rounded-sm hover:bg-[#EE6260] transition">
-                    <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
-                    Save for Later
-                  </button>
-                  <button className="px-4 py-2 border border-gray-200 text-[#1a2a44] text-[10px] font-bold uppercase rounded-sm hover:bg-gray-50 transition">Share Video</button>
+              <div className="mt-12 pt-8 border-t border-gray-100 flex items-center justify-between flex-wrap gap-4">
+                <div className="flex gap-4 items-center">
+                  <SocialShare
+                    title={article.title}
+                    onFavoriteClick={handleFavoriteClick}
+                    isFavorited={isFavorited(article.id)}
+                  />
                 </div>
               </div>
             </div>

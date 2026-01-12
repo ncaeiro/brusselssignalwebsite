@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { NewsItem } from '../src/types.ts';
-import { getAuthorPhoto } from '../src/utils.ts';
+import { getAuthorPhoto, getAuthorEmail } from '../src/utils.ts';
 
 interface AuthorPageProps {
   authorName: string;
@@ -19,6 +19,7 @@ const AuthorPage: React.FC<AuthorPageProps> = ({ authorName, articles, onArticle
 
   // Get author photo or use initial as fallback
   const authorPhoto = getAuthorPhoto(authorName);
+  const authorEmail = getAuthorEmail(authorName);
   const authorInitial = authorName.charAt(0).toUpperCase();
 
   // Determine author's role/title based on content
@@ -78,13 +79,19 @@ const AuthorPage: React.FC<AuthorPageProps> = ({ authorName, articles, onArticle
               <p className="text-white/80 text-base leading-relaxed max-w-2xl mb-4">
                 {getAuthorBio()}
               </p>
-              {/* Contact Email Button */}
-              <button className="inline-flex items-center gap-2 px-4 py-2 bg-[#EE6260] text-white text-sm font-bold rounded hover:bg-[#d44947] transition-colors">
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
-                </svg>
-                Contact
-              </button>
+
+              {/* Contact Button */}
+              {authorEmail && (
+                <a
+                  href={`mailto:${authorEmail}`}
+                  className="inline-flex items-center gap-2 px-4 py-2 bg-[#EE6260] text-white text-sm font-bold rounded hover:bg-[#d44947] transition-colors"
+                >
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                  </svg>
+                  Contact
+                </a>
+              )}
             </div>
           </div>
         </div>

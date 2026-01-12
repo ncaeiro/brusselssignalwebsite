@@ -2,7 +2,7 @@
 export interface NewsItem {
   id: string;
   title: string;
-  category?: string;
+  category?: 'Politics' | 'Economy' | 'Society' | 'World' | 'Commentary' | 'Photo Stories' | 'Videos' | 'News' | string;
   date: string;
   imageUrl: string;
   author?: string;

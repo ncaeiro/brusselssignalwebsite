@@ -1,6 +1,7 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import MegaMenu from './MegaMenu.tsx';
+import SearchModal from './SearchModal.tsx';
 import { NewsItem } from '../src/types.ts';
 
 interface HeaderProps {
@@ -18,6 +19,7 @@ interface HeaderProps {
 const Header: React.FC<HeaderProps> = ({ onLogoClick, onSignInClick, onBecomeMemberClick, onCategoryClick, onPodcastClick, onNewslettersClick, onAuthorsClick, onEventsClick, onPartnerWithUsClick }) => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [newsDropdownOpen, setNewsDropdownOpen] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
 
   const handleCategoryClick = (cat: string) => {
     onCategoryClick?.(cat);
@@ -28,6 +30,25 @@ const Header: React.FC<HeaderProps> = ({ onLogoClick, onSignInClick, onBecomeMem
     onPodcastClick?.(article);
     setMenuOpen(false);
   };
+
+  const handleHotTopicClick = (category: string, tag: string) => {
+    if (typeof window !== 'undefined') {
+      window.location.href = `/brusselssignal/website/category/${category}/tag/${encodeURIComponent(tag)}`;
+    }
+    setNewsDropdownOpen(false);
+  };
+
+  // Handle ESC key to close search modal
+  useEffect(() => {
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && searchOpen) {
+        setSearchOpen(false);
+      }
+    };
+
+    window.addEventListener('keydown', handleEscape);
+    return () => window.removeEventListener('keydown', handleEscape);
+  }, [searchOpen]);
 
   return (
     <header className="bg-[#1a2a44] text-white relative z-50">
@@ -45,7 +66,11 @@ const Header: React.FC<HeaderProps> = ({ onLogoClick, onSignInClick, onBecomeMem
                 )}
                 <span>MENU</span>
             </button>
-            <button className="hover:text-[#EE6260] transition">
+            <button
+                onClick={() => setSearchOpen(true)}
+                className="hover:text-[#EE6260] transition"
+                aria-label="Search"
+            >
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
             </button>
         </div>
@@ -116,11 +141,11 @@ const Header: React.FC<HeaderProps> = ({ onLogoClick, onSignInClick, onBecomeMem
                       onMouseLeave={() => setNewsDropdownOpen(false)}
                     >
                       <div className="space-y-2">
-                        <button onClick={() => { handleCategoryClick('Society'); setNewsDropdownOpen(false); }} className="block hover:text-white text-gray-300 text-left w-full text-[12px] font-normal">Mass Migration</button>
-                        <button onClick={() => { handleCategoryClick('Society'); setNewsDropdownOpen(false); }} className="block hover:text-white text-gray-300 text-left w-full text-[12px] font-normal">Free Speech</button>
-                        <button onClick={() => { handleCategoryClick('Politics'); setNewsDropdownOpen(false); }} className="block hover:text-white text-gray-300 text-left w-full text-[12px] font-normal">Ukraine</button>
-                        <button onClick={() => { handleCategoryClick('Politics'); setNewsDropdownOpen(false); }} className="block hover:text-white text-gray-300 text-left w-full text-[12px] font-normal">DSA Pact</button>
-                        <button onClick={() => { handleCategoryClick('Economy'); setNewsDropdownOpen(false); }} className="block hover:text-white text-gray-300 text-left w-full text-[12px] font-normal">Tariffs</button>
+                        <button onClick={() => handleHotTopicClick('society', 'migration')} className="block hover:text-white text-gray-300 text-left w-full text-[12px] font-normal">Mass Migration</button>
+                        <button onClick={() => handleHotTopicClick('society', 'free-speech')} className="block hover:text-white text-gray-300 text-left w-full text-[12px] font-normal">Free Speech</button>
+                        <button onClick={() => handleHotTopicClick('politics', 'ukraine')} className="block hover:text-white text-gray-300 text-left w-full text-[12px] font-normal">Ukraine</button>
+                        <button onClick={() => handleHotTopicClick('politics', 'dsa')} className="block hover:text-white text-gray-300 text-left w-full text-[12px] font-normal">DSA Pact</button>
+                        <button onClick={() => handleHotTopicClick('economy', 'tariffs')} className="block hover:text-white text-gray-300 text-left w-full text-[12px] font-normal">Tariffs</button>
                       </div>
                     </div>
                   )}
@@ -157,6 +182,12 @@ const Header: React.FC<HeaderProps> = ({ onLogoClick, onSignInClick, onBecomeMem
           onPartnerWithUsClick={onPartnerWithUsClick}
         />
       )}
+
+      {/* Search Modal */}
+      <SearchModal
+        isOpen={searchOpen}
+        onClose={() => setSearchOpen(false)}
+      />
     </header>
   );
 };

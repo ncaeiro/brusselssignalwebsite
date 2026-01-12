@@ -40,6 +40,7 @@ export const COMMENTARY: NewsItem[] = commentArticles;
 export const POLITICS: NewsItem[] = categorized.politics;
 export const ECONOMY: NewsItem[] = categorized.economy;
 export const SOCIETY: NewsItem[] = categorized.society;
+export const WORLD: NewsItem[] = categorized.world;
 export const PHOTO_STORIES: NewsItem[] = categorized.photoStories;
 
 // Podcast collections - filtered from video articles
@@ -55,32 +56,8 @@ export const HAMMER_TIME_PODCASTS: NewsItem[] = videoArticles.filter(
   video => video.podcastSeries === 'Hammer Time'
 );
 
-// Video content - all video articles with smart ID assignment
-// Assign vm1-vm6 to podcasts (for menu), vf1-vf5 to regular videos (for feed)
-export const WATCH_VIDEOS: VideoItem[] = (() => {
-  const allPodcasts = [...INTERFERENCE_PODCASTS, ...HORIZON_PODCASTS, ...HAMMER_TIME_PODCASTS];
-  const regularVideos = videoArticles.filter(v => !v.podcastSeries);
-
-  // Assign vm1-vm6 to first 6 podcasts
-  const podcastsWithMenuIds = allPodcasts.slice(0, 6).map((podcast, index) => ({
-    ...podcast,
-    id: `vm${index + 1}`
-  }));
-
-  // Assign vf1-vf5 to first 5 regular videos
-  const videosWithFeedIds = regularVideos.slice(0, 5).map((video, index) => ({
-    ...video,
-    id: `vf${index + 1}`
-  }));
-
-  // Combine: menu podcasts, feed videos, remaining podcasts, remaining videos
-  return [
-    ...podcastsWithMenuIds,
-    ...videosWithFeedIds,
-    ...allPodcasts.slice(6),
-    ...regularVideos.slice(5)
-  ];
-})();
+// Video content - ONLY regular videos (no podcasts)
+export const WATCH_VIDEOS: VideoItem[] = videoArticles.filter(v => !v.podcastSeries);
 
 // All articles combined for search/navigation
 export const ALL_ARTICLES: NewsItem[] = [

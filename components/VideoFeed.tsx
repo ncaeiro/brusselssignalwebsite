@@ -13,8 +13,8 @@ const VideoFeed: React.FC<VideoFeedProps> = ({ onItemClick }) => {
     const navigate = useNavigate();
     const scrollRef = useRef<HTMLDivElement>(null);
 
-    // Get the VideoFeed videos (vf1-vf5) from WATCH_VIDEOS
-    const videos = WATCH_VIDEOS.filter(v => v.id.startsWith('vf'));
+    // Get the first 5 videos from WATCH_VIDEOS for the carousel
+    const videos = WATCH_VIDEOS.slice(0, 5);
 
     const scroll = (direction: 'left' | 'right') => {
         if (scrollRef.current) {

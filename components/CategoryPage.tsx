@@ -8,9 +8,10 @@ interface CategoryPageProps {
   categoryName: string;
   articles: NewsItem[];
   onArticleClick: (article: NewsItem) => void;
+  activeTag?: string;
 }
 
-const CategoryPage: React.FC<CategoryPageProps> = ({ categoryName, articles, onArticleClick }) => {
+const CategoryPage: React.FC<CategoryPageProps> = ({ categoryName, articles, onArticleClick, activeTag }) => {
   const navigate = useNavigate();
 
   const handleAuthorClick = (authorName: string, e: React.MouseEvent) => {
@@ -23,17 +24,51 @@ const CategoryPage: React.FC<CategoryPageProps> = ({ categoryName, articles, onA
   return (
     <main className="flex-grow bg-white">
       {/* Category Header */}
-      <section className="bg-gray-50 border-b border-gray-200 py-12 lg:py-20">
+      <section className="bg-gray-50 border-b border-gray-200 py-6 lg:py-10">
         <div className="container mx-auto px-4 lg:px-8">
-            <div className="flex items-center gap-4 mb-4">
+            <div className="flex items-center gap-4 mb-3">
                 <div className="w-12 h-1 bg-[#EE6260]"></div>
                 <span className="text-[#EE6260] font-black text-xs uppercase tracking-[0.3em]">EXPLORE CONTENT</span>
             </div>
-            <h1 className="font-serif text-5xl md:text-6xl font-bold text-[#1a2a44] mb-6 tracking-tight capitalize">
-                {categoryName}
+
+            {/* Breadcrumb Navigation */}
+            {activeTag && (
+              <div className="mb-4">
+                <nav className="flex items-center gap-2 text-sm">
+                  <button
+                    onClick={() => navigate(`/category/${categoryName.toLowerCase()}`)}
+                    className="text-gray-600 hover:text-[#EE6260] font-bold uppercase tracking-wide transition-colors"
+                  >
+                    {categoryName}
+                  </button>
+                  <svg className="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
+                  </svg>
+                  <span className="text-[#EE6260] font-bold uppercase tracking-wide">
+                    {activeTag.replace(/^#/, '').replace(/-/g, ' ')}
+                  </span>
+                </nav>
+              </div>
+            )}
+
+            <h1 className="font-serif text-4xl md:text-5xl font-bold text-[#1a2a44] mb-4 tracking-tight capitalize">
+                {activeTag ? activeTag.replace(/^#/, '').replace(/-/g, ' ') : categoryName}
             </h1>
+            {activeTag && (
+              <div className="mb-3">
+                <span className="inline-flex items-center gap-2 px-4 py-2 bg-[#EE6260] text-white text-sm font-black uppercase tracking-wider rounded-sm">
+                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M9.243 3.03a1 1 0 01.727 1.213L9.53 6h2.94l.56-2.243a1 1 0 111.94.486L14.53 6H17a1 1 0 110 2h-2.97l-1 4H15a1 1 0 110 2h-2.47l-.56 2.242a1 1 0 11-1.94-.485L10.47 14H7.53l-.56 2.242a1 1 0 11-1.94-.485L5.47 14H3a1 1 0 110-2h2.97l1-4H5a1 1 0 110-2h2.47l.56-2.243a1 1 0 011.213-.727zM9.03 8l-1 4h2.938l1-4H9.031z" clipRule="evenodd"/>
+                  </svg>
+                  {activeTag.replace(/^#/, '').replace(/-/g, ' ')}
+                </span>
+              </div>
+            )}
             <p className="text-lg text-gray-500 max-w-2xl leading-relaxed">
-                Stay informed with our latest reporting and in-depth analysis on {categoryName.toLowerCase()}, bringing you the signals that matter in a complex European landscape.
+                {activeTag
+                  ? `Showing ${categoryName.toLowerCase()} articles tagged with "${activeTag.replace(/^#/, '').replace(/-/g, ' ')}"`
+                  : `Stay informed with our latest reporting and in-depth analysis on ${categoryName.toLowerCase()}, bringing you the signals that matter in a complex European landscape.`
+                }
             </p>
         </div>
       </section>

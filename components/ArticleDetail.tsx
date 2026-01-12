@@ -2,8 +2,11 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { NewsItem } from '../src/types.ts';
-import { createAuthorSlug, getAuthorPhoto } from '../src/utils.ts';
+import { createAuthorSlug, getAuthorPhoto, calculateReadingTime } from '../src/utils.ts';
 import ReadingProgressBar from './ReadingProgressBar.tsx';
+import SocialShare from './SocialShare.tsx';
+import StickySocialShare from './StickySocialShare.tsx';
+import { useFavorites } from '../src/FavoritesContext.tsx';
 
 interface ArticleDetailProps {
   article: NewsItem;
@@ -12,6 +15,11 @@ interface ArticleDetailProps {
 const ArticleDetail: React.FC<ArticleDetailProps> = ({ article }) => {
   const navigate = useNavigate();
   const authorPhoto = getAuthorPhoto(article.author || '');
+  const { toggleFavorite, isFavorited } = useFavorites();
+
+  // Calculate reading time based on full content and summary
+  const contentText = `${article.summary || ''} ${article.fullContent || ''}`;
+  const readingTime = calculateReadingTime(contentText);
 
   const handleAuthorClick = () => {
     if (article.author) {
@@ -20,9 +28,19 @@ const ArticleDetail: React.FC<ArticleDetailProps> = ({ article }) => {
       window.scrollTo(0, 0);
     }
   };
+
+  const handleFavoriteClick = () => {
+    toggleFavorite(article);
+  };
+
   return (
     <main className="bg-white flex-grow">
       <ReadingProgressBar />
+      <StickySocialShare
+        title={article.title}
+        onFavoriteClick={handleFavoriteClick}
+        isFavorited={isFavorited(article.id)}
+      />
       {/* Article Header */}
       <div className="container mx-auto px-4 md:px-6 lg:px-8 py-10 lg:py-16">
         <div className="max-w-4xl mx-auto">
@@ -31,9 +49,18 @@ const ArticleDetail: React.FC<ArticleDetailProps> = ({ article }) => {
             <span className="text-gray-400 text-xs font-bold uppercase">{article.date}</span>
           </div>
 
-          <h1 className="font-serif text-4xl md:text-6xl lg:text-7xl font-bold leading-tight mb-8">
+          <h1 className="font-serif text-4xl md:text-6xl lg:text-7xl font-bold leading-tight mb-4">
             {article.title}
           </h1>
+
+          <div className="flex items-center gap-2 mb-8">
+            <svg className="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            <span className="text-sm text-gray-500 font-medium">
+              {readingTime} {readingTime === 1 ? 'minute' : 'minutes'} read
+            </span>
+          </div>
 
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 border-y border-gray-100 py-6 mb-12">
             <div className="flex items-center gap-4 cursor-pointer group" onClick={handleAuthorClick}>
@@ -55,12 +82,12 @@ const ArticleDetail: React.FC<ArticleDetailProps> = ({ article }) => {
                 <p className="text-[10px] text-gray-500 font-bold uppercase tracking-tight">European Correspondent</p>
               </div>
             </div>
-            
-            <div className="flex gap-4">
-              <button className="p-2 bg-gray-50 rounded-full hover:bg-gray-100 transition"><div className="w-5 h-5 bg-blue-600/20 rounded-sm"></div></button>
-              <button className="p-2 bg-gray-50 rounded-full hover:bg-gray-100 transition"><div className="w-5 h-5 bg-sky-400/20 rounded-sm"></div></button>
-              <button className="p-2 bg-gray-50 rounded-full hover:bg-gray-100 transition"><div className="w-5 h-5 bg-gray-400/20 rounded-sm"></div></button>
-            </div>
+
+            <SocialShare
+              title={article.title}
+              onFavoriteClick={handleFavoriteClick}
+              isFavorited={isFavorited(article.id)}
+            />
           </div>
 
           <figure className="mb-12">

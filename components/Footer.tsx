@@ -1,5 +1,6 @@
 
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 interface FooterProps {
   onSignInClick?: () => void;
@@ -10,6 +11,7 @@ interface FooterProps {
 }
 
 const Footer: React.FC<FooterProps> = ({ onSignInClick, onBecomeMemberClick, onCategoryClick, onNewslettersClick, onPartnerWithUsClick }) => {
+  const navigate = useNavigate();
   return (
     <footer className="bg-[#1a2a44] text-white pt-16 pb-8">
       <div className="container mx-auto px-4 lg:px-8">
@@ -131,6 +133,7 @@ const Footer: React.FC<FooterProps> = ({ onSignInClick, onBecomeMemberClick, onC
                 <a href="#" className="hover:text-white">Subscription Terms & Conditions</a>
                 <a href="#" className="hover:text-white">Corrections & Updates</a>
                 <a href="#" className="hover:text-white">FAQs</a>
+                <button onClick={() => navigate('/site-architecture')} className="hover:text-white">Site Architecture</button>
             </div>
             <p className="text-[10px] text-gray-500">© 2025 REMEDIA EUROPE</p>
         </div>

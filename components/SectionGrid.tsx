@@ -27,7 +27,7 @@ const SectionGrid: React.FC<SectionGridProps> = ({ title, items, onItemClick, on
           <div key={item.id} className="flex gap-4 group cursor-pointer" onClick={() => onItemClick?.(item)}>
             <img src={item.imageUrl} alt={item.title} className="w-28 h-20 object-cover flex-shrink-0" />
             <div>
-              <h3 className="text-[1.2rem] leading-[1] text-[#111827] group-hover:text-[#1a2a44] transition-colors">
+              <h3 className="text-[1.2rem] leading-[1] text-[#111827] group-hover:text-[#1a2a44] transition-colors underline">
                 {item.title}
               </h3>
               <p className="text-[10px] text-gray-500 mt-2 uppercase font-bold">
