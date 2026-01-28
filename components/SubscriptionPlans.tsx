@@ -1,37 +1,63 @@
 
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 interface SubscriptionPlansProps {
   onPlanSelect: () => void;
 }
 
 const SubscriptionPlans: React.FC<SubscriptionPlansProps> = ({ onPlanSelect }) => {
+  const navigate = useNavigate();
+  const [email, setEmail] = React.useState('');
+
   const commonFeatures = [
-    "Full access to daily news ad-free",
-    "Unlimited access to premium articles",
-    "Brussels Calling newsletter and premium newsletter",
-    "Full commenting access on all articles"
+    "Unlimited access to Europe-focused reporting, analysis, and commentary",
+    "Brussels Calling and premium newsletters",
+    "Priority access to select events and discussions",
+    "Commenting ability on articles"
   ];
 
   return (
     <main className="flex-grow bg-[#f8fafc]">
       {/* Hero Header Section */}
-      <section className="bg-[#1a2a44] text-white py-20 lg:py-32 relative overflow-hidden">
+      <section className="bg-[#1a2a44] text-white py-8 lg:py-12 relative overflow-hidden">
         {/* Abstract background elements */}
         <div className="absolute top-0 right-0 w-1/3 h-full bg-[#EE6260]/10 skew-x-[-15deg] translate-x-1/2"></div>
         <div className="absolute bottom-0 left-0 w-1/4 h-full bg-blue-500/5 skew-x-[15deg] -translate-x-1/2"></div>
-        
+
         <div className="container mx-auto px-4 lg:px-8 relative z-10 text-center">
-            <h1 className="font-serif text-4xl md:text-6xl lg:text-7xl font-bold mb-8 leading-tight max-w-5xl mx-auto">
-                A Different Brussels Story Starts Here
+            <h1 className="font-serif text-3xl md:text-5xl lg:text-6xl font-bold mb-4 leading-tight max-w-5xl mx-auto">
+                A Different Europe Story Starts Here
             </h1>
-            <p className="text-lg md:text-2xl text-gray-300 max-w-3xl mx-auto mb-12 font-medium">
-                Register for full access to daily news, plus explore premium reporting with a free trial.
+            <p className="text-base md:text-xl text-gray-300 mx-auto mb-8 font-medium whitespace-nowrap">
+                Register to read Europe differently. Get full access to daily reporting and unlock access to our premium content - free for a limited time.
             </p>
-            <div className="flex justify-center gap-4">
-                <div className="w-16 h-1 bg-[#EE6260]"></div>
-                <div className="w-16 h-1 bg-white/20"></div>
-                <div className="w-16 h-1 bg-white/20"></div>
+
+            {/* Email Registration Section */}
+            <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 md:p-8 max-w-2xl mx-auto border border-white/20">
+                <span className="inline-block bg-[#EE6260] text-white font-black text-xs uppercase tracking-[0.2em] px-4 py-1.5 mb-4">Join Us</span>
+                <h2 className="text-lg md:text-xl font-bold mb-2 text-white">
+                    Create Your Free Account
+                </h2>
+                <div className="flex flex-col sm:flex-row gap-3">
+                    <input
+                        type="email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        placeholder="Enter your email address"
+                        className="flex-1 px-5 py-3.5 rounded-lg bg-white text-[#1a2a44] placeholder-gray-400 font-medium focus:outline-none focus:ring-2 focus:ring-[#EE6260] text-sm md:text-base"
+                    />
+                    <button
+                        type="button"
+                        onClick={() => navigate('/complete-account')}
+                        className="px-8 py-3.5 bg-[#EE6260] text-white font-black text-xs uppercase tracking-widest rounded-lg hover:bg-[#d44947] transition-all shadow-lg whitespace-nowrap"
+                    >
+                        Sign Up Free
+                    </button>
+                </div>
+                <p className="text-xs text-gray-400 mt-4">
+                    No credit card required. Upgrade anytime for unlimited access.
+                </p>
             </div>
         </div>
       </section>
@@ -40,7 +66,7 @@ const SubscriptionPlans: React.FC<SubscriptionPlansProps> = ({ onPlanSelect }) =
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4 lg:px-8 text-center mb-16">
             <h2 className="text-[#EE6260] font-black text-sm uppercase tracking-[0.3em] mb-4">More Access. More Insights. More Transparency.</h2>
-            <h3 className="text-4xl md:text-5xl font-bold text-[#1a2a44] mb-6 tracking-tight">Unlock a Different Brussels.</h3>
+            <h3 className="text-4xl md:text-5xl font-bold text-[#1a2a44] mb-6 tracking-tight">Unlock a Different Europe.</h3>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
                 Choose your plan to get unlimited premium access and support independent journalism.
             </p>
@@ -53,7 +79,7 @@ const SubscriptionPlans: React.FC<SubscriptionPlansProps> = ({ onPlanSelect }) =
                 <div className="bg-white border border-gray-200 rounded-2xl p-8 flex flex-col shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
                     <div className="mb-6">
                         <h4 className="text-xl font-bold text-[#1a2a44] mb-2">The Curious Reader</h4>
-                        <p className="text-xs text-gray-500 font-medium h-10">Discover independent European coverage for one month</p>
+                        <p className="text-xs text-gray-500 font-medium h-10">Test-drive journalism that challenges consensus</p>
                     </div>
                     <div className="flex items-baseline gap-1 mb-8">
                         <span className="text-5xl font-black text-[#1a2a44]">9,99€</span>
@@ -67,11 +93,11 @@ const SubscriptionPlans: React.FC<SubscriptionPlansProps> = ({ onPlanSelect }) =
                             </li>
                         ))}
                     </ul>
-                    <button 
+                    <button
                         onClick={onPlanSelect}
                         className="w-full py-4 border-2 border-[#1a2a44] text-[#1a2a44] font-black text-xs uppercase tracking-widest rounded-lg hover:bg-[#1a2a44] hover:text-white transition-all"
                     >
-                        Unlock further insights
+                        READ WITHOUT LIMITS
                     </button>
                 </div>
 
@@ -82,7 +108,7 @@ const SubscriptionPlans: React.FC<SubscriptionPlansProps> = ({ onPlanSelect }) =
                     </div>
                     <div className="mb-6">
                         <h4 className="text-xl font-bold text-[#1a2a44] mb-2">The Insider</h4>
-                        <p className="text-xs text-gray-500 font-medium h-10">Three months of unfiltered Brussels reporting</p>
+                        <p className="text-xs text-gray-500 font-medium h-10">Unfiltered reporting from the heart of Europe</p>
                     </div>
                     <div className="flex items-baseline gap-1 mb-8">
                         <span className="text-5xl font-black text-[#1a2a44]">13,99€</span>
@@ -96,7 +122,7 @@ const SubscriptionPlans: React.FC<SubscriptionPlansProps> = ({ onPlanSelect }) =
                             </li>
                         ))}
                     </ul>
-                    <button 
+                    <button
                         onClick={onPlanSelect}
                         className="w-full py-4 bg-[#EE6260] text-white font-black text-xs uppercase tracking-widest rounded-lg hover:bg-[#d44947] transition-all shadow-lg"
                     >
@@ -108,7 +134,7 @@ const SubscriptionPlans: React.FC<SubscriptionPlansProps> = ({ onPlanSelect }) =
                 <div className="bg-white border border-gray-200 rounded-2xl p-8 flex flex-col shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
                     <div className="mb-6">
                         <h4 className="text-xl font-bold text-[#1a2a44] mb-2">The Decision-Maker</h4>
-                        <p className="text-xs text-gray-500 font-medium h-10">365 days of reporting that holds decision-makers accountable</p>
+                        <p className="text-xs text-gray-500 font-medium h-10">A year of reporting that holds Europe's leaders to account</p>
                     </div>
                     <div className="flex items-baseline gap-1 mb-8">
                         <span className="text-5xl font-black text-[#1a2a44]">89€</span>

@@ -1,17 +1,25 @@
 
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { NewsItem } from '../src/types.ts';
 import { INTERFERENCE_PODCASTS, HORIZON_PODCASTS, HAMMER_TIME_PODCASTS, WATCH_VIDEOS } from '../src/data.ts';
-import { useNavigate } from 'react-router-dom';
 import { createSlug } from '../src/utils.ts';
 
-interface VideosAndPodcastsPageProps {
-  onPodcastClick: (article: NewsItem) => void;
-  onVideoClick?: (article: NewsItem) => void;
-}
+interface VideosAndPodcastsPageProps {}
 
-const VideosAndPodcastsPage: React.FC<VideosAndPodcastsPageProps> = ({ onPodcastClick, onVideoClick }) => {
-  const navigate = useNavigate();
+const VideosAndPodcastsPage: React.FC<VideosAndPodcastsPageProps> = () => {
+  const getArticlePath = (article: NewsItem) => {
+    const slug = createSlug(article.title);
+    if (article.premium) {
+      return `/premium/${slug}`;
+    } else if (article.podcastSeries) {
+      return `/podcast/${slug}`;
+    } else if (article.category?.toLowerCase() === 'videos' || ('duration' in article)) {
+      return `/video/${slug}`;
+    } else {
+      return `/article/${slug}`;
+    }
+  };
   const [showFloatingMenu, setShowFloatingMenu] = React.useState(false);
 
   // Show/hide floating menu on scroll
@@ -89,10 +97,10 @@ const VideosAndPodcastsPage: React.FC<VideosAndPodcastsPageProps> = ({ onPodcast
           }
           return displayEpisodes;
         })().map((ep, index) => (
-          <div
+          <Link
             key={`${ep.id}-${index}`}
-            className="group cursor-pointer bg-white border border-gray-100 p-4 rounded-xl shadow-sm hover:shadow-md transition-all hover:-translate-y-1"
-            onClick={() => onPodcastClick(ep)}
+            to={getArticlePath(ep)}
+            className="group bg-white border border-gray-100 p-4 rounded-xl shadow-sm hover:shadow-md transition-all hover:-translate-y-1 block"
           >
             <div className="aspect-square relative overflow-hidden rounded-lg mb-4">
               <img src={ep.imageUrl} className="w-full h-full object-cover transition-transform group-hover:scale-110 duration-700" alt={ep.title} />
@@ -109,7 +117,7 @@ const VideosAndPodcastsPage: React.FC<VideosAndPodcastsPageProps> = ({ onPodcast
             <p className="text-xs text-gray-500 line-clamp-2 leading-relaxed">
               {ep.summary}
             </p>
-          </div>
+          </Link>
         ))}
       </div>
     </div>
@@ -257,7 +265,7 @@ const VideosAndPodcastsPage: React.FC<VideosAndPodcastsPageProps> = ({ onPodcast
             <div className="bg-[#24375a] p-8 md:p-10 flex flex-col items-center text-center">
               <div className="w-32 h-32 flex-shrink-0 shadow-2xl rounded-lg overflow-hidden border-2 border-white/20 mb-6 flex items-center justify-center">
                 <img
-                  src={import.meta.env.BASE_URL + "images/hammer-time-podcast-logo.png"}
+                  src={import.meta.env.BASE_URL + "images/horizon-podcast-logo.png"}
                   alt="Hammer Time"
                   className="w-24 h-24 object-contain"
                 />
@@ -319,7 +327,7 @@ const VideosAndPodcastsPage: React.FC<VideosAndPodcastsPageProps> = ({ onPodcast
           episodes={HAMMER_TIME_PODCASTS}
           colorClass="text-orange-600"
           bgClass="bg-[#24375a]"
-          logo="images/hammer-time-podcast-logo.png"
+          logo="images/horizon-podcast-logo.png"
           thumbnail="images/podcast-interference-3.png"
         />
 
@@ -334,14 +342,10 @@ const VideosAndPodcastsPage: React.FC<VideosAndPodcastsPageProps> = ({ onPodcast
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {WATCH_VIDEOS.map((video) => (
-              <div
+              <Link
                 key={video.id}
-                className="group cursor-pointer"
-                onClick={() => {
-                  const slug = createSlug(video.title);
-                  navigate(`/video/${slug}`);
-                  window.scrollTo(0, 0);
-                }}
+                to={getArticlePath(video)}
+                className="group block"
               >
                 <div className="relative aspect-video overflow-hidden rounded-lg shadow-lg mb-4">
                   <img
@@ -361,7 +365,7 @@ const VideosAndPodcastsPage: React.FC<VideosAndPodcastsPageProps> = ({ onPodcast
                 <h3 className="text-lg font-bold leading-tight text-[#1a2a44] group-hover:text-[#EE6260] transition-colors line-clamp-2">
                   {video.title}
                 </h3>
-              </div>
+              </Link>
             ))}
           </div>
         </section>

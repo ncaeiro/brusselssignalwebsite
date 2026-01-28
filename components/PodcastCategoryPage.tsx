@@ -1,13 +1,25 @@
 
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { NewsItem } from '../src/types.ts';
+import { createSlug } from '../src/utils.ts';
 import { INTERFERENCE_PODCASTS, HORIZON_PODCASTS, HAMMER_TIME_PODCASTS } from '../src/data.ts';
 
-interface PodcastCategoryPageProps {
-  onPodcastClick: (article: NewsItem) => void;
-}
+interface PodcastCategoryPageProps {}
 
-const PodcastCategoryPage: React.FC<PodcastCategoryPageProps> = ({ onPodcastClick }) => {
+const PodcastCategoryPage: React.FC<PodcastCategoryPageProps> = () => {
+  const getArticlePath = (article: NewsItem) => {
+    const slug = createSlug(article.title);
+    if (article.premium) {
+      return `/premium/${slug}`;
+    } else if (article.podcastSeries) {
+      return `/podcast/${slug}`;
+    } else if (article.category?.toLowerCase() === 'videos' || ('duration' in article)) {
+      return `/video/${slug}`;
+    } else {
+      return `/article/${slug}`;
+    }
+  };
   const PodcastSection = ({ 
     title, 
     hosts, 
@@ -52,10 +64,10 @@ const PodcastCategoryPage: React.FC<PodcastCategoryPageProps> = ({ onPodcastClic
       {/* Episode Grid */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
         {episodes.map((ep) => (
-          <div 
-            key={ep.id} 
-            className="group cursor-pointer bg-white border border-gray-100 p-4 rounded-xl shadow-sm hover:shadow-md transition-all hover:-translate-y-1"
-            onClick={() => onPodcastClick(ep)}
+          <Link
+            key={ep.id}
+            to={getArticlePath(ep)}
+            className="group bg-white border border-gray-100 p-4 rounded-xl shadow-sm hover:shadow-md transition-all hover:-translate-y-1 block"
           >
             <div className="aspect-square relative overflow-hidden rounded-lg mb-4">
               <img src={ep.imageUrl} className="w-full h-full object-cover transition-transform group-hover:scale-110 duration-700" alt={ep.title} />
@@ -71,7 +83,7 @@ const PodcastCategoryPage: React.FC<PodcastCategoryPageProps> = ({ onPodcastClic
             <p className="text-xs text-gray-500 line-clamp-2 leading-relaxed">
               {ep.summary}
             </p>
-          </div>
+          </Link>
         ))}
       </div>
     </div>

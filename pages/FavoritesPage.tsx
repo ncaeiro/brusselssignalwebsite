@@ -1,18 +1,16 @@
 
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useFavorites } from '../src/FavoritesContext.tsx';
 import { createSlug } from '../src/utils.ts';
 
 const FavoritesPage: React.FC = () => {
-  const navigate = useNavigate();
   const { favorites, removeFromFavorites } = useFavorites();
 
-  const handleArticleClick = (article: any) => {
+  const getArticlePath = (article: any) => {
     const slug = createSlug(article.title);
     const type = article.isPremium ? 'premium' : article.videoUrl ? 'video' : article.podcastSeries ? 'podcast' : 'article';
-    navigate(`/${type}/${slug}`);
-    window.scrollTo(0, 0);
+    return `/${type}/${slug}`;
   };
 
   const handleRemove = (articleId: string, e: React.MouseEvent) => {
@@ -51,12 +49,12 @@ const FavoritesPage: React.FC = () => {
               <p className="text-gray-500 mb-8 max-w-md mx-auto">
                 Start building your reading list by clicking the heart icon on articles you want to save for later.
               </p>
-              <button
-                onClick={() => navigate('/')}
-                className="px-6 py-3 bg-[#EE6260] text-white text-sm font-black uppercase tracking-wider rounded-sm hover:bg-[#d44947] transition"
+              <Link
+                to="/"
+                className="inline-block px-6 py-3 bg-[#EE6260] text-white text-sm font-black uppercase tracking-wider rounded-sm hover:bg-[#d44947] transition"
               >
                 Browse Articles
-              </button>
+              </Link>
             </div>
           )}
 
@@ -64,10 +62,10 @@ const FavoritesPage: React.FC = () => {
           {favorites.length > 0 && (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {favorites.map((article) => (
-                <div
+                <Link
                   key={article.id}
-                  className="group cursor-pointer bg-white rounded-lg overflow-hidden border border-gray-100 hover:shadow-xl transition-all duration-300"
-                  onClick={() => handleArticleClick(article)}
+                  to={getArticlePath(article)}
+                  className="group bg-white rounded-lg overflow-hidden border border-gray-100 hover:shadow-xl transition-all duration-300"
                 >
                   {/* Image */}
                   <div className="relative aspect-[16/10] overflow-hidden bg-gray-100">
@@ -127,7 +125,7 @@ const FavoritesPage: React.FC = () => {
                       </div>
                     )}
                   </div>
-                </div>
+                </Link>
               ))}
             </div>
           )}

@@ -1,5 +1,5 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Hero from '../components/Hero.tsx';
 import SectionGrid from '../components/SectionGrid.tsx';
 import PhotoStories from '../components/PhotoStories.tsx';
@@ -9,50 +9,31 @@ import { NewsItem } from '../src/types.ts';
 import { MOST_READ, COMMENTARY, POLITICS, ECONOMY, SOCIETY, PHOTO_STORIES, WATCH_VIDEOS, FEATURED_ARTICLE } from '../src/data.ts';
 import { createSlug, createAuthorSlug } from '../src/utils.ts';
 
-interface HomePageProps {
-  onNewslettersClick: () => void;
-  onSubscriptionsClick: () => void;
-}
+interface HomePageProps {}
 
-const HomePage: React.FC<HomePageProps> = ({ onNewslettersClick, onSubscriptionsClick }) => {
-  const navigate = useNavigate();
-
-  const navigateToArticle = (article: NewsItem) => {
-    console.log('navigateToArticle called with:', article);
+const HomePage: React.FC<HomePageProps> = () => {
+  const getArticlePath = (article: NewsItem) => {
     const slug = createSlug(article.title);
-    console.log('Generated slug:', slug);
-    console.log('Article category:', article.category);
 
     if (article.premium) {
-      console.log('Navigating to premium');
-      navigate(`/premium/${slug}`);
+      return `/premium/${slug}`;
     } else if (article.podcastSeries) {
-      console.log('Navigating to podcast');
-      navigate(`/podcast/${slug}`);
+      return `/podcast/${slug}`;
     } else if (article.category?.toLowerCase() === 'videos' || ('duration' in article)) {
-      console.log('Navigating to video');
-      navigate(`/video/${slug}`);
+      return `/video/${slug}`;
     } else {
-      console.log('Navigating to article');
-      navigate(`/article/${slug}`);
+      return `/article/${slug}`;
     }
-    window.scrollTo(0, 0);
   };
 
-  const navigateToAuthor = (authorName: string, e: React.MouseEvent) => {
-    e.stopPropagation();
-    const authorSlug = createAuthorSlug(authorName);
-    navigate(`/author/${authorSlug}`);
-    window.scrollTo(0, 0);
-  };
 
   return (
     <main className="flex-grow container mx-auto px-4 md:px-6 lg:px-8 py-6">
       {/* Newsletter Top Banner (image only) */}
       <div className="mb-10 w-full">
-        <button onClick={onNewslettersClick} className="w-full focus:outline-none">
+        <Link to="/newsletters-grid-authors" className="w-full block">
           <img src={import.meta.env.BASE_URL + 'images/banner-newsletter-brusselscalling.jpg'} alt="Brussels Calling Newsletter" className="w-full h-auto object-cover rounded" />
-        </button>
+        </Link>
       </div>
 
       {/* Main Hero & Sidebars Grid */}
@@ -62,7 +43,7 @@ const HomePage: React.FC<HomePageProps> = ({ onNewslettersClick, onSubscriptions
           <h2 className="text-xl font-bold border-b-2 border-[#EE6260] pb-2 mb-4">Most Read</h2>
           <div className="space-y-6">
             {MOST_READ.map(item => (
-              <div key={item.id} className="flex gap-3 group cursor-pointer" onClick={() => navigateToArticle(item)}>
+              <Link key={item.id} to={getArticlePath(item)} className="flex gap-3 group">
                 <img src={item.imageUrl} alt={item.title} className="w-24 h-16 object-cover flex-shrink-0" />
                 <div>
                   <h3 className="text-sm font-semibold leading-tight text-[#111827] group-hover:text-[#1a2a44] transition-colors">
@@ -72,7 +53,7 @@ const HomePage: React.FC<HomePageProps> = ({ onNewslettersClick, onSubscriptions
                       <span className="text-[#EE6260]">NEWS</span> {item.date}
                   </p>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
 
@@ -80,7 +61,7 @@ const HomePage: React.FC<HomePageProps> = ({ onNewslettersClick, onSubscriptions
               <h2 className="text-xl font-bold border-b-2 border-[#EE6260] pb-2 mb-4">Top Videos</h2>
               <div className="grid grid-cols-2 gap-3">
                    {WATCH_VIDEOS.slice(0, 4).map(video => (
-                      <div key={video.id} className="relative group cursor-pointer" onClick={() => navigateToArticle(video)}>
+                      <Link key={video.id} to={getArticlePath(video)} className="relative group">
                           <div className="relative h-24 overflow-hidden">
                               <img src={video.imageUrl} alt={video.title} className="w-full h-full object-cover transition-transform group-hover:scale-105 duration-300" />
                               <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors flex items-center justify-center">
@@ -90,7 +71,7 @@ const HomePage: React.FC<HomePageProps> = ({ onNewslettersClick, onSubscriptions
                               </div>
                           </div>
                           <h4 className="text-xs font-bold mt-1.5 line-clamp-2 leading-tight text-[#111827]">{video.title}</h4>
-                      </div>
+                      </Link>
                    ))}
               </div>
           </div>
@@ -98,27 +79,31 @@ const HomePage: React.FC<HomePageProps> = ({ onNewslettersClick, onSubscriptions
 
         {/* Center: Hero Story */}
         <div className="lg:col-span-6 order-1 lg:order-2">
-          <Hero onClick={() => navigateToArticle(FEATURED_ARTICLE)} />
+          <Hero />
         </div>
 
         {/* Right: Commentary */}
         <aside className="lg:col-span-3 order-3">
           <div className="flex justify-between items-center border-b-2 border-[#EE6260] pb-2 mb-4">
             <h2 className="text-xl font-bold">Commentary</h2>
-            <button onClick={() => { navigate('/category/commentary'); window.scrollTo(0, 0); }} className="text-[10px] font-bold text-gray-500 hover:text-[#EE6260]">VIEW ALL</button>
+            <Link to="/category/commentary" className="text-[10px] font-bold text-gray-500 hover:text-[#EE6260]">VIEW ALL</Link>
           </div>
           <div className="space-y-6">
-            {COMMENTARY.slice(0, 5).map(item => (
-              <div key={item.id} className="flex gap-3 group cursor-pointer" onClick={() => navigateToArticle(item)}>
-                <div className="flex-grow">
+            {COMMENTARY.slice(0, 4).map(item => (
+              <Link key={item.id} to={getArticlePath(item)} className="flex gap-3 group">
+                <div>
                   {item.premium && <span className="text-[10px] bg-[#EE6260] text-white px-1 font-bold">PREMIUM</span>}
                   <p className="text-xs font-bold mt-1 uppercase">
-                    <button
-                      onClick={(e) => navigateToAuthor(item.author || 'Brussels Signal', e)}
-                      className="text-[#EE6260] hover:text-[#d44947] transition-colors underline decoration-transparent hover:decoration-red-700"
+                    <span
+                      onClick={(e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        window.location.href = `/brusselssignal/website/author/${createAuthorSlug(item.author || 'Brussels Signal')}`;
+                      }}
+                      className="text-[#EE6260] hover:text-[#d44947] transition-colors cursor-pointer"
                     >
                       {item.author}
-                    </button>
+                    </span>
                   </p>
                   <h3 className="text-sm font-semibold leading-tight text-[#111827] group-hover:text-[#1a2a44] transition-colors">
                     {item.title}
@@ -128,20 +113,18 @@ const HomePage: React.FC<HomePageProps> = ({ onNewslettersClick, onSubscriptions
                   </p>
                 </div>
                 <img src={item.imageUrl} alt={item.title} className="w-24 h-16 object-cover flex-shrink-0" />
-              </div>
+              </Link>
             ))}
           </div>
-          {/* Newsletter Side Box */}
-          <div className="mt-8 bg-gray-100 p-4 border border-gray-200">
-              <h3 className="font-bold text-lg mb-2">Brussels Calling</h3>
-              <p className="text-xs text-gray-600 mb-4">The must-read morning briefing for anyone interested in European politics.</p>
-              <button onClick={onNewslettersClick} className="w-full bg-[#EE6260] text-white py-2 text-sm font-bold hover:bg-[#d44947] transition">SUBSCRIBE NOW</button>
+          {/* Advertisement Placeholder */}
+          <div className="mt-8 bg-gray-100 border-2 border-dashed border-gray-300 flex items-center justify-center h-[250px]">
+              <span className="text-gray-400 text-sm font-medium uppercase tracking-wider">Advertisement</span>
           </div>
         </aside>
       </div>
 
       {/* Membership Top Promotion Banner (moved) */}
-      <div className="mt-12 mb-10 w-full cursor-pointer group" onClick={onSubscriptionsClick}>
+      <Link to="/subscriptions" className="mt-12 mb-10 w-full block group">
           <div className="relative h-24 md:h-32 bg-[#1a2a44] rounded-lg overflow-hidden shadow-lg flex items-center border border-white/5">
             <div className="absolute inset-0 opacity-20 pointer-events-none bg-[radial-gradient(circle_at_right,_var(--tw-gradient-stops))] from-[#EE6260] via-transparent to-transparent"></div>
             <div className="relative z-10 w-full px-6 md:px-12 flex items-center justify-between gap-4">
@@ -155,38 +138,38 @@ const HomePage: React.FC<HomePageProps> = ({ onNewslettersClick, onSubscriptions
                     </h3>
                 </div>
                 <div className="flex-shrink-0">
-                    <button className="bg-white text-[#1a2a44] px-6 py-3 font-black text-[10px] md:text-xs uppercase tracking-[0.15em] rounded hover:bg-[#EE6260] hover:text-white transition-all transform group-hover:scale-105 shadow-xl">
+                    <span className="bg-white text-[#1a2a44] px-6 py-3 font-black text-[10px] md:text-xs uppercase tracking-[0.15em] rounded hover:bg-[#EE6260] hover:text-white transition-all transform group-hover:scale-105 shadow-xl inline-block">
                         VIEW OFFERS
-                    </button>
+                    </span>
                 </div>
             </div>
           </div>
-      </div>
+      </Link>
 
       {/* Video Horizontal Section */}
       <section className="mt-12">
-          <VideoFeed onItemClick={navigateToArticle} />
+          <VideoFeed />
       </section>
 
       {/* Categories Section */}
       <section className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <SectionGrid title="Politics" items={POLITICS.slice(0, 5)} onItemClick={navigateToArticle} onHeaderClick={() => { navigate('/category/politics'); window.scrollTo(0, 0); }} />
-          <SectionGrid title="Economy" items={ECONOMY.slice(0, 5)} onItemClick={navigateToArticle} onHeaderClick={() => { navigate('/category/economy'); window.scrollTo(0, 0); }} />
-          <SectionGrid title="Society" items={SOCIETY.slice(0, 5)} onItemClick={navigateToArticle} onHeaderClick={() => { navigate('/category/society'); window.scrollTo(0, 0); }} />
+          <SectionGrid title="Politics" items={POLITICS.slice(0, 5)} categorySlug="politics" />
+          <SectionGrid title="Economy" items={ECONOMY.slice(0, 5)} categorySlug="economy" />
+          <SectionGrid title="Society" items={SOCIETY.slice(0, 5)} categorySlug="society" />
       </section>
 
       {/* Photo Stories Section */}
       <section className="mt-12">
-          <PhotoStories items={MOST_READ.slice(0, 4)} onItemClick={navigateToArticle} onHeaderClick={() => { navigate('/category/photo-stories'); window.scrollTo(0, 0); }} />
+          <PhotoStories items={MOST_READ.slice(0, 4)} />
       </section>
 
       {/* Watch/Podcast Section */}
       <section className="mt-12">
-          <WatchSection videos={WATCH_VIDEOS.slice(0, 10)} onItemClick={navigateToArticle} onHeaderClick={() => { navigate('/category/videos'); window.scrollTo(0, 0); }} />
+          <WatchSection videos={WATCH_VIDEOS.slice(0, 10)} />
       </section>
 
       {/* Footer Banner - Linked to Newsletters */}
-      <div className="mt-12 cursor-pointer group" onClick={onNewslettersClick}>
+      <Link to="/newsletters-grid-authors" className="mt-12 block group">
           <div className="relative overflow-hidden rounded shadow-md border border-gray-200 h-44 flex items-center bg-[#1a2a44]">
             <img
                 src="https://picsum.photos/seed/newsletter_footer_full/1200/400"
@@ -199,12 +182,12 @@ const HomePage: React.FC<HomePageProps> = ({ onNewslettersClick, onSubscriptions
                     <h3 className="text-white text-3xl md:text-4xl font-serif font-bold mb-2">The signals you need, in your inbox.</h3>
                     <p className="text-white/70 text-base font-medium">Daily briefings and weekly strategic analysis. Join 25,000+ readers today.</p>
                 </div>
-                <button className="bg-white text-[#1a2a44] px-10 py-5 font-black text-xs uppercase tracking-widest rounded shadow-xl group-hover:bg-[#EE6260] group-hover:text-white transition-all transform group-hover:scale-105">
+                <span className="bg-white text-[#1a2a44] px-10 py-5 font-black text-xs uppercase tracking-widest rounded shadow-xl group-hover:bg-[#EE6260] group-hover:text-white transition-all transform group-hover:scale-105 inline-block">
                     EXPLORE OUR NEWSLETTERS
-                </button>
+                </span>
             </div>
           </div>
-      </div>
+      </Link>
     </main>
   );
 };

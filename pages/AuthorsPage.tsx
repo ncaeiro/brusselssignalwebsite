@@ -64,7 +64,7 @@ const AuthorsPage: React.FC = () => {
     <main className="flex-grow container mx-auto px-4 md:px-6 lg:px-8 py-12">
       {/* Page Header */}
       <div className="mb-12 border-b-2 border-[#EE6260] pb-6">
-        <h1 className="text-4xl md:text-5xl font-black text-[#1a2a44] mb-3 tracking-tight">Our Authors</h1>
+        <h1 className="text-4xl md:text-5xl font-black text-[#1a2a44] mb-3 tracking-tight">Meet the People</h1>
         <p className="text-lg text-gray-600 max-w-3xl">
           Meet the journalists and analysts behind Brussels Signal's independent reporting on European affairs,
           politics, economy, and society.
@@ -126,18 +126,6 @@ const AuthorsPage: React.FC = () => {
                 <p className="text-gray-600 text-sm mb-4 leading-relaxed">
                   {author.bio}
                 </p>
-
-                {/* Expertise Tags */}
-                <div className="flex flex-wrap gap-2 justify-center mb-4">
-                  {author.expertise.map((skill, idx) => (
-                    <span
-                      key={idx}
-                      className="bg-blue-50 text-blue-700 text-xs font-semibold px-3 py-1 rounded-full"
-                    >
-                      {skill}
-                    </span>
-                  ))}
-                </div>
 
                 {/* View Profile Button */}
                 <button

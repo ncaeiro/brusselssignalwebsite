@@ -1,13 +1,10 @@
 import React from 'react';
-import { useParams, Navigate, useNavigate } from 'react-router-dom';
+import { useParams, Navigate } from 'react-router-dom';
 import AuthorPage from '../components/AuthorPage.tsx';
 import { ALL_ARTICLES } from '../src/data.ts';
-import { NewsItem } from '../src/types.ts';
-import { createSlug } from '../src/utils.ts';
 
 const AuthorPageWrapper: React.FC = () => {
   const { authorSlug } = useParams<{ authorSlug: string }>();
-  const navigate = useNavigate();
 
   if (!authorSlug) {
     return <Navigate to="/" replace />;
@@ -29,25 +26,10 @@ const AuthorPageWrapper: React.FC = () => {
     return <Navigate to="/" replace />;
   }
 
-  const navigateToArticle = (article: NewsItem) => {
-    const slug = createSlug(article.title);
-    if (article.premium) {
-      navigate(`/premium/${slug}`);
-    } else if (article.podcastSeries) {
-      navigate(`/podcast/${slug}`);
-    } else if (article.category?.toLowerCase() === 'videos' || 'duration' in article) {
-      navigate(`/video/${slug}`);
-    } else {
-      navigate(`/article/${slug}`);
-    }
-    window.scrollTo(0, 0);
-  };
-
   return (
     <AuthorPage
       authorName={authorName}
       articles={authorArticles}
-      onArticleClick={navigateToArticle}
     />
   );
 };

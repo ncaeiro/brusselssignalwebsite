@@ -21,14 +21,14 @@ export const findArticleBySlug = (slug: string, allArticles: any[]): any | null 
 
 // Author photo mapping - maps author names to their photo filenames
 const AUTHOR_PHOTOS: Record<string, string> = {
-  'carl deconinck': 'Carl Deconinck.jpg',
-  'chris gattringer': 'Chris Gattringer.png',
-  'chris nelson': 'Chris Nelson.jpeg',
-  'claire lemaire': 'Claire Lemaire.jpeg',
-  'kevin myers': 'Kevin Myers.jpeg',
-  'luca steinmann': 'Luca Steinmann.jpg',
-  'rafael pinto borges': 'Rafael Pinto Borges.jpeg',
-  'krzysztof mularczyk': 'krzysztof mularczyk.jpeg'
+  'carl deconinck': 'author-pic-carl-deconinck.jpg',
+  'chris gattringer': 'author-pic-chris-gattringer.jpg',
+  'chris nelson': 'author-pic-chris-nelson.jpg',
+  'claire lemaire': 'author-pic-claire-lemaire.jpg',
+  'kevin myers': 'author-pic-kevin-myers.jpg',
+  'luca steinmann': 'author-pic-luca-steinmann.jpg',
+  'rafael pinto borges': 'author-pic-rafael-pinto-borges.jpg',
+  'krzysztof mularczyk': 'author-pic-krzysztof-mularczyk.jpg'
 };
 
 // Author email mapping - maps author names to their email addresses
@@ -49,7 +49,7 @@ export const getAuthorPhoto = (authorName: string): string | null => {
   const photoFilename = AUTHOR_PHOTOS[normalizedName];
 
   if (photoFilename) {
-    return `${import.meta.env.BASE_URL}images/authors/${photoFilename}`;
+    return `${import.meta.env.BASE_URL}assets/images/${photoFilename}`;
   }
 
   return null;

@@ -1,12 +1,11 @@
 import React from 'react';
-import { useParams, Navigate, useNavigate } from 'react-router-dom';
+import { useParams, Navigate } from 'react-router-dom';
 import CategoryPage from '../components/CategoryPage.tsx';
 import PodcastCategoryPage from '../components/PodcastCategoryPage.tsx';
 import VideosAndPodcastsPage from '../components/VideosAndPodcastsPage.tsx';
 import FilteredVideosAndPodcastsPage from '../components/FilteredVideosAndPodcastsPage.tsx';
 import { POLITICS, ECONOMY, SOCIETY, WORLD, COMMENTARY, PHOTO_STORIES, WATCH_VIDEOS } from '../src/data.ts';
 import { NewsItem } from '../src/types.ts';
-import { createSlug } from '../src/utils.ts';
 
 interface CategoryPageWrapperProps {
   useFilteredVideos?: boolean;
@@ -14,25 +13,10 @@ interface CategoryPageWrapperProps {
 
 const CategoryPageWrapper: React.FC<CategoryPageWrapperProps> = ({ useFilteredVideos = false }) => {
   const { category, tag } = useParams<{ category: string; tag?: string }>();
-  const navigate = useNavigate();
-
-  const navigateToArticle = (article: NewsItem) => {
-    const slug = createSlug(article.title);
-    if (article.premium) {
-      navigate(`/premium/${slug}`);
-    } else if (article.podcastSeries) {
-      navigate(`/podcast/${slug}`);
-    } else if (article.category?.toLowerCase() === 'videos' || 'duration' in article) {
-      navigate(`/video/${slug}`);
-    } else {
-      navigate(`/article/${slug}`);
-    }
-    window.scrollTo(0, 0);
-  };
 
   // Use filtered videos page when explicitly requested
   if (useFilteredVideos) {
-    return <FilteredVideosAndPodcastsPage onItemClick={navigateToArticle} />;
+    return <FilteredVideosAndPodcastsPage />;
   }
 
   if (!category) {
@@ -71,11 +55,11 @@ const CategoryPageWrapper: React.FC<CategoryPageWrapperProps> = ({ useFilteredVi
   };
 
   if (category.toLowerCase() === 'podcasts') {
-    return <PodcastCategoryPage onPodcastClick={navigateToArticle} />;
+    return <PodcastCategoryPage />;
   }
 
   if (category.toLowerCase() === 'videos') {
-    return <VideosAndPodcastsPage onPodcastClick={navigateToArticle} onVideoClick={navigateToArticle} />;
+    return <VideosAndPodcastsPage />;
   }
 
   let articles = getCategoryArticles(category);
@@ -107,7 +91,6 @@ const CategoryPageWrapper: React.FC<CategoryPageWrapperProps> = ({ useFilteredVi
     <CategoryPage
       categoryName={categoryName}
       articles={articles}
-      onArticleClick={navigateToArticle}
       activeTag={tag}
     />
   );

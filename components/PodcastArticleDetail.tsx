@@ -1,10 +1,12 @@
 
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { NewsItem } from '../src/types.ts';
 import ReadingProgressBar from './ReadingProgressBar.tsx';
 import SocialShare from './SocialShare.tsx';
 import StickySocialShare from './StickySocialShare.tsx';
 import { useFavorites } from '../src/FavoritesContext.tsx';
+import { createSlug } from '../src/utils.ts';
 
 interface PodcastArticleDetailProps {
   article: NewsItem;
@@ -52,6 +54,22 @@ const PodcastArticleDetail: React.FC<PodcastArticleDetailProps> = ({ article }) 
 
   const branding = getSeriesBranding(article.podcastSeries);
 
+  // Get podcast show slug for breadcrumb link
+  const getPodcastShowSlug = (series?: string) => {
+    switch (series) {
+      case 'Interference':
+        return 'interference';
+      case 'Horizon Podcast':
+        return 'horizon-podcast';
+      case 'Hammer Time':
+        return 'hammer-time';
+      default:
+        return '';
+    }
+  };
+
+  const podcastShowSlug = getPodcastShowSlug(article.podcastSeries);
+
   return (
     <main className="flex-grow bg-white pb-20">
       <ReadingProgressBar />
@@ -60,6 +78,49 @@ const PodcastArticleDetail: React.FC<PodcastArticleDetailProps> = ({ article }) 
         onFavoriteClick={handleFavoriteClick}
         isFavorited={isFavorited(article.id)}
       />
+
+      {/* Breadcrumbs */}
+      <section className="bg-gray-50 border-b border-gray-200 py-4">
+        <div className="container mx-auto px-4 lg:px-8">
+          <nav className="flex items-center gap-2 text-sm">
+            <Link
+              to="/"
+              className="text-gray-600 hover:text-[#EE6260] font-bold uppercase tracking-wide transition-colors"
+            >
+              Home
+            </Link>
+            <svg className="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
+            </svg>
+            <Link
+              to="/category/videos-filtered"
+              className="text-gray-600 hover:text-[#EE6260] font-bold uppercase tracking-wide transition-colors"
+            >
+              Videos & Podcasts
+            </Link>
+            <svg className="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
+            </svg>
+            {podcastShowSlug && (
+              <>
+                <Link
+                  to={`/podcast-show/${podcastShowSlug}`}
+                  className="text-gray-600 hover:text-[#EE6260] font-bold uppercase tracking-wide transition-colors"
+                >
+                  {article.podcastSeries}
+                </Link>
+                <svg className="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
+                </svg>
+              </>
+            )}
+            <span className="text-[#EE6260] font-bold uppercase tracking-wide truncate max-w-xs">
+              Episode
+            </span>
+          </nav>
+        </div>
+      </section>
+
       {/* Podcast Header Section */}
       <section className="bg-gray-50 border-b border-gray-200 pt-10 pb-16">
         <div className="container mx-auto px-4 lg:px-8">

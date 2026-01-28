@@ -1,18 +1,15 @@
 
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { NewsItem } from '../src/types.ts';
 import { INTERFERENCE_PODCASTS, HORIZON_PODCASTS, HAMMER_TIME_PODCASTS, WATCH_VIDEOS } from '../src/data.ts';
-import { useNavigate } from 'react-router-dom';
 import { createSlug, createAuthorSlug } from '../src/utils.ts';
 
-interface FilteredVideosAndPodcastsPageProps {
-  onItemClick: (article: NewsItem) => void;
-}
+interface FilteredVideosAndPodcastsPageProps {}
 
 type FilterType = 'all' | 'videos' | 'podcasts';
 
-const FilteredVideosAndPodcastsPage: React.FC<FilteredVideosAndPodcastsPageProps> = ({ onItemClick }) => {
-  const navigate = useNavigate();
+const FilteredVideosAndPodcastsPage: React.FC<FilteredVideosAndPodcastsPageProps> = () => {
   const [activeFilter, setActiveFilter] = useState<FilterType>('all');
 
   // Combine all content
@@ -42,11 +39,18 @@ const FilteredVideosAndPodcastsPage: React.FC<FilteredVideosAndPodcastsPageProps
 
   const filteredContent = getFilteredContent();
 
-  const handleAuthorClick = (authorName: string, e: React.MouseEvent) => {
-    e.stopPropagation();
-    const authorSlug = createAuthorSlug(authorName);
-    navigate(`/author/${authorSlug}`);
-    window.scrollTo(0, 0);
+  const getArticlePath = (item: NewsItem) => {
+    const slug = createSlug(item.title);
+
+    if (item.premium) {
+      return `/premium/${slug}`;
+    } else if (item.podcastSeries) {
+      return `/podcast/${slug}`;
+    } else if (item.category?.toLowerCase() === 'videos' || ('duration' in item)) {
+      return `/video/${slug}`;
+    } else {
+      return `/article/${slug}`;
+    }
   };
 
   // Determine if an item is a podcast
@@ -71,16 +75,16 @@ const FilteredVideosAndPodcastsPage: React.FC<FilteredVideosAndPodcastsPageProps
   return (
     <main className="flex-grow bg-white">
       {/* Category Header */}
-      <section className="bg-gray-50 border-b border-gray-200 py-12 lg:py-20">
+      <section className="bg-gray-50 border-b border-gray-200 py-6 lg:py-10">
         <div className="container mx-auto px-4 lg:px-8">
-          <div className="flex items-center gap-4 mb-4">
+          <div className="flex items-center gap-4 mb-2">
             <div className="w-12 h-1 bg-[#EE6260]"></div>
             <span className="text-[#EE6260] font-black text-xs uppercase tracking-[0.3em]">WATCH & LISTEN</span>
           </div>
-          <h1 className="font-serif text-5xl md:text-6xl font-bold text-[#1a2a44] mb-6 tracking-tight">
+          <h1 className="font-serif text-4xl md:text-5xl font-bold text-[#1a2a44] mb-3 tracking-tight">
             Videos & Podcasts
           </h1>
-          <p className="text-lg text-gray-500 max-w-2xl leading-relaxed">
+          <p className="text-base text-gray-500 max-w-2xl leading-relaxed">
             In-depth analysis, expert interviews, and unfiltered perspectives on European politics.
           </p>
         </div>
@@ -133,6 +137,50 @@ const FilteredVideosAndPodcastsPage: React.FC<FilteredVideosAndPodcastsPageProps
         </div>
       </section>
 
+      {/* Podcast Show Cards */}
+      <section className="py-8 bg-gray-50 border-b border-gray-200">
+        <div className="container mx-auto px-4 lg:px-8">
+          <h2 className="text-xl font-bold text-[#1a2a44] mb-6">Browse by Podcast Show</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {/* Interference Card */}
+            <Link
+              to="/podcast-show/interference"
+              className="group block rounded-lg overflow-hidden hover:shadow-xl transition-shadow"
+            >
+              <img
+                src={import.meta.env.BASE_URL + "assets/images/podcast-cta-banner-interference.jpg"}
+                alt="Interference Podcast"
+                className="w-full h-auto group-hover:scale-105 transition-transform duration-500"
+              />
+            </Link>
+
+            {/* Horizon Card */}
+            <Link
+              to="/podcast-show/horizon-podcast"
+              className="group block rounded-lg overflow-hidden hover:shadow-xl transition-shadow"
+            >
+              <img
+                src={import.meta.env.BASE_URL + "assets/images/podcast-cta-banner-horizon.jpg"}
+                alt="Horizon Podcast"
+                className="w-full h-auto group-hover:scale-105 transition-transform duration-500"
+              />
+            </Link>
+
+            {/* Hammer Time Card */}
+            <Link
+              to="/podcast-show/hammer-time"
+              className="group block rounded-lg overflow-hidden hover:shadow-xl transition-shadow"
+            >
+              <img
+                src={import.meta.env.BASE_URL + "assets/images/podcast-cta-banner-hammertime.jpg"}
+                alt="Hammer Time Podcast"
+                className="w-full h-auto group-hover:scale-105 transition-transform duration-500"
+              />
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* Content Grid */}
       <section className="py-12 lg:py-20">
         <div className="container mx-auto px-4 lg:px-8">
@@ -143,45 +191,48 @@ const FilteredVideosAndPodcastsPage: React.FC<FilteredVideosAndPodcastsPageProps
                 const isVideo = !isPodcast(item);
 
                 return (
-                  <div
+                  <article
                     key={item.id}
-                    className="group cursor-pointer flex flex-col"
-                    onClick={() => onItemClick(item)}
+                    className="group flex flex-col relative"
                   >
-                    <div className="relative aspect-[16/10] overflow-hidden rounded-sm mb-6 shadow-sm border border-gray-100">
-                      <img
-                        src={item.imageUrl}
-                        alt={item.title}
-                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                      />
-                      {/* Play icon overlay */}
-                      <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors flex items-center justify-center">
-                        <div className="bg-white/90 rounded-full p-2 transform transition-transform group-hover:scale-110">
-                          <svg className="w-5 h-5 text-[#EE6260] block" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M8 5v14l11-7z"/>
-                          </svg>
+                    <Link to={getArticlePath(item)} className="absolute inset-0 z-0" aria-label={item.title} />
+
+                    <Link to={getArticlePath(item)} className="relative z-10">
+                      <div className="relative aspect-[16/10] overflow-hidden rounded-sm mb-6 shadow-sm border border-gray-100">
+                        <img
+                          src={item.imageUrl}
+                          alt={item.title}
+                          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                        />
+                        {/* Play icon overlay */}
+                        <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors flex items-center justify-center">
+                          <div className="bg-white/90 rounded-full p-2 transform transition-transform group-hover:scale-110">
+                            <svg className="w-5 h-5 text-[#EE6260] block" fill="currentColor" viewBox="0 0 24 24">
+                              <path d="M8 5v14l11-7z"/>
+                            </svg>
+                          </div>
                         </div>
+
+                        {/* Podcast label badge */}
+                        {podcastInfo && (
+                          <div className={`absolute top-3 left-3 ${podcastInfo.color} text-white px-3 py-1.5 text-[10px] font-black uppercase tracking-widest rounded shadow-lg flex items-center gap-2`}>
+                            <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 24 24">
+                              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-2-12.5v9l7-4.5-7-4.5z"/>
+                            </svg>
+                            {podcastInfo.label}
+                          </div>
+                        )}
+
+                        {/* Premium badge */}
+                        {item.premium && (
+                          <div className="absolute top-3 right-3 bg-[#EE6260] text-white px-2 py-0.5 text-[9px] font-black uppercase tracking-widest rounded-sm shadow-lg">
+                            PREMIUM
+                          </div>
+                        )}
                       </div>
+                    </Link>
 
-                      {/* Podcast label badge */}
-                      {podcastInfo && (
-                        <div className={`absolute top-3 left-3 ${podcastInfo.color} text-white px-3 py-1.5 text-[10px] font-black uppercase tracking-widest rounded shadow-lg flex items-center gap-2`}>
-                          <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-2-12.5v9l7-4.5-7-4.5z"/>
-                          </svg>
-                          {podcastInfo.label}
-                        </div>
-                      )}
-
-                      {/* Premium badge */}
-                      {item.premium && (
-                        <div className="absolute top-3 right-3 bg-[#EE6260] text-white px-2 py-0.5 text-[9px] font-black uppercase tracking-widest rounded-sm shadow-lg">
-                          PREMIUM
-                        </div>
-                      )}
-                    </div>
-
-                    <div className="flex-grow">
+                    <div className="flex-grow relative z-10">
                       <p className="text-[10px] text-gray-500 uppercase font-black tracking-widest mb-3 flex items-center gap-2">
                         {isVideo ? (
                           <>
@@ -195,9 +246,11 @@ const FilteredVideosAndPodcastsPage: React.FC<FilteredVideosAndPodcastsPageProps
                         <span className="w-1 h-1 bg-gray-300 rounded-full"></span>
                         {item.date}
                       </p>
-                      <h3 className="font-serif text-xl font-bold leading-tight mb-4 group-hover:text-[#EE6260] transition-colors">
-                        {item.title}
-                      </h3>
+                      <Link to={getArticlePath(item)}>
+                        <h3 className="font-serif text-xl font-bold leading-tight mb-4 group-hover:text-[#EE6260] transition-colors">
+                          {item.title}
+                        </h3>
+                      </Link>
                       {item.summary && (
                         <p className="text-sm text-gray-600 line-clamp-3 mb-4 leading-relaxed">
                           {item.summary}
@@ -205,20 +258,20 @@ const FilteredVideosAndPodcastsPage: React.FC<FilteredVideosAndPodcastsPageProps
                       )}
                     </div>
 
-                    <div className="flex items-center gap-2 pt-4 border-t border-gray-50">
+                    <div className="flex items-center gap-2 pt-4 border-t border-gray-50 relative z-10">
                       <div className="w-6 h-6 rounded-full bg-gray-100 flex items-center justify-center text-[10px] font-bold text-gray-400">
                         {item.author ? item.author.charAt(0) : 'B'}
                       </div>
                       <span className="text-[10px] font-black text-gray-400 uppercase tracking-tight">
-                        By <button
-                          onClick={(e) => handleAuthorClick(item.author || 'Brussels Signal', e)}
-                          className="hover:text-[#EE6260] transition-colors underline decoration-transparent hover:decoration-red-600"
+                        By <Link
+                          to={`/author/${createAuthorSlug(item.author || 'Brussels Signal')}`}
+                          className="hover:text-[#EE6260] transition-colors underline decoration-transparent hover:decoration-red-600 relative z-20"
                         >
                           {item.author || 'Brussels Signal'}
-                        </button>
+                        </Link>
                       </span>
                     </div>
-                  </div>
+                  </article>
                 );
               })}
             </div>

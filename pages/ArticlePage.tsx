@@ -36,7 +36,7 @@ const ArticlePage: React.FC<ArticlePageProps> = ({ type, onSignInClick }) => {
     case 'podcast':
       return <PodcastArticleDetail article={article} />;
     default:
-      return <ArticleDetail article={article} />;
+      return <ArticleDetail article={article} allArticles={ALL_ARTICLES} />;
   }
 };
 

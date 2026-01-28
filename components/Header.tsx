@@ -1,5 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import MegaMenu from './MegaMenu.tsx';
 import SearchModal from './SearchModal.tsx';
 import { NewsItem } from '../src/types.ts';
@@ -32,9 +33,7 @@ const Header: React.FC<HeaderProps> = ({ onLogoClick, onSignInClick, onBecomeMem
   };
 
   const handleHotTopicClick = (category: string, tag: string) => {
-    if (typeof window !== 'undefined') {
-      window.location.href = `/brusselssignal/website/category/${category}/tag/${encodeURIComponent(tag)}`;
-    }
+    // This will be handled by Link components in the dropdown
     setNewsDropdownOpen(false);
   };
 
@@ -76,13 +75,13 @@ const Header: React.FC<HeaderProps> = ({ onLogoClick, onSignInClick, onBecomeMem
         </div>
 
         <div className="hidden md:flex flex-1 justify-center">
-            <button onClick={onLogoClick} className="focus:outline-none">
+            <Link to="/" className="focus:outline-none">
               <img
                   src={import.meta.env.BASE_URL + 'images/logo.png'}
                   alt="Brussels Signal"
                   className="h-10"
               />
-            </button>
+            </Link>
         </div>
 
         <div className="flex items-center gap-4">
@@ -126,10 +125,10 @@ const Header: React.FC<HeaderProps> = ({ onLogoClick, onSignInClick, onBecomeMem
                   <button
                     onClick={() => setNewsDropdownOpen(!newsDropdownOpen)}
                     onMouseEnter={() => setNewsDropdownOpen(true)}
-                    className="hover:text-white uppercase flex items-center gap-1"
+                    className="bg-[#EE6260] text-white px-3 py-1 rounded uppercase flex items-center gap-1 hover:bg-[#d44947] transition-colors"
                   >
                     Hot Topics
-                    <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className={`w-3 h-3 transition-transform ${newsDropdownOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
                     </svg>
                   </button>
@@ -141,32 +140,32 @@ const Header: React.FC<HeaderProps> = ({ onLogoClick, onSignInClick, onBecomeMem
                       onMouseLeave={() => setNewsDropdownOpen(false)}
                     >
                       <div className="space-y-2">
-                        <button onClick={() => handleHotTopicClick('society', 'migration')} className="block hover:text-white text-gray-300 text-left w-full text-[12px] font-normal">Mass Migration</button>
-                        <button onClick={() => handleHotTopicClick('society', 'free-speech')} className="block hover:text-white text-gray-300 text-left w-full text-[12px] font-normal">Free Speech</button>
-                        <button onClick={() => handleHotTopicClick('politics', 'ukraine')} className="block hover:text-white text-gray-300 text-left w-full text-[12px] font-normal">Ukraine</button>
-                        <button onClick={() => handleHotTopicClick('politics', 'dsa')} className="block hover:text-white text-gray-300 text-left w-full text-[12px] font-normal">DSA Pact</button>
-                        <button onClick={() => handleHotTopicClick('economy', 'tariffs')} className="block hover:text-white text-gray-300 text-left w-full text-[12px] font-normal">Tariffs</button>
+                        <Link to="/category/society/tag/migration" onClick={handleHotTopicClick} className="block hover:text-white text-gray-300 text-left w-full text-[12px] font-normal">Mass Migration</Link>
+                        <Link to="/category/society/tag/free-speech" onClick={handleHotTopicClick} className="block hover:text-white text-gray-300 text-left w-full text-[12px] font-normal">Free Speech</Link>
+                        <Link to="/category/politics/tag/ukraine" onClick={handleHotTopicClick} className="block hover:text-white text-gray-300 text-left w-full text-[12px] font-normal">Ukraine</Link>
+                        <Link to="/category/politics/tag/dsa" onClick={handleHotTopicClick} className="block hover:text-white text-gray-300 text-left w-full text-[12px] font-normal">DSA Pact</Link>
+                        <Link to="/category/economy/tag/tariffs" onClick={handleHotTopicClick} className="block hover:text-white text-gray-300 text-left w-full text-[12px] font-normal">Tariffs</Link>
                       </div>
                     </div>
                   )}
                 </div>
 
-                <button onClick={() => handleCategoryClick('News')} className="hover:text-white uppercase">News</button>
-                <button onClick={() => handleCategoryClick('Commentary')} className="hover:text-white uppercase">Opinion</button>
-                <button onClick={() => handleCategoryClick('Politics')} className="hover:text-white uppercase">Politics</button>
-                <button onClick={() => handleCategoryClick('Economy')} className="hover:text-white uppercase">Economy</button>
-                <button onClick={() => handleCategoryClick('Society')} className="hover:text-white uppercase">Society</button>
-                <button onClick={() => handleCategoryClick('World')} className="hover:text-white uppercase">World</button>
-                <button onClick={() => handleCategoryClick('Videos')} className="hover:text-white uppercase">Videos</button>
-                <button onClick={onEventsClick} className="hover:text-white uppercase">Events</button>
+                <Link to="/category/news" className="hover:text-white uppercase">News</Link>
+                <Link to="/category/commentary" className="hover:text-white uppercase">Opinion</Link>
+                <Link to="/category/politics" className="hover:text-white uppercase">Politics</Link>
+                <Link to="/category/economy" className="hover:text-white uppercase">Economy</Link>
+                <Link to="/category/society" className="hover:text-white uppercase">Society</Link>
+                <Link to="/category/world" className="hover:text-white uppercase">World</Link>
+                <Link to="/category/videos-filtered" className="hover:text-white uppercase">Videos</Link>
+                <Link to="/events" className="hover:text-white uppercase">Events</Link>
 
                 {/* Newsletters Link - stands out with red color */}
-                <button
-                  onClick={onNewslettersClick}
+                <Link
+                  to="/newsletters-grid-authors"
                   className="text-[#EE6260] hover:text-white uppercase transition font-black"
                 >
                   Newsletters
-                </button>
+                </Link>
             </div>
         </div>
       </div>
@@ -180,6 +179,9 @@ const Header: React.FC<HeaderProps> = ({ onLogoClick, onSignInClick, onBecomeMem
           onNewslettersClick={onNewslettersClick}
           onAuthorsClick={onAuthorsClick}
           onPartnerWithUsClick={onPartnerWithUsClick}
+          onSignInClick={onSignInClick}
+          onEventsClick={onEventsClick}
+          onBecomeMemberClick={onBecomeMemberClick}
         />
       )}
 

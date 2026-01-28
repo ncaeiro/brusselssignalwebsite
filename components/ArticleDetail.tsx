@@ -10,12 +10,37 @@ import { useFavorites } from '../src/FavoritesContext.tsx';
 
 interface ArticleDetailProps {
   article: NewsItem;
+  allArticles?: NewsItem[];
 }
 
-const ArticleDetail: React.FC<ArticleDetailProps> = ({ article }) => {
+const ArticleDetail: React.FC<ArticleDetailProps> = ({ article, allArticles = [] }) => {
   const navigate = useNavigate();
   const authorPhoto = getAuthorPhoto(article.author || '');
   const { toggleFavorite, isFavorited } = useFavorites();
+
+  // Get related articles (same category, excluding current article)
+  const relatedArticles = allArticles
+    .filter(a => a.id !== article.id && a.category === article.category)
+    .slice(0, 4);
+
+  // If not enough from same category, fill with other articles
+  const moreArticles = relatedArticles.length < 4
+    ? [
+        ...relatedArticles,
+        ...allArticles
+          .filter(a => a.id !== article.id && !relatedArticles.find(r => r.id === a.id))
+          .slice(0, 4 - relatedArticles.length)
+      ]
+    : relatedArticles;
+
+  const handleArticleClick = (clickedArticle: NewsItem) => {
+    const slug = clickedArticle.title
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/(^-|-$)/g, '');
+    navigate(`/article/${slug}`);
+    window.scrollTo(0, 0);
+  };
 
   // Calculate reading time based on full content and summary
   const contentText = `${article.summary || ''} ${article.fullContent || ''}`;
@@ -184,6 +209,54 @@ const ArticleDetail: React.FC<ArticleDetailProps> = ({ article }) => {
           </div>
         </div>
       </div>
+
+      {/* More Like This Section */}
+      {moreArticles.length > 0 && (
+        <section className="bg-gray-50 py-16">
+          <div className="container mx-auto px-4 md:px-6 lg:px-8">
+            <div className="flex items-center gap-4 mb-10">
+              <h2 className="text-2xl md:text-3xl font-serif font-bold text-gray-900">More like this</h2>
+              <div className="flex-1 h-px bg-gray-200"></div>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {moreArticles.map((relatedArticle) => (
+                <article
+                  key={relatedArticle.id}
+                  className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-lg transition-shadow cursor-pointer group"
+                  onClick={() => handleArticleClick(relatedArticle)}
+                >
+                  <div className="aspect-[16/10] overflow-hidden">
+                    <img
+                      src={relatedArticle.imageUrl}
+                      alt={relatedArticle.title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+                  </div>
+                  <div className="p-5">
+                    <div className="flex items-center gap-3 mb-3">
+                      <span className="bg-[#EE6260] text-white px-2 py-0.5 text-[10px] font-black uppercase tracking-wider">
+                        {relatedArticle.category || 'NEWS'}
+                      </span>
+                      <span className="text-[10px] text-gray-400 font-bold uppercase">
+                        {relatedArticle.date}
+                      </span>
+                    </div>
+                    <h3 className="font-serif font-bold text-gray-900 leading-snug group-hover:text-[#EE6260] transition-colors line-clamp-3">
+                      {relatedArticle.title}
+                    </h3>
+                    {relatedArticle.author && (
+                      <p className="mt-3 text-xs text-gray-500 font-medium">
+                        By {relatedArticle.author}
+                      </p>
+                    )}
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
     </main>
   );
 };

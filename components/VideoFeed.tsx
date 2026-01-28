@@ -1,20 +1,31 @@
 
 import React, { useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { NewsItem } from '../src/types.ts';
 import { createSlug } from '../src/utils.ts';
 import { WATCH_VIDEOS } from '../src/data.ts';
 
-interface VideoFeedProps {
-  onItemClick?: (item: NewsItem) => void;
-}
+interface VideoFeedProps {}
 
-const VideoFeed: React.FC<VideoFeedProps> = ({ onItemClick }) => {
-    const navigate = useNavigate();
+const VideoFeed: React.FC<VideoFeedProps> = () => {
     const scrollRef = useRef<HTMLDivElement>(null);
 
     // Get the first 5 videos from WATCH_VIDEOS for the carousel
     const videos = WATCH_VIDEOS.slice(0, 5);
+
+    const getArticlePath = (article: NewsItem) => {
+        const slug = createSlug(article.title);
+
+        if (article.premium) {
+            return `/premium/${slug}`;
+        } else if (article.podcastSeries) {
+            return `/podcast/${slug}`;
+        } else if (article.category?.toLowerCase() === 'videos' || ('duration' in article)) {
+            return `/video/${slug}`;
+        } else {
+            return `/article/${slug}`;
+        }
+    };
 
     const scroll = (direction: 'left' | 'right') => {
         if (scrollRef.current) {
@@ -52,11 +63,7 @@ const VideoFeed: React.FC<VideoFeedProps> = ({ onItemClick }) => {
                 className="flex gap-6 overflow-x-auto no-scrollbar snap-x snap-mandatory pb-6"
             >
                 {videos.map(vid => (
-                    <div key={vid.id} className="flex-none w-[85vw] md:w-[calc(33.333%-1rem)] snap-start group cursor-pointer" onClick={() => {
-                        const slug = createSlug(vid.title);
-                        navigate(`/video/${slug}`);
-                        window.scrollTo(0, 0);
-                    }}>
+                    <Link key={vid.id} to={getArticlePath(vid)} className="flex-none w-[85vw] md:w-[calc(33.333%-1rem)] snap-start group">
                         <div className="relative aspect-video overflow-hidden rounded-xl shadow-lg">
                             <img src={vid.imageUrl} className="w-full h-full object-cover transition-transform group-hover:scale-105" alt={vid.title} />
                             <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors flex items-center justify-center">
@@ -73,7 +80,7 @@ const VideoFeed: React.FC<VideoFeedProps> = ({ onItemClick }) => {
                                 {vid.title}
                             </h3>
                         </div>
-                    </div>
+                    </Link>
                 ))}
             </div>
         </div>

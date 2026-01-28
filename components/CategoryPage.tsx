@@ -1,110 +1,112 @@
 
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { NewsItem } from '../src/types.ts';
-import { createAuthorSlug } from '../src/utils.ts';
+import { createAuthorSlug, createSlug } from '../src/utils.ts';
 
 interface CategoryPageProps {
   categoryName: string;
   articles: NewsItem[];
-  onArticleClick: (article: NewsItem) => void;
   activeTag?: string;
 }
 
-const CategoryPage: React.FC<CategoryPageProps> = ({ categoryName, articles, onArticleClick, activeTag }) => {
-  const navigate = useNavigate();
+const CategoryPage: React.FC<CategoryPageProps> = ({ categoryName, articles, activeTag }) => {
+  const getArticlePath = (article: NewsItem) => {
+    const slug = createSlug(article.title);
 
-  const handleAuthorClick = (authorName: string, e: React.MouseEvent) => {
-    e.stopPropagation();
-    const authorSlug = createAuthorSlug(authorName);
-    navigate(`/author/${authorSlug}`);
-    window.scrollTo(0, 0);
+    if (article.premium) {
+      return `/premium/${slug}`;
+    } else if (article.podcastSeries) {
+      return `/podcast/${slug}`;
+    } else if (article.category?.toLowerCase() === 'videos' || ('duration' in article)) {
+      return `/video/${slug}`;
+    } else {
+      return `/article/${slug}`;
+    }
   };
 
   return (
     <main className="flex-grow bg-white">
-      {/* Category Header */}
-      <section className="bg-gray-50 border-b border-gray-200 py-6 lg:py-10">
+      {/* Category Header - Compact */}
+      <section className="bg-gray-50 border-b border-gray-200 py-4 lg:py-6">
         <div className="container mx-auto px-4 lg:px-8">
-            <div className="flex items-center gap-4 mb-3">
-                <div className="w-12 h-1 bg-[#EE6260]"></div>
-                <span className="text-[#EE6260] font-black text-xs uppercase tracking-[0.3em]">EXPLORE CONTENT</span>
-            </div>
-
             {/* Breadcrumb Navigation */}
-            {activeTag && (
-              <div className="mb-4">
-                <nav className="flex items-center gap-2 text-sm">
-                  <button
-                    onClick={() => navigate(`/category/${categoryName.toLowerCase()}`)}
-                    className="text-gray-600 hover:text-[#EE6260] font-bold uppercase tracking-wide transition-colors"
-                  >
-                    {categoryName}
-                  </button>
-                  <svg className="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
-                  </svg>
-                  <span className="text-[#EE6260] font-bold uppercase tracking-wide">
-                    {activeTag.replace(/^#/, '').replace(/-/g, ' ')}
-                  </span>
-                </nav>
-              </div>
-            )}
-
-            <h1 className="font-serif text-4xl md:text-5xl font-bold text-[#1a2a44] mb-4 tracking-tight capitalize">
-                {activeTag ? activeTag.replace(/^#/, '').replace(/-/g, ' ') : categoryName}
-            </h1>
-            {activeTag && (
-              <div className="mb-3">
-                <span className="inline-flex items-center gap-2 px-4 py-2 bg-[#EE6260] text-white text-sm font-black uppercase tracking-wider rounded-sm">
-                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M9.243 3.03a1 1 0 01.727 1.213L9.53 6h2.94l.56-2.243a1 1 0 111.94.486L14.53 6H17a1 1 0 110 2h-2.97l-1 4H15a1 1 0 110 2h-2.47l-.56 2.242a1 1 0 11-1.94-.485L10.47 14H7.53l-.56 2.242a1 1 0 11-1.94-.485L5.47 14H3a1 1 0 110-2h2.97l1-4H5a1 1 0 110-2h2.47l.56-2.243a1 1 0 011.213-.727zM9.03 8l-1 4h2.938l1-4H9.031z" clipRule="evenodd"/>
-                  </svg>
+            {activeTag ? (
+              <nav className="flex items-center gap-2 text-xs mb-2">
+                <Link
+                  to={`/category/${categoryName.toLowerCase()}`}
+                  className="text-gray-500 hover:text-[#EE6260] font-bold uppercase tracking-wide transition-colors"
+                >
+                  {categoryName}
+                </Link>
+                <svg className="w-3 h-3 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
+                </svg>
+                <span className="text-[#EE6260] font-bold uppercase tracking-wide">
                   {activeTag.replace(/^#/, '').replace(/-/g, ' ')}
                 </span>
+              </nav>
+            ) : (
+              <div className="flex items-center gap-2 mb-2">
+                <div className="w-8 h-0.5 bg-[#EE6260]"></div>
+                <span className="text-[#EE6260] font-black text-[10px] uppercase tracking-widest">CATEGORY</span>
               </div>
             )}
-            <p className="text-lg text-gray-500 max-w-2xl leading-relaxed">
+
+            <div className="flex items-center gap-4 flex-shrink-0">
+              <h1 className="font-serif text-2xl md:text-3xl font-bold text-[#1a2a44] tracking-tight capitalize">
+                  {activeTag ? activeTag.replace(/^#/, '').replace(/-/g, ' ') : categoryName}
+              </h1>
+              {activeTag && (
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-[#EE6260] text-white text-[10px] font-black uppercase tracking-wider rounded-sm">
+                  <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M9.243 3.03a1 1 0 01.727 1.213L9.53 6h2.94l.56-2.243a1 1 0 111.94.486L14.53 6H17a1 1 0 110 2h-2.97l-1 4H15a1 1 0 110 2h-2.47l-.56 2.242a1 1 0 11-1.94-.485L10.47 14H7.53l-.56 2.242a1 1 0 11-1.94-.485L5.47 14H3a1 1 0 110-2h2.97l1-4H5a1 1 0 110-2h2.47l.56-2.243a1 1 0 011.213-.727zM9.03 8l-1 4h2.938l1-4H9.031z" clipRule="evenodd"/>
+                  </svg>
+                  Hot Topic
+                </span>
+              )}
+            </div>
+            <p className="text-sm text-gray-500 mt-1">
                 {activeTag
-                  ? `Showing ${categoryName.toLowerCase()} articles tagged with "${activeTag.replace(/^#/, '').replace(/-/g, ' ')}"`
-                  : `Stay informed with our latest reporting and in-depth analysis on ${categoryName.toLowerCase()}, bringing you the signals that matter in a complex European landscape.`
+                  ? `Popular articles tagged "${activeTag.replace(/^#/, '').replace(/-/g, ' ')}"`
+                  : `Latest reporting and analysis on ${categoryName.toLowerCase()}.`
                 }
             </p>
         </div>
       </section>
 
       {/* Articles Grid */}
-      <section className="py-12 lg:py-20">
+      <section className="py-8 lg:py-12">
         <div className="container mx-auto px-4 lg:px-8">
             {articles.length > 0 ? (
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
                     {articles.map((article) => (
-                        <div 
-                            key={article.id} 
-                            className="group cursor-pointer flex flex-col"
-                            onClick={() => onArticleClick(article)}
-                        >
-                            <div className="relative aspect-[16/10] overflow-hidden rounded-sm mb-6 shadow-sm border border-gray-100">
-                                <img
-                                    src={article.imageUrl}
-                                    alt={article.title}
-                                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                                />
-                                {categoryName.toLowerCase() === 'videos' && (
-                                    <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors flex items-center justify-center">
-                                        <div className="bg-white/90 rounded-full p-2 transform transition-transform group-hover:scale-110">
-                                            <svg className="w-5 h-5 text-[#EE6260] block" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                        <article key={article.id} className="group flex flex-col relative">
+                            <Link to={getArticlePath(article)} className="absolute inset-0 z-0" aria-label={article.title} />
+
+                            <Link to={getArticlePath(article)} className="relative z-10">
+                                <div className="relative aspect-[16/10] overflow-hidden rounded-sm mb-6 shadow-sm border border-gray-100">
+                                    <img
+                                        src={article.imageUrl}
+                                        alt={article.title}
+                                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                                    />
+                                    {categoryName.toLowerCase() === 'videos' && (
+                                        <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors flex items-center justify-center">
+                                            <div className="bg-white/90 rounded-full p-2 transform transition-transform group-hover:scale-110">
+                                                <svg className="w-5 h-5 text-[#EE6260] block" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                                            </div>
                                         </div>
-                                    </div>
-                                )}
-                                {article.premium && (
-                                    <div className="absolute top-4 left-4 bg-[#EE6260] text-white px-2 py-0.5 text-[9px] font-black uppercase tracking-widest rounded-sm shadow-lg">
-                                        PREMIUM
-                                    </div>
-                                )}
-                            </div>
-                            
-                            <div className="flex-grow">
+                                    )}
+                                    {article.premium && (
+                                        <div className="absolute top-4 left-4 bg-[#EE6260] text-white px-2 py-0.5 text-[9px] font-black uppercase tracking-widest rounded-sm shadow-lg">
+                                            PREMIUM
+                                        </div>
+                                    )}
+                                </div>
+                            </Link>
+
+                            <div className="flex-grow relative z-10">
                                 <p className="text-[10px] text-gray-500 uppercase font-black tracking-widest mb-3 flex items-center gap-2">
                                     {categoryName.toLowerCase() === 'news' && article.category ? (
                                         <>
@@ -118,9 +120,11 @@ const CategoryPage: React.FC<CategoryPageProps> = ({ categoryName, articles, onA
                                     <span className="w-1 h-1 bg-gray-300 rounded-full"></span>
                                     {article.date}
                                 </p>
-                                <h3 className="font-serif text-xl font-bold leading-tight mb-4 group-hover:text-[#EE6260] transition-colors">
-                                    {article.title}
-                                </h3>
+                                <Link to={getArticlePath(article)}>
+                                    <h3 className="font-serif text-xl font-bold leading-tight mb-4 group-hover:text-[#EE6260] transition-colors">
+                                        {article.title}
+                                    </h3>
+                                </Link>
                                 {article.summary && (
                                     <p className="text-sm text-gray-600 line-clamp-3 mb-4 leading-relaxed">
                                         {article.summary}
@@ -128,20 +132,20 @@ const CategoryPage: React.FC<CategoryPageProps> = ({ categoryName, articles, onA
                                 )}
                             </div>
 
-                            <div className="flex items-center gap-2 pt-4 border-t border-gray-50">
+                            <div className="flex items-center gap-2 pt-4 border-t border-gray-50 relative z-10">
                                 <div className="w-6 h-6 rounded-full bg-gray-100 flex items-center justify-center text-[10px] font-bold text-gray-400">
                                     {article.author ? article.author.charAt(0) : 'B'}
                                 </div>
                                 <span className="text-[10px] font-black text-gray-400 uppercase tracking-tight">
-                                    By <button
-                                        onClick={(e) => handleAuthorClick(article.author || 'Brussels Signal', e)}
-                                        className="hover:text-[#EE6260] transition-colors underline decoration-transparent hover:decoration-red-600"
+                                    By <Link
+                                        to={`/author/${createAuthorSlug(article.author || 'Brussels Signal')}`}
+                                        className="hover:text-[#EE6260] transition-colors underline decoration-transparent hover:decoration-red-600 relative z-20"
                                     >
                                         {article.author || 'Brussels Signal'}
-                                    </button>
+                                    </Link>
                                 </span>
                             </div>
-                        </div>
+                        </article>
                     ))}
                 </div>
             ) : (

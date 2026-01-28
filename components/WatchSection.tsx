@@ -1,14 +1,27 @@
 
 import React, { useRef } from 'react';
+import { Link } from 'react-router-dom';
 import { NewsItem, VideoItem } from '../src/types.ts';
+import { createSlug } from '../src/utils.ts';
 
 interface WatchSectionProps {
   videos: VideoItem[];
-  onItemClick?: (item: NewsItem) => void;
-  onHeaderClick?: () => void;
 }
 
-const WatchSection: React.FC<WatchSectionProps> = ({ videos, onItemClick, onHeaderClick }) => {
+const WatchSection: React.FC<WatchSectionProps> = ({ videos }) => {
+    const getArticlePath = (item: NewsItem) => {
+        const slug = createSlug(item.title);
+
+        if (item.premium) {
+            return `/premium/${slug}`;
+        } else if (item.podcastSeries) {
+            return `/podcast/${slug}`;
+        } else if (item.category?.toLowerCase() === 'videos' || ('duration' in item)) {
+            return `/video/${slug}`;
+        } else {
+            return `/article/${slug}`;
+        }
+    };
     const scrollRef = useRef<HTMLDivElement>(null);
 
     const scroll = (direction: 'left' | 'right') => {
@@ -28,10 +41,10 @@ const WatchSection: React.FC<WatchSectionProps> = ({ videos, onItemClick, onHead
     return (
         <div className="relative group/watch">
             <div className="flex justify-between items-center border-b-2 border-[#EE6260] pb-2 mb-6">
-                <h2 className="text-xl font-bold uppercase tracking-tight flex items-center gap-2 cursor-pointer group" onClick={onHeaderClick}>
+                <Link to="/category/videos" className="text-xl font-bold uppercase tracking-tight flex items-center gap-2 group">
                     <svg className="w-6 h-6 text-[#EE6260] transition-transform group-hover:scale-110 block" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                     <span className="group-hover:text-[#EE6260] transition-colors">Watch</span>
-                </h2>
+                </Link>
                 <div className="flex gap-2">
                     <button
                         onClick={() => scroll('left')}
@@ -47,17 +60,17 @@ const WatchSection: React.FC<WatchSectionProps> = ({ videos, onItemClick, onHead
                     </button>
                 </div>
             </div>
-            
-            <div 
+
+            <div
                 ref={scrollRef}
                 className="flex gap-6 overflow-x-auto no-scrollbar snap-x snap-mandatory pb-6"
                 style={{ scrollBehavior: 'smooth' }}
             >
                 {videos.map(vid => (
-                    <div 
-                        key={vid.id} 
-                        className="flex-none w-[80vw] sm:w-[320px] lg:w-[350px] snap-start group cursor-pointer"
-                        onClick={() => onItemClick?.(vid)}
+                    <Link
+                        key={vid.id}
+                        to={getArticlePath(vid)}
+                        className="flex-none w-[80vw] sm:w-[320px] lg:w-[350px] snap-start group"
                     >
                         <div className="relative h-[480px] overflow-hidden rounded-xl shadow-lg border border-gray-200">
                             <img 
@@ -105,7 +118,7 @@ const WatchSection: React.FC<WatchSectionProps> = ({ videos, onItemClick, onHead
                                 {vid.date}
                             </p>
                         </div>
-                    </div>
+                    </Link>
                 ))}
             </div>
             

@@ -1,10 +1,9 @@
 
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useFavorites } from '../src/FavoritesContext.tsx';
 
 const UserProfilePage: React.FC = () => {
-  const navigate = useNavigate();
   const { favorites } = useFavorites();
 
   // Mock user data - in a real app, this would come from authentication context
@@ -81,12 +80,12 @@ const UserProfilePage: React.FC = () => {
                   </div>
                 </div>
 
-                <button
-                  onClick={() => navigate('/favorites')}
-                  className="w-full mt-6 px-4 py-3 bg-[#EE6260] text-white text-xs font-black uppercase tracking-wider rounded-sm hover:bg-[#d44947] transition"
+                <Link
+                  to="/favorites"
+                  className="w-full mt-6 px-4 py-3 bg-[#EE6260] text-white text-xs font-black uppercase tracking-wider rounded-sm hover:bg-[#d44947] transition text-center block"
                 >
                   View Favorites
-                </button>
+                </Link>
               </div>
             </aside>
 

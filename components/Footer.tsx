@@ -1,6 +1,7 @@
 
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { createAuthorSlug } from '../src/utils.ts';
 
 interface FooterProps {
   onSignInClick?: () => void;
@@ -11,7 +12,6 @@ interface FooterProps {
 }
 
 const Footer: React.FC<FooterProps> = ({ onSignInClick, onBecomeMemberClick, onCategoryClick, onNewslettersClick, onPartnerWithUsClick }) => {
-  const navigate = useNavigate();
   return (
     <footer className="bg-[#1a2a44] text-white pt-16 pb-8">
       <div className="container mx-auto px-4 lg:px-8">
@@ -28,18 +28,18 @@ const Footer: React.FC<FooterProps> = ({ onSignInClick, onBecomeMemberClick, onC
                 </div>
             </div>
             <div className="flex flex-wrap items-center gap-4 w-full md:w-auto">
-                <button 
-                  onClick={onNewslettersClick} 
-                  className="flex-grow md:flex-none bg-[#EE6260] px-8 py-3 text-xs font-black uppercase tracking-widest hover:bg-[#d44947] transition shadow-lg"
+                <Link
+                  to="/newsletters-grid-authors"
+                  className="flex-grow md:flex-none bg-[#EE6260] px-8 py-3 text-xs font-black uppercase tracking-widest hover:bg-[#d44947] transition shadow-lg text-center"
                 >
                     SUBSCRIBE NOW
-                </button>
-                <button 
-                  onClick={onNewslettersClick} 
-                  className="flex-grow md:flex-none border border-white/30 px-8 py-3 text-xs font-black uppercase tracking-widest hover:bg-white/10 transition"
+                </Link>
+                <Link
+                  to="/newsletters-grid-authors"
+                  className="flex-grow md:flex-none border border-white/30 px-8 py-3 text-xs font-black uppercase tracking-widest hover:bg-white/10 transition text-center"
                 >
                     PREVIEW EDITION
-                </button>
+                </Link>
             </div>
         </div>
 
@@ -48,38 +48,38 @@ const Footer: React.FC<FooterProps> = ({ onSignInClick, onBecomeMemberClick, onC
             <div>
                 <h4 className="text-xs font-black uppercase tracking-widest text-gray-400 mb-6">HOT TOPICS</h4>
                 <ul className="text-sm space-y-3 font-medium">
-                    <li><button onClick={() => onCategoryClick?.('Society')} className="hover:text-[#EE6260]">Mass Migration</button></li>
-                    <li><button onClick={() => onCategoryClick?.('Society')} className="hover:text-[#EE6260]">Free Speech</button></li>
-                    <li><button onClick={() => onCategoryClick?.('Politics')} className="hover:text-[#EE6260]">Ukraine</button></li>
-                    <li><button onClick={() => onCategoryClick?.('Politics')} className="hover:text-[#EE6260]">DSA Pact</button></li>
-                    <li><button onClick={() => onCategoryClick?.('Economy')} className="hover:text-[#EE6260]">Tariffs</button></li>
+                    <li><Link to="/category/society/tag/migration" className="hover:text-[#EE6260]">Mass Migration</Link></li>
+                    <li><Link to="/category/society/tag/free-speech" className="hover:text-[#EE6260]">Free Speech</Link></li>
+                    <li><Link to="/category/politics/tag/ukraine" className="hover:text-[#EE6260]">Ukraine</Link></li>
+                    <li><Link to="/category/politics/tag/dsa" className="hover:text-[#EE6260]">DSA Pact</Link></li>
+                    <li><Link to="/category/economy/tag/tariffs" className="hover:text-[#EE6260]">Tariffs</Link></li>
                 </ul>
             </div>
             <div>
                 <h4 className="text-xs font-black uppercase tracking-widest text-gray-400 mb-6">CATEGORIES</h4>
                 <ul className="text-sm space-y-3 font-medium">
-                    <li><button onClick={() => onCategoryClick?.('Politics')} className="hover:text-[#EE6260]">Politics</button></li>
-                    <li><button onClick={() => onCategoryClick?.('Economy')} className="hover:text-[#EE6260]">Economy</button></li>
-                    <li><button onClick={() => onCategoryClick?.('Society')} className="hover:text-[#EE6260]">Society</button></li>
-                    <li><button onClick={() => onCategoryClick?.('Politics')} className="hover:text-[#EE6260]">World</button></li>
-                    <li><button onClick={() => onCategoryClick?.('Commentary')} className="hover:text-[#EE6260]">Opinion</button></li>
+                    <li><Link to="/category/politics" className="hover:text-[#EE6260]">Politics</Link></li>
+                    <li><Link to="/category/economy" className="hover:text-[#EE6260]">Economy</Link></li>
+                    <li><Link to="/category/society" className="hover:text-[#EE6260]">Society</Link></li>
+                    <li><Link to="/category/world" className="hover:text-[#EE6260]">World</Link></li>
+                    <li><Link to="/category/commentary" className="hover:text-[#EE6260]">Opinion</Link></li>
                 </ul>
             </div>
             <div>
                 <h4 className="text-xs font-black uppercase tracking-widest text-gray-400 mb-6">NEWSLETTERS</h4>
                 <ul className="text-sm space-y-3 font-medium">
-                    <li><button onClick={onNewslettersClick} className="hover:text-[#EE6260]">Brussels Calling</button></li>
-                    <li><button onClick={onNewslettersClick} className="hover:text-[#EE6260]">Signal Horizon</button></li>
-                    <li><button onClick={onNewslettersClick} className="hover:text-[#EE6260]">Manage My Subscriptions</button></li>
+                    <li><Link to="/newsletters-grid-authors" className="hover:text-[#EE6260]">Brussels Calling</Link></li>
+                    <li><Link to="/newsletters-grid-authors" className="hover:text-[#EE6260]">Signal Horizon</Link></li>
+                    <li><Link to="/newsletters-grid-authors" className="hover:text-[#EE6260]">Manage My Subscriptions</Link></li>
                 </ul>
             </div>
             <div>
                 <h4 className="text-xs font-black uppercase tracking-widest text-gray-400 mb-6">AUTHORS</h4>
                 <ul className="text-sm space-y-3 font-medium">
-                    <li><a href="#" className="hover:text-[#EE6260]">Krzysztof Mularczyk</a></li>
-                    <li><a href="#" className="hover:text-[#EE6260]">Carl Deconinck</a></li>
-                    <li><a href="#" className="hover:text-[#EE6260]">Claire Lemaire</a></li>
-                    <li><a href="#" className="hover:text-[#EE6260]">Chris Gatttringer</a></li>
+                    <li><Link to={`/author/${createAuthorSlug('Krzysztof Mularczyk')}`} className="hover:text-[#EE6260]">Krzysztof Mularczyk</Link></li>
+                    <li><Link to={`/author/${createAuthorSlug('Carl Deconinck')}`} className="hover:text-[#EE6260]">Carl Deconinck</Link></li>
+                    <li><Link to={`/author/${createAuthorSlug('Claire Lemaire')}`} className="hover:text-[#EE6260]">Claire Lemaire</Link></li>
+                    <li><Link to={`/author/${createAuthorSlug('Chris Gattringer')}`} className="hover:text-[#EE6260]">Chris Gattringer</Link></li>
                 </ul>
             </div>
             <div>
@@ -88,8 +88,8 @@ const Footer: React.FC<FooterProps> = ({ onSignInClick, onBecomeMemberClick, onC
                     <li><button onClick={onSignInClick} className="font-bold text-white hover:text-[#EE6260]">Sign In</button></li>
                     <li><button onClick={onBecomeMemberClick} className="font-bold text-[#EE6260] hover:text-[#EE6260] transition-colors">Become a Member</button></li>
                     <li><a href="#" className="hover:text-[#EE6260]">About Us</a></li>
-                    <li><button onClick={() => onCategoryClick?.('Politics')} className="hover:text-[#EE6260]">Events</button></li>
-                    <li><button onClick={onPartnerWithUsClick} className="hover:text-[#EE6260]">Partner with Us</button></li>
+                    <li><Link to="/events" className="hover:text-[#EE6260]">Events</Link></li>
+                    <li><Link to="/partner-with-us" className="hover:text-[#EE6260]">Partner with Us</Link></li>
                     <li><a href="#" className="hover:text-[#EE6260]">Contact Us</a></li>
                 </ul>
             </div>
@@ -133,7 +133,7 @@ const Footer: React.FC<FooterProps> = ({ onSignInClick, onBecomeMemberClick, onC
                 <a href="#" className="hover:text-white">Subscription Terms & Conditions</a>
                 <a href="#" className="hover:text-white">Corrections & Updates</a>
                 <a href="#" className="hover:text-white">FAQs</a>
-                <button onClick={() => navigate('/site-architecture')} className="hover:text-white">Site Architecture</button>
+                <Link to="/site-architecture" className="hover:text-white">Site Architecture</Link>
             </div>
             <p className="text-[10px] text-gray-500">© 2025 REMEDIA EUROPE</p>
         </div>
