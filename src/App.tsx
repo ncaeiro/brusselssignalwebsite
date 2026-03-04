@@ -31,6 +31,7 @@ import FavoritesPage from '../pages/FavoritesPage.tsx';
 import UserProfilePage from '../pages/UserProfilePage.tsx';
 import CompleteAccountSetupPage from '../pages/CompleteAccountSetupPage.tsx';
 import SiteArchitecturePage from '../pages/SiteArchitecturePage.tsx';
+import NotFoundPage from '../pages/NotFoundPage.tsx';
 import VideosAndPodcastsPage from '../components/VideosAndPodcastsPage.tsx';
 import FilteredVideosAndPodcastsPage from '../components/FilteredVideosAndPodcastsPage.tsx';
 import PodcastShowPageWrapper from '../pages/PodcastShowPageWrapper.tsx';
@@ -123,6 +124,7 @@ const AppContent: React.FC = () => {
         <Route path="/profile" element={<UserProfilePage />} />
         <Route path="/complete-account" element={<CompleteAccountSetupPage />} />
         <Route path="/site-architecture" element={<SiteArchitecturePage />} />
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
 
       <Footer
