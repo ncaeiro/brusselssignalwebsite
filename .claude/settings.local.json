@@ -29,7 +29,11 @@
       "Bash(npx tsc:*)",
       "Bash(git commit:*)",
       "Bash(git push:*)",
-      "Bash(file:*)"
+      "Bash(file:*)",
+      "Bash(du:*)",
+      "Bash(php -r:*)",
+      "Bash(/Applications/MAMP/Library/bin/mysql:*)",
+      "WebFetch(domain:brusselssignal.eu)"
     ]
   }
 }

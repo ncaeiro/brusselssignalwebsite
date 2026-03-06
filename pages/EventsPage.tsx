@@ -1,37 +1,6 @@
 import React from 'react';
-
-const EVENTS_DATA = [
-  {
-    id: 'event1',
-    title: 'Brussels Signal Launch Event',
-    date: 'January 15, 2025',
-    time: '18:00 - 21:00 CET',
-    location: 'Brussels Press Club, Rue Froissart 95, 1040 Brussels',
-    description: 'Join us for the official launch of Brussels Signal, featuring panel discussions on the future of European journalism and networking opportunities.',
-    type: 'Past Event',
-    imageUrl: import.meta.env.BASE_URL + 'images/events/launch-event.jpg'
-  },
-  {
-    id: 'event2',
-    title: 'EU Policy Debate: The Future of Migration',
-    date: 'February 20, 2025',
-    time: '19:00 - 21:30 CET',
-    location: 'European Parliament, Brussels',
-    description: 'An in-depth debate on European migration policy with MEPs, policy experts, and civil society representatives.',
-    type: 'Upcoming',
-    imageUrl: import.meta.env.BASE_URL + 'images/events/migration-debate.jpg'
-  },
-  {
-    id: 'event3',
-    title: 'Investigative Journalism Workshop',
-    date: 'March 10, 2025',
-    time: '14:00 - 18:00 CET',
-    location: 'Brussels Signal Headquarters',
-    description: 'A hands-on workshop for aspiring investigative journalists covering EU institutions, data journalism, and FOIA requests.',
-    type: 'Upcoming',
-    imageUrl: import.meta.env.BASE_URL + 'images/events/journalism-workshop.avif'
-  }
-];
+import { Link } from 'react-router-dom';
+import { EVENTS_DATA } from '../src/eventsData.ts';
 
 const EventsPage: React.FC = () => {
   return (
@@ -48,7 +17,11 @@ const EventsPage: React.FC = () => {
       {/* Events List */}
       <div className="space-y-8">
         {EVENTS_DATA.map((event) => (
-          <div key={event.id} className="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+          <Link
+            key={event.id}
+            to={`/events/${event.id}`}
+            className="block bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow group"
+          >
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {/* Event Image */}
               <div className="md:col-span-1">
@@ -56,7 +29,7 @@ const EventsPage: React.FC = () => {
                   <img
                     src={event.imageUrl}
                     alt={event.title}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                   {event.type === 'Upcoming' && (
                     <div className="absolute top-4 left-4 bg-[#EE6260] text-white px-3 py-1 text-xs font-bold uppercase rounded">
@@ -73,7 +46,16 @@ const EventsPage: React.FC = () => {
 
               {/* Event Details */}
               <div className="md:col-span-2 p-6">
-                <h2 className="text-2xl font-black text-[#1a2a44] mb-3">{event.title}</h2>
+                <h2 className="text-2xl font-black text-[#1a2a44] mb-3 group-hover:text-[#EE6260] transition-colors">{event.title}</h2>
+
+                {event.guests.length > 0 && (
+                  <div className="flex items-start mb-3 text-gray-600">
+                    <svg className="w-5 h-5 mr-2 mt-0.5 text-[#EE6260] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                    </svg>
+                    <span className="font-semibold">{event.guests.map(g => g.name).join(', ')}</span>
+                  </div>
+                )}
 
                 <div className="space-y-2 mb-4">
                   <div className="flex items-center text-gray-600">
@@ -81,12 +63,7 @@ const EventsPage: React.FC = () => {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
                     </svg>
                     <span className="font-semibold">{event.date}</span>
-                  </div>
-
-                  <div className="flex items-center text-gray-600">
-                    <svg className="w-5 h-5 mr-2 text-[#EE6260]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                    </svg>
+                    <span className="mx-2 text-gray-400">·</span>
                     <span>{event.time}</span>
                   </div>
 
@@ -99,16 +76,17 @@ const EventsPage: React.FC = () => {
                   </div>
                 </div>
 
-                <p className="text-gray-700 mb-4 leading-relaxed">{event.description}</p>
+                <p className="text-gray-700 mb-4 leading-relaxed line-clamp-2">{event.description}</p>
 
-                {event.type === 'Upcoming' && (
-                  <button className="bg-[#EE6260] text-white px-6 py-2 font-bold text-sm uppercase rounded hover:bg-[#d44947] transition">
-                    Register Now
-                  </button>
-                )}
+                <span className="inline-flex items-center gap-2 text-[#EE6260] font-bold text-sm uppercase tracking-wider">
+                  {event.type === 'Upcoming' ? 'Register Now' : 'View Event'}
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
+                  </svg>
+                </span>
               </div>
             </div>
-          </div>
+          </Link>
         ))}
       </div>
 

@@ -32,6 +32,8 @@ import UserProfilePage from '../pages/UserProfilePage.tsx';
 import CompleteAccountSetupPage from '../pages/CompleteAccountSetupPage.tsx';
 import SiteArchitecturePage from '../pages/SiteArchitecturePage.tsx';
 import NotFoundPage from '../pages/NotFoundPage.tsx';
+import AboutUsPage from '../pages/AboutUsPage.tsx';
+import EventDetailPage from '../pages/EventDetailPage.tsx';
 import VideosAndPodcastsPage from '../components/VideosAndPodcastsPage.tsx';
 import FilteredVideosAndPodcastsPage from '../components/FilteredVideosAndPodcastsPage.tsx';
 import PodcastShowPageWrapper from '../pages/PodcastShowPageWrapper.tsx';
@@ -119,10 +121,12 @@ const AppContent: React.FC = () => {
         <Route path="/subscriptions" element={<SubscriptionPlans onPlanSelect={openSignUp} />} />
         <Route path="/authors" element={<AuthorsPage />} />
         <Route path="/events" element={<EventsPage />} />
+        <Route path="/events/:eventId" element={<EventDetailPage />} />
         <Route path="/partner-with-us" element={<PartnerWithUsPage />} />
         <Route path="/favorites" element={<FavoritesPage />} />
         <Route path="/profile" element={<UserProfilePage />} />
         <Route path="/complete-account" element={<CompleteAccountSetupPage />} />
+        <Route path="/about" element={<AboutUsPage />} />
         <Route path="/site-architecture" element={<SiteArchitecturePage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
@@ -143,7 +147,7 @@ const AppContent: React.FC = () => {
 
 const App: React.FC = () => {
   return (
-    <BrowserRouter basename="/brusselssignal/website">
+    <BrowserRouter basename={((import.meta as any).env.BASE_URL as string).replace(/\/$/, '') || ''}>
       <ScrollToTop />
       <FavoritesProvider>
         <AppContent />

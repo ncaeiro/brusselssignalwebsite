@@ -180,7 +180,7 @@ const MegaMenu: React.FC<MegaMenuProps> = ({ onClose, onCategoryClick, onPodcast
               <li><Link to="/category/videos-filtered" onClick={onClose} className="hover:text-[#FFEAD5] transition-colors">Videos</Link></li>
               <li><Link to="/events" onClick={onClose} className="hover:text-[#FFEAD5] transition-colors">Events</Link></li>
               <li><button onClick={handleBecomeMemberNav} className="hover:text-[#FFEAD5] transition-colors text-left">Become a Member</button></li>
-              <li><button className="hover:text-[#FFEAD5] transition-colors text-left">About Us</button></li>
+              <li><Link to="/about" onClick={onClose} className="hover:text-[#FFEAD5] transition-colors">About Us</Link></li>
               <li><Link to="/partner-with-us" onClick={onClose} className="hover:text-[#FFEAD5] transition-colors">Partner with Us</Link></li>
             </ul>
           </div>
@@ -230,7 +230,8 @@ const MegaMenu: React.FC<MegaMenuProps> = ({ onClose, onCategoryClick, onPodcast
                       </div>
                     </div>
                   </div>
-                  <p className="text-[9px] font-bold mb-1 uppercase"><span className="text-[#EE6260]">Video</span> <span className="text-gray-400">{vid.date}</span></p>
+                  <p className="text-[9px] font-bold uppercase leading-tight"><span className="text-[#EE6260]">Video</span></p>
+                  <p className="text-[9px] text-gray-400 font-bold uppercase mb-1">{vid.date}</p>
                   <h4 className="text-[11px] font-bold leading-tight group-hover:text-[#FFEAD5] transition-colors">{vid.title}</h4>
                 </Link>
               ))}
@@ -249,7 +250,8 @@ const MegaMenu: React.FC<MegaMenuProps> = ({ onClose, onCategoryClick, onPodcast
                   <div className="aspect-[16/10] relative overflow-hidden rounded mb-1.5 shadow-lg">
                     <img src={article.imageUrl} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt={article.title} />
                   </div>
-                  <p className="text-[9px] font-bold mb-1 uppercase"><span className="text-[#EE6260]">{article.category}</span> <span className="text-gray-400">{article.date}</span></p>
+                  <p className="text-[9px] font-bold uppercase leading-tight"><span className="text-[#EE6260]">{article.category}</span></p>
+                  <p className="text-[9px] text-gray-400 font-bold uppercase mb-1">{article.date}</p>
                   <h4 className="text-[11px] font-bold leading-tight group-hover:text-[#FFEAD5] transition-colors line-clamp-2">{article.title}</h4>
                 </Link>
               ))}

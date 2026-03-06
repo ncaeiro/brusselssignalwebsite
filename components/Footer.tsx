@@ -87,7 +87,7 @@ const Footer: React.FC<FooterProps> = ({ onSignInClick, onBecomeMemberClick, onC
                 <ul className="text-sm space-y-3 font-medium">
                     <li><button onClick={onSignInClick} className="font-bold text-white hover:text-[#EE6260]">Sign In</button></li>
                     <li><button onClick={onBecomeMemberClick} className="font-bold text-[#EE6260] hover:text-[#EE6260] transition-colors">Become a Member</button></li>
-                    <li><a href="#" className="hover:text-[#EE6260]">About Us</a></li>
+                    <li><Link to="/about" className="hover:text-[#EE6260]">About Us</Link></li>
                     <li><Link to="/events" className="hover:text-[#EE6260]">Events</Link></li>
                     <li><Link to="/partner-with-us" className="hover:text-[#EE6260]">Partner with Us</Link></li>
                     <li><a href="#" className="hover:text-[#EE6260]">Contact Us</a></li>
