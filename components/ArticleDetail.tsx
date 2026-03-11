@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { NewsItem } from '../src/types.ts';
 import { createAuthorSlug, getAuthorPhoto, calculateReadingTime } from '../src/utils.ts';
@@ -7,6 +7,9 @@ import ReadingProgressBar from './ReadingProgressBar.tsx';
 import SocialShare from './SocialShare.tsx';
 import StickySocialShare from './StickySocialShare.tsx';
 import { useFavorites } from '../src/FavoritesContext.tsx';
+import { useRegistrationGating } from '../src/RegistrationGatingContext.tsx';
+import ArticleProgressBanner from './ArticleProgressBanner.tsx';
+import InlineArticleBanner from './InlineArticleBanner.tsx';
 
 interface ArticleDetailProps {
   article: NewsItem;
@@ -17,6 +20,11 @@ const ArticleDetail: React.FC<ArticleDetailProps> = ({ article, allArticles = []
   const navigate = useNavigate();
   const authorPhoto = getAuthorPhoto(article.author || '');
   const { toggleFavorite, isFavorited } = useFavorites();
+  const { recordArticleRead } = useRegistrationGating();
+
+  useEffect(() => {
+    recordArticleRead(String(article.id));
+  }, [article.id]); // eslint-disable-line react-hooks/exhaustive-deps
 
   // Get related articles (same category, excluding current article)
   const relatedArticles = allArticles
@@ -61,6 +69,7 @@ const ArticleDetail: React.FC<ArticleDetailProps> = ({ article, allArticles = []
   return (
     <main className="bg-white flex-grow">
       <ReadingProgressBar />
+      <ArticleProgressBanner />
       <StickySocialShare
         title={article.title}
         onFavoriteClick={handleFavoriteClick}
@@ -135,32 +144,47 @@ const ArticleDetail: React.FC<ArticleDetailProps> = ({ article, allArticles = []
 
             {article.fullContent && (
               <div className="mb-6 font-serif">
-                {article.fullContent.split('\n').map((paragraph, index) => {
-                  if (!paragraph.trim()) return null;
+                {(() => {
+                  const paragraphs = article.fullContent!.split('\n');
+                  let renderedCount = 0;
+                  const INLINE_BANNER_AFTER = 3;
+                  const elements: React.ReactNode[] = [];
 
-                  // Check if paragraph contains quotes with improved regex
-                  const quoteRegex = /("[^"]+"|"[^"]+"|„[^"]+"|«[^»]+»)/g;
-                  const parts = paragraph.split(quoteRegex);
+                  paragraphs.forEach((paragraph, index) => {
+                    if (!paragraph.trim()) return;
 
-                  return (
-                    <p key={index} className="mb-7 text-[1.125rem] leading-[1.8] text-gray-800">
-                      {parts.map((part, partIndex) => {
-                        // If it's a quoted section (handles various quote styles)
-                        if (part.match(/^[""`„«]/) && part.match(/[""'»]$/)) {
-                          return (
-                            <span
-                              key={partIndex}
-                              className="relative inline-block bg-gradient-to-r from-red-50 to-orange-50 px-2 py-0.5 rounded-sm italic text-gray-900 font-medium border-l-2 border-red-400 shadow-sm"
-                            >
-                              {part}
-                            </span>
-                          );
-                        }
-                        return <span key={partIndex}>{part}</span>;
-                      })}
-                    </p>
-                  );
-                })}
+                    renderedCount++;
+
+                    // Check if paragraph contains quotes with improved regex
+                    const quoteRegex = /("[^"]+"|"[^"]+"|„[^"]+"|«[^»]+»)/g;
+                    const parts = paragraph.split(quoteRegex);
+
+                    elements.push(
+                      <p key={index} className="mb-7 text-[1.125rem] leading-[1.8] text-gray-800">
+                        {parts.map((part, partIndex) => {
+                          if (part.match(/^[""`„«]/) && part.match(/[""'»]$/)) {
+                            return (
+                              <span
+                                key={partIndex}
+                                className="relative inline-block bg-gradient-to-r from-red-50 to-orange-50 px-2 py-0.5 rounded-sm italic text-gray-900 font-medium border-l-2 border-red-400 shadow-sm"
+                              >
+                                {part}
+                              </span>
+                            );
+                          }
+                          return <span key={partIndex}>{part}</span>;
+                        })}
+                      </p>
+                    );
+
+                    // Inject inline banner after the 3rd non-empty paragraph
+                    if (renderedCount === INLINE_BANNER_AFTER) {
+                      elements.push(<InlineArticleBanner key="inline-banner" />);
+                    }
+                  });
+
+                  return elements;
+                })()}
               </div>
             )}
 

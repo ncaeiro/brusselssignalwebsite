@@ -39,6 +39,8 @@ import FilteredVideosAndPodcastsPage from '../components/FilteredVideosAndPodcas
 import PodcastShowPageWrapper from '../pages/PodcastShowPageWrapper.tsx';
 import LoginModal from '../components/LoginModal.tsx';
 import SignUpModal from '../components/SignUpModal.tsx';
+import RegistrationWall from '../components/RegistrationWall.tsx';
+import { RegistrationGatingProvider, useRegistrationGating } from './RegistrationGatingContext.tsx';
 
 const AppContent: React.FC = () => {
   const navigate = useNavigate();
@@ -141,7 +143,21 @@ const AppContent: React.FC = () => {
 
       <LoginModal isOpen={isLoginModalOpen} onClose={closeLogin} onSwitchToSignUp={openSignUp} />
       <SignUpModal isOpen={isSignUpModalOpen} onClose={closeSignUp} onSwitchToLogin={openLogin} />
+      <RegistrationWallContainer onSwitchToLogin={openLogin} />
     </div>
+  );
+};
+
+// Separate component so it can consume RegistrationGatingContext inside the provider
+const RegistrationWallContainer: React.FC<{ onSwitchToLogin: () => void }> = ({ onSwitchToLogin }) => {
+  const { isRegistrationWallOpen, closeRegistrationWall, prefillEmail } = useRegistrationGating();
+  return (
+    <RegistrationWall
+      isOpen={isRegistrationWallOpen}
+      onClose={closeRegistrationWall}
+      onSwitchToLogin={onSwitchToLogin}
+      prefillEmail={prefillEmail}
+    />
   );
 };
 
@@ -150,7 +166,9 @@ const App: React.FC = () => {
     <BrowserRouter basename={((import.meta as any).env.BASE_URL as string).replace(/\/$/, '') || ''}>
       <ScrollToTop />
       <FavoritesProvider>
-        <AppContent />
+        <RegistrationGatingProvider>
+          <AppContent />
+        </RegistrationGatingProvider>
       </FavoritesProvider>
     </BrowserRouter>
   );

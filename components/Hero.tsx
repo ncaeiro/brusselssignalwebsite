@@ -100,7 +100,7 @@ const Hero: React.FC<HeroProps> = () => {
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
-      <div className="relative overflow-hidden mb-4">
+      <div className="relative overflow-hidden mb-4 h-[240px] md:h-[360px]">
         {/* Navigation Arrows - positioned at top of image */}
         <div className="absolute top-4 right-4 z-20 flex gap-2">
           <button
@@ -143,7 +143,7 @@ const Hero: React.FC<HeroProps> = () => {
               key={currentArticle.id}
               src={currentArticle.imageUrl}
               alt={currentArticle.title}
-              className="w-full h-auto animate-ken-burns"
+              className="w-full h-full object-cover animate-ken-burns"
             />
           </div>
           <div className={`absolute bottom-4 left-4 transition-opacity duration-300 ${isTransitioning ? 'opacity-0' : 'opacity-100'}`}>
@@ -154,7 +154,7 @@ const Hero: React.FC<HeroProps> = () => {
         </Link>
       </div>
 
-      <div className={`transition-opacity duration-300 ease-in-out ${isTransitioning ? 'opacity-0' : 'opacity-100'}`}>
+      <div className={`transition-opacity duration-300 ease-in-out h-[460px] overflow-hidden ${isTransitioning ? 'opacity-0' : 'opacity-100'}`}>
         <Link to={getArticlePath(currentArticle)}>
           <h1 className="font-serif text-3xl md:text-5xl font-black leading-tight mb-4 text-[#111827] hover:text-[#1a2a44] transition-colors">
             {currentArticle.title}

@@ -16,6 +16,9 @@ wordpress/
 .DS_Store
 Thumbs.db
 
+# Claude Code (memory files, settings — not for sharing)
+.claude/
+
 # Editor
 .vscode/
 .idea/

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Hero from '../components/Hero.tsx';
+import HomepageHeroStrip from '../components/HomepageHeroStrip.tsx';
 import SectionGrid from '../components/SectionGrid.tsx';
 import PhotoStories from '../components/PhotoStories.tsx';
 import WatchSection from '../components/WatchSection.tsx';
@@ -123,7 +124,21 @@ const HomePage: React.FC<HomePageProps> = () => {
         </aside>
       </div>
 
-      {/* Membership Top Promotion Banner (moved) */}
+      <HomepageHeroStrip />
+
+      {/* Video Horizontal Section */}
+      <section className="mt-12">
+          <VideoFeed />
+      </section>
+
+      {/* Categories Section */}
+      <section className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <SectionGrid title="Politics" items={POLITICS.slice(0, 5)} categorySlug="politics" />
+          <SectionGrid title="Economy" items={ECONOMY.slice(0, 5)} categorySlug="economy" />
+          <SectionGrid title="Society" items={SOCIETY.slice(0, 5)} categorySlug="society" />
+      </section>
+
+      {/* Membership Promotion Banner */}
       <Link to="/subscriptions" className="mt-12 mb-10 w-full block group">
           <div className="relative h-24 md:h-32 bg-[#1a2a44] rounded-lg overflow-hidden shadow-lg flex items-center border border-white/5">
             <div className="absolute inset-0 opacity-20 pointer-events-none bg-[radial-gradient(circle_at_right,_var(--tw-gradient-stops))] from-[#EE6260] via-transparent to-transparent"></div>
@@ -145,18 +160,6 @@ const HomePage: React.FC<HomePageProps> = () => {
             </div>
           </div>
       </Link>
-
-      {/* Video Horizontal Section */}
-      <section className="mt-12">
-          <VideoFeed />
-      </section>
-
-      {/* Categories Section */}
-      <section className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <SectionGrid title="Politics" items={POLITICS.slice(0, 5)} categorySlug="politics" />
-          <SectionGrid title="Economy" items={ECONOMY.slice(0, 5)} categorySlug="economy" />
-          <SectionGrid title="Society" items={SOCIETY.slice(0, 5)} categorySlug="society" />
-      </section>
 
       {/* Photo Stories Section */}
       <section className="mt-12">
