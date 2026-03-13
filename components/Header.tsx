@@ -161,7 +161,7 @@ const Header: React.FC<HeaderProps> = ({ onLogoClick, onSignInClick, onBecomeMem
 
                 {/* Newsletters Link - stands out with red color */}
                 <Link
-                  to="/newsletters-grid-authors"
+                  to="/newsletters"
                   className="text-[#EE6260] hover:text-white uppercase transition font-black"
                 >
                   Newsletters

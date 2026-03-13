@@ -29,13 +29,13 @@ const Footer: React.FC<FooterProps> = ({ onSignInClick, onBecomeMemberClick, onC
             </div>
             <div className="flex flex-wrap items-center gap-4 w-full md:w-auto">
                 <Link
-                  to="/newsletters-grid-authors"
+                  to="/newsletters"
                   className="flex-grow md:flex-none bg-[#EE6260] px-8 py-3 text-xs font-black uppercase tracking-widest hover:bg-[#d44947] transition shadow-lg text-center"
                 >
                     SUBSCRIBE NOW
                 </Link>
                 <Link
-                  to="/newsletters-grid-authors"
+                  to="/newsletters"
                   className="flex-grow md:flex-none border border-white/30 px-8 py-3 text-xs font-black uppercase tracking-widest hover:bg-white/10 transition text-center"
                 >
                     PREVIEW EDITION
@@ -68,9 +68,9 @@ const Footer: React.FC<FooterProps> = ({ onSignInClick, onBecomeMemberClick, onC
             <div>
                 <h4 className="text-xs font-black uppercase tracking-widest text-gray-400 mb-6">NEWSLETTERS</h4>
                 <ul className="text-sm space-y-3 font-medium">
-                    <li><Link to="/newsletters-grid-authors" className="hover:text-[#EE6260]">Brussels Calling</Link></li>
-                    <li><Link to="/newsletters-grid-authors" className="hover:text-[#EE6260]">Signal Horizon</Link></li>
-                    <li><Link to="/newsletters-grid-authors" className="hover:text-[#EE6260]">Manage My Subscriptions</Link></li>
+                    <li><Link to="/newsletters" className="hover:text-[#EE6260]">Brussels Calling</Link></li>
+                    <li><Link to="/newsletters" className="hover:text-[#EE6260]">Signal Horizon</Link></li>
+                    <li><Link to="/profile" className="hover:text-[#EE6260]">Manage My Subscriptions</Link></li>
                 </ul>
             </div>
             <div>

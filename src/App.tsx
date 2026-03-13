@@ -40,6 +40,9 @@ import PodcastShowPageWrapper from '../pages/PodcastShowPageWrapper.tsx';
 import LoginModal from '../components/LoginModal.tsx';
 import SignUpModal from '../components/SignUpModal.tsx';
 import RegistrationWall from '../components/RegistrationWall.tsx';
+import PremiumSoftModal from '../components/PremiumSoftModal.tsx';
+import HardConversionModal from '../components/HardConversionModal.tsx';
+import DevModeSwitcher from '../components/DevModeSwitcher.tsx';
 import { RegistrationGatingProvider, useRegistrationGating } from './RegistrationGatingContext.tsx';
 
 const AppContent: React.FC = () => {
@@ -66,7 +69,7 @@ const AppContent: React.FC = () => {
   };
 
   const navigateToNewsletters = () => {
-    navigate('/newsletters-grid-authors');
+    navigate('/newsletters');
     window.scrollTo(0, 0);
   };
 
@@ -144,6 +147,9 @@ const AppContent: React.FC = () => {
       <LoginModal isOpen={isLoginModalOpen} onClose={closeLogin} onSwitchToSignUp={openSignUp} />
       <SignUpModal isOpen={isSignUpModalOpen} onClose={closeSignUp} onSwitchToLogin={openLogin} />
       <RegistrationWallContainer onSwitchToLogin={openLogin} />
+      <PremiumSoftModalContainer />
+      <HardConversionModalContainer />
+      <DevModeSwitcher />
     </div>
   );
 };
@@ -157,6 +163,27 @@ const RegistrationWallContainer: React.FC<{ onSwitchToLogin: () => void }> = ({ 
       onClose={closeRegistrationWall}
       onSwitchToLogin={onSwitchToLogin}
       prefillEmail={prefillEmail}
+    />
+  );
+};
+
+const PremiumSoftModalContainer: React.FC = () => {
+  const { isPremiumSoftModalOpen, closePremiumSoftModal, premiumArticleTopic } = useRegistrationGating();
+  return (
+    <PremiumSoftModal
+      isOpen={isPremiumSoftModalOpen}
+      onClose={closePremiumSoftModal}
+      topic={premiumArticleTopic}
+    />
+  );
+};
+
+const HardConversionModalContainer: React.FC = () => {
+  const { isHardModalOpen, closeHardModal } = useRegistrationGating();
+  return (
+    <HardConversionModal
+      isOpen={isHardModalOpen}
+      onClose={closeHardModal}
     />
   );
 };

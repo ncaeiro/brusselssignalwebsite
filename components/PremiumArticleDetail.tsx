@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { NewsItem } from '../src/types.ts';
 import { createAuthorSlug, getAuthorPhoto, calculateReadingTime } from '../src/utils.ts';
@@ -7,6 +7,8 @@ import ReadingProgressBar from './ReadingProgressBar.tsx';
 import SocialShare from './SocialShare.tsx';
 import StickySocialShare from './StickySocialShare.tsx';
 import { useFavorites } from '../src/FavoritesContext.tsx';
+import { useRegistrationGating } from '../src/RegistrationGatingContext.tsx';
+import RegisteredFreeInlineBanner from './RegisteredFreeInlineBanner.tsx';
 
 interface PremiumArticleDetailProps {
   article: NewsItem;
@@ -17,6 +19,12 @@ const PremiumArticleDetail: React.FC<PremiumArticleDetailProps> = ({ article, on
   const navigate = useNavigate();
   const authorPhoto = getAuthorPhoto(article.author || '');
   const { toggleFavorite, isFavorited } = useFavorites();
+  const { userType, recordPremiumView } = useRegistrationGating();
+
+  useEffect(() => {
+    const category = article.category || 'EU Politics';
+    recordPremiumView(String(article.id), category);
+  }, [article.id]); // eslint-disable-line react-hooks/exhaustive-deps
 
   // Calculate reading time based on full content and summary
   const contentText = `${article.summary || ''} ${article.fullContent || ''}`;
@@ -128,10 +136,27 @@ const PremiumArticleDetail: React.FC<PremiumArticleDetailProps> = ({ article, on
               "We must acknowledge that the old formulas are no longer sufficient," says one high-ranking official who requested anonymity. "The voters are signaling a desire for a return to national sovereignty, while the global challenges we face—climate change, AI, and an increasingly assertive East—demand a unified response. This is the paradox of our time."
             </p>
 
-            {/* Paywall Overlay */}
+            {/* Registered-free inline upgrade banner (after 3rd paragraph) */}
+            {userType === 'registered-free' && <RegisteredFreeInlineBanner />}
+
+            {userType === 'registered-free' || userType === 'subscriber' ? (
+              /* Full article content for registered / subscriber users */
+              <>
+                <p className="mb-6">
+                  The economic implications of this shift are profound. We are seeing a move away from the neoliberal models that dominated the post-Cold War era. Industrial policy is back in fashion, but with a distinctly protectionist flavor. This has massive repercussions for the single market, which has long been the crown jewel of the European project.
+                </p>
+                <p className="mb-6">
+                  Furthermore, the role of international institutions is being redefined. The WTO is largely paralyzed, and the UN's effectiveness is increasingly questioned in a multi-polar world. Europe must decide if it wants to be a third power pole or if it will inevitably gravitate towards one of the two main orbits.
+                </p>
+                <p className="mb-6">
+                  The answers to these questions will define the next decade. What is clear is that the era of easy consensus is over, replaced by an era of strategic competition — even among allies. Brussels finds itself at the center of this storm, a city that must somehow translate fractured national interests into coherent continental policy.
+                </p>
+              </>
+            ) : (
+            /* Paywall Overlay for anonymous users */
             <div className="relative pt-12 pb-24">
                 <div className="absolute inset-x-0 bottom-0 top-0 bg-gradient-to-t from-white via-white/95 to-transparent z-10"></div>
-                
+
                 <p className="mb-6 blur-[1px] select-none opacity-40">
                   The economic implications of this shift are profound. We are seeing a move away from the neoliberal models that dominated the post-Cold War era. Industrial policy is back in fashion, but with a distinctly protectionist flavor. This has massive repercussions for the single market, which has long been the crown jewel of the European project.
                 </p>
@@ -228,6 +253,7 @@ const PremiumArticleDetail: React.FC<PremiumArticleDetailProps> = ({ article, on
                     </p>
                 </div>
             </div>
+            )}
           </div>
         </div>
       </div>

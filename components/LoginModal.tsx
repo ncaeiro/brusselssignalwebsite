@@ -1,5 +1,6 @@
 
 import React, { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 interface LoginModalProps {
   isOpen: boolean;
@@ -8,6 +9,13 @@ interface LoginModalProps {
 }
 
 const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose, onSwitchToSignUp }) => {
+  const navigate = useNavigate();
+
+  const handleLogin = () => {
+    onClose();
+    navigate('/profile');
+  };
+
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden';
@@ -67,7 +75,7 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose, onSwitchToSign
             />
           </div>
 
-          <button className="w-full bg-[#eb6761] hover:bg-[#e05650] text-white font-black text-lg py-4 rounded-md shadow-lg transition-transform active:scale-[0.98] mb-8">
+          <button onClick={handleLogin} className="w-full bg-[#eb6761] hover:bg-[#e05650] text-white font-black text-lg py-4 rounded-md shadow-lg transition-transform active:scale-[0.98] mb-8">
             LOGIN NOW
           </button>
 

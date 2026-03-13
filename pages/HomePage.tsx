@@ -32,7 +32,7 @@ const HomePage: React.FC<HomePageProps> = () => {
     <main className="flex-grow container mx-auto px-4 md:px-6 lg:px-8 py-6">
       {/* Newsletter Top Banner (image only) */}
       <div className="mb-10 w-full">
-        <Link to="/newsletters-grid-authors" className="w-full block">
+        <Link to="/newsletters" className="w-full block">
           <img src={import.meta.env.BASE_URL + 'images/banner-newsletter-brusselscalling.jpg'} alt="Brussels Calling Newsletter" className="w-full h-auto object-cover rounded" />
         </Link>
       </div>
@@ -172,7 +172,7 @@ const HomePage: React.FC<HomePageProps> = () => {
       </section>
 
       {/* Footer Banner - Linked to Newsletters */}
-      <Link to="/newsletters-grid-authors" className="mt-12 block group">
+      <Link to="/newsletters" className="mt-12 block group">
           <div className="relative overflow-hidden rounded shadow-md border border-gray-200 h-44 flex items-center bg-[#1a2a44]">
             <img
                 src="https://picsum.photos/seed/newsletter_footer_full/1200/400"
